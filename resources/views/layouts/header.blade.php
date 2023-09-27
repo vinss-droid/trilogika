@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="TemplateMo">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="shortcut icon" href="{{asset('image/trilogika_favicon.png')}}">
 
     <title>Trilogika Edutama</title>
 

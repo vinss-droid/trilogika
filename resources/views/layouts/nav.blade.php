@@ -1,13 +1,10 @@
 <nav class="main-nav">
     <!-- ***** Logo Start ***** -->
-
-    <a href="index.html" class="logo">
-        <img src="{{asset('front/assets/images/lpk.svg')}}" alt="" style="width: 80px;">
-        <div class="d-flex flex-column">
-            <!-- <div>Trilogika</div>
-            <div>Edutama</div> -->
-        </div>
+    <a href="index.html" class="logo" style=" font-size: 16px;">
+        <img src="{{asset('front/assets/images/lpk.svg')}}" alt="" style="width: 80px; ">
+        Trilogika Edutama
     </a>
+
     <!-- ***** Logo End ***** -->
     <!-- ***** Menu Start ***** -->
     <ul class="nav">
@@ -21,8 +18,10 @@
                 <li><a href="meeting-details.html">Meeting Details</a></li>
             </ul>
         </li> -->
+        <li class="scroll-to-section"><a href="#meetings">Programs</a></li>
         <li class="scroll-to-section"><a href="#courses">Courses</a></li>
-        <li class="scroll-to-section"><a href="#contact">Contact Us</a></li>
+        <li class="scroll-to-section"><a href="#article">Article</a></li>
+        <li class="scroll-to-section"><a href="">Contact Us</a></li>
     </ul>
     <a class='menu-trigger'>
         <span>Menu</span>

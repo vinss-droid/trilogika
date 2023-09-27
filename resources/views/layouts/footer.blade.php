@@ -1,12 +1,21 @@
-<div class="footer">
-    <p>Copyright © 2022 Edu Meeting Co., Ltd. All Rights Reserved.
-        <br>
-        Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a>
-        <br>
-        Distibuted By: <a href="https://themewagon.com" target="_blank" title="Build Better UI, Faster">ThemeWagon</a>
-    </p>
-</div>
 </section>
+<footer class="border-top">
+    <div class="container ">
+        <div class="row  text-white">
+            <div class="d-flex flex-wrap justify-content-between align-items-center py-3 ">
+                <div class="col-md-4 d-flex align-items-center">
+                    <span class="mb-3 mb-md-0 text-white">© 2023 Trilogika Edutama</span>
+                </div>
+                <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                    <li class="ms-4"><i class="fa fa-instagram" style="font-size:xx-large;"></i></li>
+                    <li class="ms-4"><i class="fa fa-facebook" style="font-size:xx-large;"></i></li>
+                    <li class="ms-4"><i class="fa fa-youtube" style="font-size:xx-large;"></i></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</footer>
 
 <!-- Scripts -->
 <!-- Bootstrap core JavaScript -->
