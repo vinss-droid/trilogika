@@ -19,8 +19,8 @@
             </ul>
         </li> -->
         <li class="scroll-to-section"><a href="#meetings">Programs</a></li>
+        <li class="scroll-to-section"><a href="#article">News</a></li>
         <li class="scroll-to-section"><a href="#courses">Courses</a></li>
-        <li class="scroll-to-section"><a href="#article">Article</a></li>
         <li class="scroll-to-section"><a href="">Contact Us</a></li>
     </ul>
     <a class='menu-trigger'>

@@ -165,7 +165,22 @@
 			1000: {
 				items: 3
 			}
-		}
+		},
+		// onInitialized: function (event) {
+		// 	// Mengukur tinggi kartu terpanjang
+		// 	var maxHeight = 0;
+		// 	$(".owl-item", event.target).each(function () {
+		// 		var cardHeight = $(this).find(".card").outerHeight();
+		// 		if (cardHeight > maxHeight) {
+		// 			maxHeight = cardHeight;
+		// 		}
+		// 	});
+
+		// 	// Mengatur tinggi kartu lainnya sesuai dengan tinggi terpanjang
+		// 	$(".owl-item", event.target).each(function () {
+		// 		$(this).find(".card").css("height", maxHeight + "px");
+		// 	});
+		// }
 	});
 
 

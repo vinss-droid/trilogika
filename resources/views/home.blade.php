@@ -248,6 +248,98 @@
     </div>
 </section>
 
+<section class="our-article" id="article">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <h2>Headlines News</h2>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="owl-article-item owl-carousel">
+                    <div class="item">
+                        <div class="card border-dark">
+                            <img src="{{asset('front')}}/assets/images/course-01.jpg" class="card-img-top" alt="Gambar 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Cerahnya Profesi Instruktur</h5>
+                                <p class="card-text">Pemberlakuan pasar bebas Asia Tenggara atau yang disebut Masyarakat Ekonomi Asean (MEA) telah menjadikan persaingan bursa tenaga kerja semakin meningkat.</p>
+                                <div class="main-button-red mt-3">
+                                    <a href="">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="card border-dark">
+                            <img src="{{asset('front')}}/assets/images/course-03.jpg" class="card-img-top" alt="Gambar 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Karakter Pekerja Istimewa Indikator Penanda Kualitas Pekerja DIY</h5>
+                                <p class="card-text">Pemberlakuan pasar bebas Asia Tenggara atau yang disebut Masyarakat Ekonomi Asean (MEA) telah menjadikan persaingan bursa tenaga kerja semakin meningkat.</p>
+                                <div class="main-button-red mt-3">
+                                    <a href="">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="our-facts">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2>A Few Facts About Our</h2>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="count-area-content percentage">
+                                    <div class="count-digit">99</div>
+                                    <div class="count-title">Lulusan Siap Kerja</div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="count-area-content">
+                                    <div class="count-digit">24</div>
+                                    <div class="count-title">Mentor</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="count-area-content new-students">
+                                    <div class="count-digit">54</div>
+                                    <div class="count-title">Murid Baru</div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="count-area-content">
+                                    <div class="count-digit">8</div>
+                                    <div class="count-title">Awards</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 align-self-center">
+                <div class="video">
+                    <a href="https://www.youtube.com/watch?v=HndV87XpkWg" target="_blank"><img src="{{asset('front')}}/assets/images/play-icon.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="our-courses" id="courses">
     <div class="container">
         <div class="row">
@@ -403,107 +495,6 @@
     </div>
 </section>
 
-<section class="our-facts">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h2>A Few Facts About Our</h2>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="count-area-content percentage">
-                                    <div class="count-digit">99</div>
-                                    <div class="count-title">Lulusan Siap Kerja</div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="count-area-content">
-                                    <div class="count-digit">24</div>
-                                    <div class="count-title">Mentor</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="count-area-content new-students">
-                                    <div class="count-digit">54</div>
-                                    <div class="count-title">Murid Baru</div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="count-area-content">
-                                    <div class="count-digit">8</div>
-                                    <div class="count-title">Awards</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 align-self-center">
-                <div class="video">
-                    <a href="https://www.youtube.com/watch?v=HndV87XpkWg" target="_blank"><img src="{{asset('front')}}/assets/images/play-icon.png" alt=""></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="our-article" id="article">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-heading">
-                    <h2>Article</h2>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="owl-article-item owl-carousel">
-                    <div class="item">
-                        <img src="{{asset('front')}}/assets/images/course-01.jpg" alt="Course One">
-                        <div class="down-content">
-                            <h4>Cerahnya Profesi Instruktur</h4>
-                            <div class="info">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p>Pemberlakuan pasar bebas Asia Tenggara atau yang disebut Masyarakat Ekonomi Asean (MEA) telah menjadikan persaingan bursa tenaga kerja semakin meningkat.</p>
-                                    </div>
-                                    <div class="col-12">
-                                        <a class="text-secondary" href="#">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <img src="{{asset('front')}}/assets/images/course-03.jpg" alt="">
-                        <div class="down-content">
-                            <h4>Karakter Pekerja Istimewa Indikator Penanda Kualitas Pekerja DIY</h4>
-                            <div class="info">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p>Angan hanya bekerja hanya untuk menyelesaikan
-                                            pekerjaanmu. Tapi bekerjalah untuk meningkatkan ilmumu (kompetensi), menambah
-                                            relasimu, dan membuat orang lain terbantu atas hasilmu.</p>
-                                    </div>
-                                    <div class="col-12">
-                                        <a class="text-secondary" href="#">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <section class="contact-us" id="contact">
     @endsection
     @section('script')
