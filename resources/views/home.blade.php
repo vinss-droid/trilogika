@@ -140,9 +140,9 @@
                     </div>
                 </div>
             </div> -->
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <div class="meeting-item">
                             <div class="thumb">
                                 <div class="price">
@@ -161,17 +161,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <div class="meeting-item">
                             <div class="thumb">
-                                <div class="price">
+                                <!-- <div class="price">
                                     <span>Segera</span>
-                                </div>
+                                </div> -->
                                 <a href="#"><img src="{{asset('image/jps.jpg')}}" alt="Online Teaching"></a>
                             </div>
                             <div class="down-content">
                                 <div class="date">
-                                    <!-- <h6>Segera</h6> -->
+                                    <h6>sept <span>29</span></h6>
                                 </div>
                                 <a href="#">
                                     <h4>Jaring Pengaman Sosial</h4>
@@ -180,7 +180,28 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-4">
+                        <div class="meeting-item">
+                            <div class="thumb">
+                                <!-- <div class="price">
+                                    <span>Segera</span>
+                                </div> -->
+                                <a href="#"><img src="{{asset('image/askom.jpg')}}" alt="Online Teaching"></a>
+                            </div>
+                            <div class="down-content d-flex flex-row">
+                                <div class="date">
+                                    <h6>aug <span>21</span></h6>
+                                </div>
+                                <div class="content">
+                                    <a href="#">
+                                        <h4>Diklat & Sertifikasi Asesor Kompetensi BNSP</h4>
+                                    </a>
+                                    <p class="m-0">Diklat & Sertifikasi Asesor Kompetensi BNSP Bidang Desa Wisata, Barista, Perhotelan, Kecantikan, dan Kepemanduan Perjalanan (Tour Leader)</p>
 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
