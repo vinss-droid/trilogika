@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\card;
+use App\Models\Card;
 use Illuminate\Http\Request;
 
 class CardController extends Controller
@@ -30,6 +30,17 @@ class CardController extends Controller
     public function store(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'icon' => 'required',
+        ]);
+        // dd($validatedData);
+        $card = new Card();
+        $card->fill($validatedData);
+        $card->save();
+
+        return redirect()->back()->with('success', 'Card berhasil ditambahkan.');
     }
 
     /**

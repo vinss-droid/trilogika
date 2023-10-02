@@ -47,7 +47,8 @@
                     </svg>
                 </button>
             </div>
-            <form action="#">
+            <form action="{{route('card.store')}}" method="post">
+                @csrf
                 <div class="modal-body">
                     <label>Title</label>
                     <div class="form-group">
@@ -59,7 +60,7 @@
                     </div>
                     <label>Content</label>
                     <div class="form-group">
-                        <textarea name="content" id="" class="form-control"></textarea>
+                        <textarea name="content" class="form-control"></textarea>
                     </div>
 
                 </div>
@@ -68,13 +69,30 @@
                         <i class="bx bx-x d-block d-sm-none"></i>
                         <span class="d-none d-sm-block">Close</span>
                     </button>
-                    <button type="button" class="btn btn-primary ml-1" data-bs-dismiss="modal">
+                    <button type="submit" class="btn btn-primary ml-1" data-bs-dismiss="modal">
                         <i class="bx bx-check d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">login</span>
+                        <span class="d-none d-sm-block">tambah</span>
                     </button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM telah dimuat.'); // Tambahkan pernyataan ini
+        console.log('{{session("success")}}')
+        if (session('success')) {
+            Toastify({
+                text: "{{ session('success') }}",
+                duration: 3000, // Durasi toast dalam milidetik
+                close: true, // Menampilkan tombol tutup
+                gravity: "top", // Posisi toast (top, center, bottom)
+                position: "right", // Posisi horizontal toast (left, center, right)
+            }).showToast();
+        }
+    });
+</script>
 @endsection
