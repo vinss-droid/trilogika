@@ -23,7 +23,7 @@
                 <div class="col-lg-12">
                     <div class="caption">
                         <h6>Selamat Datang di</h6>
-                        <h2>Trilogika Erdutama</h2>
+                        <h2>Trilogika Edutama</h2>
                         <p>Adalah lembaga training, riset dan konsultan.
                             Sebagai lembaga prefesional yang bergerak melakukan training untuk masyarakat, Swasta maupun Pemerintahan</p>
                         <div class="main-button-red">
@@ -42,75 +42,17 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="owl-service-item owl-carousel">
+                    @foreach ($cards as $card)
                     <div class="item">
                         <div class="icon">
-                            <img src="{{asset('front')}}/assets/images/service-icon-01.png" alt="">
+                            <i class="{{$card->icon}}" style="font-size: 3em; color: orange;"></i>
                         </div>
                         <div class="down-content">
-                            <h4>Assessment Center</h4>
-                            <p>Metode untuk menggali kompetensi yang perlu dikembangkan oleh individu melalui sejumlah simulasi.</p>
+                            <h4>{{$card->title}}</h4>
+                            <p>{{$card->content}}</p>
                         </div>
                     </div>
-
-                    <div class="item">
-                        <div class="icon">
-                            <img src="{{asset('front')}}/assets/images/service-icon-02.png" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Bimbingan Teknis</h4>
-                            <p>layanan bimbingan yang bertujuan meningkatkan kualitas Sumber Daya Manusia.</p>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="icon">
-                            <img src="{{asset('front')}}/assets/images/service-icon-03.png" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Computer Assisted Test</h4>
-                            <p> suatu sistem yang dipakai untuk membantu proses seleksi dengan alat bantu komputer.</p>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="icon">
-                            <img src="{{asset('front')}}/assets/images/service-icon-02.png" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Management Consulting</h4>
-                            <p>Untuk melakukan pembinaan manajemen dengan dua bidang usaha yaitu pelatihan dan konsultansi manajemen.</p>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="icon">
-                            <img src="{{asset('front')}}/assets/images/service-icon-03.png" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Pelatihan Berbasis Kompetensi</h4>
-                            <p>jenis pelatihan yang fokus pada pengembangan kompetensi atau keterampilan spesifik untuk dapat melaksanakan tugas dengan efektif.</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="icon">
-                            <img src="{{asset('front')}}/assets/images/service-icon-01.png" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Pelatihan Vokasi</h4>
-                            <p>Program ini memfokuskan pada pengajaran keterampilan dan praktik kerja.</p>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="icon">
-                            <img src="{{asset('front')}}/assets/images/service-icon-02.png" alt="">
-                        </div>
-                        <div class="down-content">
-                            <h4>Softskill</h4>
-                            <p>Keahlian bagaimana seseorang dapat berinteraksi dan bersosialisasi dengan orang lain di dalam dunia kerja.</p>
-                        </div>
-                    </div>
-
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -125,83 +67,27 @@
                     <h2>Upcoming Programs</h2>
                 </div>
             </div>
-            <!-- <div class="col-lg-4">
-                <div class="categories">
-                    <h4>Kategori</h4>
-                    <ul>
-                        <li><a href="#">Pelatihan dan Sertifikasi</a></li>
-                        <li><a href="#">Kegiatan dan Event</a></li>
-                        <li><a href="#">Management Consulting</a></li>
-                        <li><a href="#">Bimbingan Teknis</a></li>
 
-                    </ul>
-                    <div class="main-button-red">
-                        <a href="#">All Upcoming Programs</a>
-                    </div>
-                </div>
-            </div> -->
             <div class="col-lg-12">
                 <div class="row">
+                    @foreach ($programs as $program)
                     <div class="col-lg-4">
-                        <div class="meeting-item">
-                            <div class="thumb">
-                                <div class="price">
-                                    <span>Dibuka</span>
+                        <a href="{{route('program.slug',$program->slug)}}">
+                            <div class="meeting-item">
+                                <div class="thumb">
+                                    <img src="{{asset('storage/images/'.$program->image)}}">
                                 </div>
-                                <a href="#"><img src="{{asset('image/cpns.jpg')}}" alt="New Lecturer Meeting"></a>
-                            </div>
-                            <div class="down-content">
-                                <div class="date">
-                                    <h6>Sept <span>10</span></h6>
+                                <div class="down-content">
+                                    <div class="date">
+                                        <h6>{{Carbon\Carbon::parse($program->created_at)->locale('id')->isoFormat('MMM')}} <span>{{Carbon\Carbon::parse($program->created_at)->isoFormat('D')}}</span></h6>
+                                    </div>
+                                    <h4>{{$program->title}}</h4>
+                                    <p>{!! Str::limit($program->content, 100, ' ...') !!}</p>
                                 </div>
-                                <a href="#">
-                                    <h4>Siap CPNS 2023</h4>
-                                </a>
-                                <p>Bimbigan dan pelatihan untuk menghadapi CPNS 2023</p>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="meeting-item">
-                            <div class="thumb">
-                                <!-- <div class="price">
-                                    <span>Segera</span>
-                                </div> -->
-                                <a href="#"><img src="{{asset('image/jps.jpg')}}" alt="Online Teaching"></a>
-                            </div>
-                            <div class="down-content">
-                                <div class="date">
-                                    <h6>sept <span>29</span></h6>
-                                </div>
-                                <a href="#">
-                                    <h4>Jaring Pengaman Sosial</h4>
-                                </a>
-                                <p>Adalah bantuan sosial yang tidak terencana berupa uang yang diberikan kepada masyarakat</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="meeting-item">
-                            <div class="thumb">
-                                <!-- <div class="price">
-                                    <span>Segera</span>
-                                </div> -->
-                                <a href="#"><img src="{{asset('image/askom.jpg')}}" alt="Online Teaching"></a>
-                            </div>
-                            <div class="down-content d-flex flex-row">
-                                <div class="date">
-                                    <h6>aug <span>21</span></h6>
-                                </div>
-                                <div class="content">
-                                    <a href="#">
-                                        <h4>Diklat & Sertifikasi Asesor Kompetensi BNSP</h4>
-                                    </a>
-                                    <p class="m-0">Diklat & Sertifikasi Asesor Kompetensi BNSP Bidang Desa Wisata, Barista, Perhotelan, Kecantikan, dan Kepemanduan Perjalanan (Tour Leader)</p>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

@@ -18,6 +18,7 @@
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="{{asset('front')}}/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="{{asset('front')}}/assets/css/templatemo-edu-meeting.css">
     <link rel="stylesheet" href="{{asset('front')}}/assets/css/owl.css">
     <link rel="stylesheet" href="{{asset('front')}}/assets/css/lightbox.css">

@@ -3,15 +3,14 @@
     <div class="container ">
         <div class="row  text-white">
             <div class="d-flex flex-wrap justify-content-between align-items-center py-3 ">
-                <div class="col-md-4 d-flex align-items-center">
-                    <span class="mb-3 mb-md-0 text-white">© 2023 Trilogika Edutama</span>
+                <div class="col-md-5 d-flex align-items-center">
+                    <span class="mb-3 mb-md-0 text-white">© 2023 Trilogika Edutama | Design: <a href="https://templatemo.com/">Templatemo</a></span>
                 </div>
                 <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
                     <li class="ms-4"><i class="fa fa-instagram" style="font-size:xx-large;"></i></li>
                     <li class="ms-4"><i class="fa fa-facebook" style="font-size:xx-large;"></i></li>
                     <li class="ms-4"><i class="fa fa-youtube" style="font-size:xx-large;"></i></li>
                 </ul>
-
             </div>
         </div>
     </div>

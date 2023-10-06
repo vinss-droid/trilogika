@@ -13,11 +13,22 @@
                 </div>
                 <div class="col-lg-4 col-sm-4">
                     <div class="right-icons">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <ul class="text-white">
+                            <li>
+                                <a href="">
+                                    <i class="fab fa-facebook-f" style="font-size: larger;"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fab fa-instagram" style="font-size: larger;"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fab fa-youtube" style="font-size: larger;"></i>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>

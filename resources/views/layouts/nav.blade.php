@@ -8,20 +8,11 @@
     <!-- ***** Logo End ***** -->
     <!-- ***** Menu Start ***** -->
     <ul class="nav">
-        <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-        <!-- <li><a href="meetings.html">Meetings</a></li>
-        <li class="scroll-to-section"><a href="#apply">Apply Now</a></li>
-        <li class="has-sub">
-            <a href="javascript:void(0)">Pages</a>
-            <ul class="sub-menu">
-                <li><a href="meetings.html">Upcoming Meetings</a></li>
-                <li><a href="meeting-details.html">Meeting Details</a></li>
-            </ul>
-        </li> -->
-        <li class="scroll-to-section"><a href="#meetings">Programs</a></li>
-        <li class="scroll-to-section"><a href="#article">News</a></li>
-        <li class="scroll-to-section"><a href="#courses">Courses</a></li>
-        <li class="scroll-to-section"><a href="">Contact Us</a></li>
+        <li class="{{request()->segment(1) ? '': 'scroll-to-section'}}"><a href="{{request()->segment(1) ? '/' : '#top'}}">Home</a></li>
+        <li class="{{request()->segment(1) ? '': 'scroll-to-section'}}"><a href="{{request()->segment(1) ? '/' : '#meetings'}}">Programs</a></li>
+        <li class="{{request()->segment(1) ? '': 'scroll-to-section'}}"><a href="{{request()->segment(1) ? '/' : '#article'}}">News</a></li>
+        <li class="{{request()->segment(1) ? '': 'scroll-to-section'}}"><a href="{{request()->segment(1) ? '/' : '#courses'}}">Courses</a></li>
+        <li class="{{request()->segment(1) ? '': 'scroll-to-section'}}"><a href="">Contact Us</a></li>
     </ul>
     <a class='menu-trigger'>
         <span>Menu</span>

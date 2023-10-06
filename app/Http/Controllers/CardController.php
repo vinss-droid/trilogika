@@ -13,7 +13,9 @@ class CardController extends Controller
     public function index()
     {
         //
-        return view('cards.index');
+        $cards = Card::all();
+        // dd($cards);
+        return view('cards.index', compact('cards'));
     }
 
     /**
@@ -57,6 +59,11 @@ class CardController extends Controller
     public function edit(card $card)
     {
         //
+        return response()->json([
+            'success' => true,
+            'message' => 'Detail Data Assessment',
+            'data'    => $card
+        ]);
     }
 
     /**
@@ -65,6 +72,15 @@ class CardController extends Controller
     public function update(Request $request, card $card)
     {
         //
+        // dd($card);
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'icon' => 'required',
+        ]);
+        $card->update($validatedData);
+        $card->save();
+        return redirect()->back()->with('success', 'card berhasil di update');
     }
 
     /**
@@ -72,6 +88,7 @@ class CardController extends Controller
      */
     public function destroy(card $card)
     {
-        //
+        $card->delete();
+        return redirect()->back()->with('success', 'data berhasil dihapus');
     }
 }

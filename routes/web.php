@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\CardController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProgramController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [PageController::class, 'home'])->name('page.home');
 
 Route::get('/dashboard', function () {
     return view('dashboard2');
@@ -29,6 +29,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('/admin/card', CardController::class);
+    Route::resource('/admin/program', ProgramController::class);
 });
+
+Route::get('/program/{slug}', [PageController::class, 'programSlug'])->name('program.slug');
 
 require __DIR__ . '/auth.php';

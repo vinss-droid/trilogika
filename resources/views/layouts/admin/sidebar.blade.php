@@ -34,7 +34,7 @@
                 <li class="sidebar-title">Menu</li>
 
                 <li class="sidebar-item active ">
-                    <a href="index.html" class='sidebar-link'>
+                    <a href="{{route('dashboard')}}" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
                     </a>
@@ -42,15 +42,15 @@
 
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
-                        <i class="bi bi-stack"></i>
-                        <span>Management</span>
+                        <i class="bi bi-gear"></i>
+                        <span>Setting</span>
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
                             <a href="{{route('card.index')}}">Cards</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="#">Programs</a>
+                            <a href="{{route('program.index')}}">Programs</a>
                         </li>
                         <li class="submenu-item ">
                             <a href="#">Course</a>
