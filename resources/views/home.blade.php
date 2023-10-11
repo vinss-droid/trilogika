@@ -8,6 +8,17 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
+
+    section.our-facts .video {
+        text-align: center;
+        margin-left: 70px;
+        background-image: url("{{asset('image/askom.jpg')}}");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        border-radius: 20px;
+        filter: sepia(70%);
+    }
 </style>
 @endsection
 @section('content')
@@ -165,19 +176,21 @@
             </div>
             <div class="col-lg-12">
                 <div class="owl-article-item owl-carousel">
+                    @foreach ($articles as $article )
                     <div class="item">
-                        <div class="card border-dark">
-                            <img src="{{asset('front')}}/assets/images/course-01.jpg" class="card-img-top" alt="Gambar 1">
-                            <div class="card-body">
-                                <h5 class="card-title">Cerahnya Profesi Instruktur</h5>
-                                <p class="card-text">Pemberlakuan pasar bebas Asia Tenggara atau yang disebut Masyarakat Ekonomi Asean (MEA) telah menjadikan persaingan bursa tenaga kerja semakin meningkat.</p>
-                                <div class="main-button-red mt-3">
-                                    <a href="">Read More</a>
+                        <a href="#">
+                            <div class="card border-dark">
+                                <img src="{{asset('storage/images/article/'.$article->image)}}" class="card-img-top" alt="Gambar 1" style="height: 240px; object-fit: cover;">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{$article->title}}</h4>
+                                    <div class="mb-1 text-body-secondary">{{Carbon\Carbon::parse($article->created_at)->locale('id')->isoFormat('DD MMMM YYYY')}}</div>
+                                    <p class="card-text">{!! Str::limit($article->content, 100, ' ...') !!}</p>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
-
+                    @endforeach
+                    <!-- 
                     <div class="item">
                         <div class="card border-dark">
                             <img src="{{asset('front')}}/assets/images/course-03.jpg" class="card-img-top" alt="Gambar 1">
@@ -189,7 +202,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -228,12 +241,7 @@
                                     <div class="count-title">Murid Baru</div>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <div class="count-area-content">
-                                    <div class="count-digit">8</div>
-                                    <div class="count-title">Awards</div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -264,15 +272,7 @@
                             <div class="info">
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-center">
-                                        <ul>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -284,12 +284,7 @@
                             <div class="info">
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-center">
-                                        <ul>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
+
                                     </div>
 
                                 </div>
@@ -303,12 +298,7 @@
                             <div class="info">
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-center">
-                                        <ul>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
+
                                     </div>
 
                                 </div>
@@ -322,13 +312,7 @@
                             <div class="info">
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-center">
-                                        <ul>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
+
                                     </div>
 
                                 </div>
@@ -342,13 +326,7 @@
                             <div class="info">
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-center">
-                                        <ul>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
+
                                     </div>
 
                                 </div>
@@ -362,13 +340,7 @@
                             <div class="info">
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-center">
-                                        <ul>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
+
                                     </div>
 
                                 </div>
@@ -382,13 +354,7 @@
                             <div class="info">
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-center">
-                                        <ul>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                            <li><i class="fa fa-star"></i></li>
-                                        </ul>
+
                                     </div>
 
                                 </div>

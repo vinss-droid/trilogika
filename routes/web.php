@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
+use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +32,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/admin/card', CardController::class);
     Route::resource('/admin/program', ProgramController::class);
+    Route::resource('/admin/article', ArticleController::class);
 });
 
 Route::get('/program/{slug}', [PageController::class, 'programSlug'])->name('program.slug');

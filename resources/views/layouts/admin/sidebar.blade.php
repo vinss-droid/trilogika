@@ -56,7 +56,7 @@
                             <a href="#">Course</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="#">Article</a>
+                            <a href="{{route('article.index')}}">Article</a>
                         </li>
                     </ul>
                 </li>
