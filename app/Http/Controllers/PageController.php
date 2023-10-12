@@ -27,4 +27,12 @@ class PageController extends Controller
         }
         return view('show_program', compact('program'));
     }
+    public function articleSlug($slug)
+    {
+        $article = Article::where('slug', $slug)->first();
+        if (!$article) {
+            abort(404);
+        }
+        return view('show_article', compact('article'));
+    }
 }

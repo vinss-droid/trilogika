@@ -53,7 +53,7 @@
                             <a href="{{route('program.index')}}">Programs</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="#">Course</a>
+                            <a href="{{route('course.index')}}">Course</a>
                         </li>
                         <li class="submenu-item ">
                             <a href="{{route('article.index')}}">Article</a>

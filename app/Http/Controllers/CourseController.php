@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
+use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class ArticleController extends Controller
+class CourseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class ArticleController extends Controller
     public function index()
     {
         //
-        $articles = Article::all();
-        // dd($articles);
-        return view('article.index', compact('articles'));
+        $courses = Course::all();
+        return view('courses.index', compact('courses'));
     }
 
     /**
@@ -24,9 +23,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-
         //
-        return view('article.add_article');
+        return view('courses.add_course');
     }
 
     /**
@@ -34,6 +32,7 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+        //
         $date = str_replace([' ', '-', ':'], '', date('Y-m-d', time()));
 
         $validatedData = $request->validate([
@@ -43,21 +42,21 @@ class ArticleController extends Controller
         ]);
 
         $newFileName = $date . '_' . $request->file('image')->getClientOriginalName();
-        $request->file('image')->storeAs('public/images/article', $newFileName);
+        $request->file('image')->storeAs('public/images/course', $newFileName);
         // dd($request->all());
-        Article::create([
+        Course::create([
             'title' => $validatedData['title'],
             'content' => $validatedData['content'],
             'image' => $newFileName,
         ]);
 
-        return redirect()->route('article.index')->with('success', 'Program berhasil ditambahkan');
+        return redirect()->route('course.index')->with('success', 'Course berhasil ditambahkan');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(article $article)
+    public function show(Course $course)
     {
         //
     }
@@ -65,16 +64,16 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(article $article)
+    public function edit(Course $course)
     {
         //
-        return view('article.edit_article', compact('article'));
+        return view('courses.edit_course', compact('course'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, article $article)
+    public function update(Request $request, Course $course)
     {
         //
         $date = str_replace([' ', '-', ':'], '', date('Y-m-d', time()));
@@ -85,30 +84,30 @@ class ArticleController extends Controller
         ]);
 
         if ($request->file('image')) {
-            if (Storage::disk('public')->exists('images/article/' . $article->image)) {
-                Storage::disk('public')->delete('images/article/' . $article->image);
+            if (Storage::disk('public')->exists('images/course/' . $course->image)) {
+                Storage::disk('public')->delete('images/course/' . $course->image);
             }
             $newImage = $date . '_' . $request->file('image')->getClientOriginalName();
-            $request->file('image')->storeAs('public/images/article', $newImage);
+            $request->file('image')->storeAs('public/images/course', $newImage);
             $validatedData['image'] = $newImage;
         } else {
-            $validatedData['image'] = $article->image;
+            $validatedData['image'] = $course->image;
         }
         // dd($validatedData);
-        $article->update($validatedData);
-        return redirect()->route('article.index')->with('success', 'Artikel berhasil diperbarui');
+        $course->update($validatedData);
+        return redirect()->route('course.index')->with('success', 'Artikel berhasil diperbarui');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(article $article)
+    public function destroy(Course $course)
     {
         //
-        if (Storage::disk('public')->exists('images/article/' . $article->image)) {
-            Storage::disk('public')->delete('images/article/' . $article->image);
+        if (Storage::disk('public')->exists('images/course/' . $course->image)) {
+            Storage::disk('public')->delete('images/course/' . $course->image);
         }
-        $article->delete();
-        return redirect()->back()->with('success', 'Artikel berhasil dihapus');
+        $course->delete();
+        return redirect()->back()->with('success', 'Course berhasil dihapus');
     }
 }
