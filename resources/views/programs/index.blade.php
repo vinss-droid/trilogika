@@ -25,7 +25,6 @@
                 <thead class="thead-dark">
                     <tr>
                         <th>NAME</th>
-                        <th>DESCRIPTION</th>
                         <th>IMAGE</th>
                         <th>ACTION</th>
                     </tr>
@@ -34,7 +33,6 @@
                     @foreach ($programs as $program)
                     <tr>
                         <td class="text-bold-500">{{$program->title}}</td>
-                        <td>{!!substr($program->content,0,50).' ...'!!}</td>
                         <td class="text-bold-500"><img class="rounded" src="{{asset('storage/images/'.$program->image)}}" alt="" width="100px"></td>
                         <td>
                             <a href="{{route('program.edit',$program->id)}}" class="btn icon btn-success"><i class="bi bi-pencil"></i></a>

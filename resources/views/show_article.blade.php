@@ -10,7 +10,7 @@
     }
 
     section.heading-page {
-        background-image: url('{{ $program->image ? asset("storage/images/".$program->image) : asset("image/img_default.jpg")}}');
+        background-image: url('{{asset("storage/images")}}/{{$program->image}}');
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -75,7 +75,7 @@
                         <p class="description mb-5">
                             {!!$program->content!!}
                         </p>
-                        <!-- <div class="row mt-5 border-top">
+                        <div class="row mt-5 border-top">
                             <div class="col-12">
                                 <span class="fw-bold text-secondary small mb-1">Share</span>
                                 <div class="d-flex flex-row mt-3">
@@ -84,7 +84,7 @@
                                     <div class="me-3"><i class="fas fa-paper-plane fa-lg"></i></div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
 
                     </div>
                 </div>

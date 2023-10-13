@@ -15,17 +15,17 @@
                     <div class="right-icons">
                         <ul class="text-white">
                             <li>
-                                <a href="">
+                                <a href="https://www.facebook.com/trilogikaedutama">
                                     <i class="fab fa-facebook-f" style="font-size: larger;"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="https://www.instagram.com/trilogikaedutama/">
                                     <i class="fab fa-instagram" style="font-size: larger;"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="#">
                                     <i class="fab fa-youtube" style="font-size: larger;"></i>
                                 </a>
                             </li>

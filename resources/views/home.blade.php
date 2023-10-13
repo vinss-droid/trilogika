@@ -19,6 +19,14 @@
         border-radius: 20px;
         filter: sepia(70%);
     }
+
+    .meeting-item .down-content h4 {
+        font-size: 18px;
+        color: #1f272b;
+        font-weight: 600;
+        display: flex;
+        margin-bottom: 15px;
+    }
 </style>
 @endsection
 @section('content')
@@ -86,14 +94,18 @@
                         <a href="{{route('program.slug',$program->slug)}}">
                             <div class="meeting-item">
                                 <div class="thumb">
+                                    @if (!$program->image)
+                                    <img src="{{asset('image/img_default.jpg')}}" alt="">
+                                    @else
                                     <img src="{{asset('storage/images/'.$program->image)}}">
+                                    @endif
                                 </div>
                                 <div class="down-content">
-                                    <div class="date">
+                                    <div class="date me-2">
                                         <h6>{{Carbon\Carbon::parse($program->created_at)->locale('id')->isoFormat('MMM')}} <span>{{Carbon\Carbon::parse($program->created_at)->isoFormat('D')}}</span></h6>
                                     </div>
                                     <h4>{{$program->title}}</h4>
-                                    <p>{!! Str::limit($program->content, 100, ' ...') !!}</p>
+                                    <p>{!! strip_tags(Str::limit($program->content, 100, ' ...')) !!}</p>
                                 </div>
                             </div>
                         </a>
@@ -190,19 +202,7 @@
                         </a>
                     </div>
                     @endforeach
-                    <!-- 
-                    <div class="item">
-                        <div class="card border-dark">
-                            <img src="{{asset('front')}}/assets/images/course-03.jpg" class="card-img-top" alt="Gambar 1">
-                            <div class="card-body">
-                                <h5 class="card-title">Karakter Pekerja Istimewa Indikator Penanda Kualitas Pekerja DIY</h5>
-                                <p class="card-text">Pemberlakuan pasar bebas Asia Tenggara atau yang disebut Masyarakat Ekonomi Asean (MEA) telah menjadikan persaingan bursa tenaga kerja semakin meningkat.</p>
-                                <div class="main-button-red mt-3">
-                                    <a href="">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
+
                 </div>
             </div>
         </div>
@@ -248,7 +248,7 @@
             </div>
             <div class="col-lg-6 align-self-center">
                 <div class="video">
-                    <a href="https://www.youtube.com/watch?v=HndV87XpkWg" target="_blank"><img src="{{asset('front')}}/assets/images/play-icon.png" alt=""></a>
+                    <a href="#" target="_blank"><img src="{{asset('front')}}/assets/images/play-icon.png" alt=""></a>
                 </div>
             </div>
         </div>

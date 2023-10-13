@@ -7,9 +7,9 @@
                     <span class="mb-3 mb-md-0 text-white">© 2023 Trilogika Edutama | Design: <a href="https://templatemo.com/">Templatemo</a></span>
                 </div>
                 <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                    <li class="ms-4"><i class="fa fa-instagram" style="font-size:xx-large;"></i></li>
-                    <li class="ms-4"><i class="fa fa-facebook" style="font-size:xx-large;"></i></li>
-                    <li class="ms-4"><i class="fa fa-youtube" style="font-size:xx-large;"></i></li>
+                    <li class="ms-4"><a class="text-white" href="https://www.instagram.com/trilogikaedutama/"><i class="fab fa-instagram" style="font-size:xx-large;"></i></a></li>
+                    <li class="ms-4"><a class="text-white" href="https://www.facebook.com/trilogikaedutama"><i class="fab fa-facebook" style="font-size:xx-large;"></i></a></li>
+                    <li class="ms-4"><a href="#" class="text-white"><i class="fab fa-youtube" style="font-size:xx-large;"></i></a></li>
                 </ul>
             </div>
         </div>
