@@ -2,7 +2,8 @@
 @section('style')
 <style>
     footer {
-        background-image: url("{{asset('front/assets')}}/images/meetings-bg.jpg");
+        /* background-image: url("{{asset('front/assets')}}/images/meetings-bg.jpg"); */
+        background-color: #a12c2f;
         background-position: center center;
         background-attachment: fixed;
         background-repeat: no-repeat;
@@ -26,6 +27,14 @@
         font-weight: 600;
         display: flex;
         margin-bottom: 15px;
+    }
+
+    section.contact-us {
+        background-position: center center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 10px 0px 0px 0px;
     }
 </style>
 @endsection
@@ -190,16 +199,17 @@
                 <div class="owl-article-item owl-carousel">
                     @foreach ($articles as $article )
                     <div class="item">
-                        <a href="#">
-                            <div class="card border-dark">
+                        <div class="card border-dark">
+                            <a href="{{route('article.slug',$article->slug)}}">
                                 <img src="{{asset('storage/images/article/'.$article->image)}}" class="card-img-top" alt="Gambar 1" style="height: 240px; object-fit: cover;">
-                                <div class="card-body">
-                                    <h4 class="card-title">{{$article->title}}</h4>
-                                    <div class="mb-1 text-body-secondary">{{Carbon\Carbon::parse($article->created_at)->locale('id')->isoFormat('DD MMMM YYYY')}}</div>
-                                    <p class="card-text">{!! Str::limit($article->content, 100, ' ...') !!}</p>
-                                </div>
+                            </a>
+                            <div class="card-body">
+                                <h4 class="card-title">{{$article->title}}</h4>
+                                <div class="mb-1 text-body-secondary">{{Carbon\Carbon::parse($article->created_at)->locale('id')->isoFormat('DD MMMM YYYY')}}</div>
+                                <p class="card-text">{!! Str::limit(strip_tags($article->content), 100, ' ...') !!}</p>
                             </div>
-                        </a>
+                        </div>
+
                     </div>
                     @endforeach
 
@@ -368,10 +378,9 @@
     </div>
 </section>
 
-<section class="contact-us" id="contact">
-    @endsection
-    @section('script')
-    <script>
+@endsection
+@section('script')
+<script>
 
-    </script>
-    @endsection
+</script>
+@endsection

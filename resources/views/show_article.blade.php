@@ -10,7 +10,7 @@
     }
 
     section.heading-page {
-        background-image: url('{{asset("storage/images")}}/{{$program->image}}');
+        background-image: url('{{asset("storage/images/article")}}/{{$article->image}}');
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -59,21 +59,21 @@
                 <div class="meeting-single-item">
                     <div class="thumb">
                         <div class="date">
-                            <h6>{{Carbon\Carbon::parse($program->created_at)->locale('id')->isoFormat('D MMM')}}<span>{{Carbon\Carbon::parse($program->created_at)->locale('id')->isoFormat('YYYY')}}</span></h6>
+                            <h6>{{Carbon\Carbon::parse($article->created_at)->locale('id')->isoFormat('D MMM')}}<span>{{Carbon\Carbon::parse($article->created_at)->locale('id')->isoFormat('YYYY')}}</span></h6>
                         </div>
-                        @if (!$program->image)
+                        @if (!$article->image)
                         <img src="{{asset('image/img_default.jpg')}}" style="height: 400px; object-fit: cover;" alt="">
                         @else
-                        <img src="{{asset('storage/images/'.$program->image)}}" style="height:400px; object-fit: cover;" alt="">
+                        <img class="object-fit-cover" src="{{asset('storage/images/article/'.$article->image)}}" style="height:400px;" alt="">
                         @endif
                     </div>
                     <div class="down-content">
                         <div class="text-center">
-                            <h4 class="fs-2 ">{{$program->title}}</h4>
-                            <p class="text-secondary">By: Admin | {{Carbon\Carbon::parse($program->created_at)->locale('id')->isoFormat('DD MMMM YYYY')}}</p>
+                            <h4 class="fs-2 ">{{$article->title}}</h4>
+                            <p class="text-secondary">By: Admin | {{Carbon\Carbon::parse($article->created_at)->locale('id')->isoFormat('DD MMMM YYYY')}}</p>
                         </div>
                         <p class="description mb-5">
-                            {!!$program->content!!}
+                            {!!$article->content!!}
                         </p>
                         <div class="row mt-5 border-top">
                             <div class="col-12">

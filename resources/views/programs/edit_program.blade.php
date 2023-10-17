@@ -54,8 +54,29 @@
 @section('script')
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 <script>
+    var toolbarOptions = [
+        ['bold', 'italic', 'underline', 'strike'], // toggled buttons
+        ['blockquote'],
+        [{
+            'list': 'ordered'
+        }, {
+            'list': 'bullet'
+        }],
+
+        [{
+            'header': [1, 2, 3, 4, 5, 6, false]
+        }],
+
+        [{
+            'align': []
+        }],
+
+    ];
     var quill = new Quill('#editor', {
-        theme: 'snow'
+        theme: 'snow',
+        modules: {
+            toolbar: toolbarOptions
+        }
     });
 
     // Tambahkan event listener ke form untuk mengisi nilai input teks saat formulir dikirim

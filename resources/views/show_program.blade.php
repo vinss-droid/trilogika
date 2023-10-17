@@ -75,17 +75,6 @@
                         <p class="description mb-5">
                             {!!$program->content!!}
                         </p>
-                        <!-- <div class="row mt-5 border-top">
-                            <div class="col-12">
-                                <span class="fw-bold text-secondary small mb-1">Share</span>
-                                <div class="d-flex flex-row mt-3">
-                                    <div class="me-3"><i class="fab fa-facebook-f fa-lg"></i></div>
-                                    <div class="me-3"><i class="fab fa-twitter fa-lg"></i></div>
-                                    <div class="me-3"><i class="fas fa-paper-plane fa-lg"></i></div>
-                                </div>
-                            </div>
-                        </div> -->
-
                     </div>
                 </div>
             </div>
