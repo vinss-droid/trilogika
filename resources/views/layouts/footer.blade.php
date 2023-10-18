@@ -13,7 +13,7 @@
                 </ul>
             </div>
         </div>
-    </div> 
+    </div>
 </footer>
 -->
 <!-- Remove the container if you want to extend the Footer to full width. -->
@@ -33,9 +33,9 @@
                     </p>
                     <div class="mt-4">
                         <!-- Facebook -->
-                        <a type="button" class="btn btn-floating btn-danger btn-lg"><i class="fab fa-facebook-f"></i></a>
-                        <!-- Twitter -->
-                        <a type="button" class="btn btn-floating btn-danger btn-lg"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/trilogikaedutama?locale=id_ID" type="button" class="btn btn-floating btn-danger btn-lg"><i class="fab fa-facebook-f"></i></a>
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/trilogikaedutama" type="button" class="btn btn-floating btn-danger btn-lg"><i class="fab fa-instagram"></i></a>
                         <!-- Google + -->
                         <a type="button" class="btn btn-floating btn-danger btn-lg"><i class="fab fa-youtube"></i></a>
 
