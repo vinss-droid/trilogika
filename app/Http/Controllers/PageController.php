@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Card;
 use App\Models\Program;
 use App\Models\Article;
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -15,8 +16,9 @@ class PageController extends Controller
         $cards = Card::all();
         $programs = Program::take(3)->get();
         $articles = Article::take(4)->get();
+        $courses = Course::all();
         // dd($article);
-        return view('home', compact(['cards', 'programs', 'articles']));
+        return view('home', compact(['cards', 'programs', 'articles', 'courses']));
     }
 
     public function programSlug($slug)

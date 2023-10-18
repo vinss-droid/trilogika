@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{asset('front')}}/assets/css/templatemo-edu-meeting.css">
     <link rel="stylesheet" href="{{asset('front')}}/assets/css/owl.css">
     <link rel="stylesheet" href="{{asset('front')}}/assets/css/lightbox.css">
+    <link rel="stylesheet" href="{{asset('front/assets/css/floating-wpp.css')}}">
     @yield('style')
     <!--
 

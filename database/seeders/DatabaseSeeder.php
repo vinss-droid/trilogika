@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Course;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,6 +24,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CardSeeder::class,
             ProgramSeeder::class,
+            CourseSeeder::class,
         ]);
     }
 }
