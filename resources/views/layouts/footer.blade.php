@@ -26,10 +26,9 @@
             <div class="row mt-2">
                 <!--Grid column-->
                 <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
-                    <h5 class="text-uppercase mb-4">About company</h5>
-
+                    <h5 class="text-uppercase mb-4">About</h5>
                     <p class="text-white">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit cum similique perspiciatis, praesentium ullam quod accusantium neque rerum adipisci ea.
+                        Adalah lembaga training, riset dan konsultan. Sebagai lembaga prefesional yang bergerak melakukan training untuk masyarakat, Swasta maupun Pemerintahan
                     </p>
                     <div class="mt-4">
                         <!-- Facebook -->
@@ -52,12 +51,14 @@
                             <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2">Jl. Nogosaren Kidul, Nogosaren, Nogotirto, Gamping, Sleman, DI Yogyakarta 55592</span>
                         </li>
                         <li class="mb-3">
-                            <span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">trilogikaedutama@gmail.com</span>
+                            <span class="fa-li">
+                                <a class="text-white" href="mailto:trilogikaedutamayk@gmail.com">
+                                    <i class="fas fa-envelope"></i></span><span class="ms-2 ">trilogikaedutamayk@gmail.com</span>
+                            </a>
                         </li>
                         <li class="mb-3">
                             <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">0857-0124-6319</span>
                         </li>
-
                     </ul>
                 </div>
                 <!--Grid column-->
@@ -65,26 +66,15 @@
                 <!--Grid column-->
                 <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
                     <h5 class="text-uppercase mb-4">Opening hours</h5>
-                    <div class="text-white">
+                    <ul>
+                        <li>Senin - Jumat</li>
+                        <li>08:00 - 16.30</li>
+                    </ul>
+                    <!-- <div class="">
                         <p class="text-white">Senin - Jumat:</p>
                         <p class="text-white">08:00 - 16.30</p>
-                    </div>
-                    <!-- <table class="table text-center text-white">
-                        <tbody class="font-weight-normal">
-                            <tr>
-                                <td>Mon - Thu:</td>
-                                <td>8am - 9pm</td>
-                            </tr>
-                            <tr>
-                                <td>Fri - Sat:</td>
-                                <td>8am - 1am</td>
-                            </tr>
-                            <tr>
-                                <td>Sunday:</td>
-                                <td>9am - 10pm</td>
-                            </tr>
-                        </tbody>
-                    </table> -->
+                    </div> -->
+
                 </div>
                 <!--Grid column-->
             </div>
@@ -100,7 +90,7 @@
         <!-- Copyright -->
     </footer>
 </section>
-
+<div id="WhatsApp"></div>
 
 
 <!-- Scripts -->
@@ -115,6 +105,7 @@
 <script src="{{asset('front')}}/assets/js/video.js"></script>
 <script src="{{asset('front')}}/assets/js/slick-slider.js"></script>
 <script src="{{asset('front')}}/assets/js/custom.js"></script>
+<script src="{{asset('front/assets/js/floating-wpp.min.js')}}"></script>
 @yield('script')
 <script>
     //according to loftblog tut
@@ -162,8 +153,16 @@
     $(window).scroll(function() {
         checkSection();
     });
+
+    $(function() {
+        $('#WhatsApp').floatingWhatsApp({
+            phone: '6285701246319',
+            position: 'right',
+            popupMessage: 'Hallo kak, Ada yang bisa kami bantu?',
+            showPopup: true,
+        });
+    });
 </script>
-</body>
 
 </body>
 

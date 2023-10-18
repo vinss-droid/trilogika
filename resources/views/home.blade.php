@@ -275,103 +275,22 @@
             </div>
             <div class="col-lg-12">
                 <div class="owl-courses-item owl-carousel">
-                    <div class="item">
-                        <img src="{{asset('front')}}/assets/images/course-01.jpg" alt="Course One">
-                        <div class="down-content">
-                            <h4>Pelatihan Akuntansi</h4>
-                            <div class="info">
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-center">
+                    @foreach ($courses as $course)
+                    <a href="#">
+                        <div class="item">
+                            <img src="{{asset('front')}}/assets/images/{{$course->image}}" alt="Course One">
+                            <div class="down-content">
+                                <h4>{{$course->title}}</h4>
+                                <div class="info">
+                                    <div class="row">
+                                        <div class="col-12 d-flex justify-content-center">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="item">
-                        <img src="{{asset('front')}}/assets/images/course-02.jpg" alt="Course Two">
-                        <div class="down-content">
-                            <h4>Pelatihan Akuntansi</h4>
-                            <div class="info">
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-center">
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img src="{{asset('front')}}/assets/images/course-03.jpg" alt="">
-                        <div class="down-content">
-                            <h4>Pelatihan Ekonomi</h4>
-                            <div class="info">
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-center">
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img src="{{asset('front')}}/assets/images/course-04.jpg" alt="">
-                        <div class="down-content">
-                            <h4>Pelatihan Manajemen SDM</h4>
-                            <div class="info">
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-center">
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img src="{{asset('front')}}/assets/images/course-01.jpg" alt="">
-                        <div class="down-content">
-                            <h4>Pelatihan Kewirausahaan</h4>
-                            <div class="info">
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-center">
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img src="{{asset('front')}}/assets/images/course-02.jpg" alt="">
-                        <div class="down-content">
-                            <h4>Pelatihan Manajemen Resiko</h4>
-                            <div class="info">
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-center">
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img src="{{asset('front')}}/assets/images/course-03.jpg" alt="">
-                        <div class="down-content">
-                            <h4>Pelatihan Ritel</h4>
-                            <div class="info">
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-center">
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    </a>
+                    @endforeach
                 </div>
             </div>
         </div>
