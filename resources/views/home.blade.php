@@ -115,7 +115,7 @@
                                     @if (!$program->image)
                                     <img src="{{asset('image/img_default.jpg')}}" alt="">
                                     @else
-                                    <img src="{{Storage::url('public/images/'.$program->image)}}">
+                                    <img src="{{asset('storage/images/'.$program->image)}}">
                                     @endif
                                 </div>
                                 <div class="down-content">
