@@ -21,6 +21,15 @@
         filter: sepia(70%);
     }
 
+    section.apply-now {
+        background-image: url("{{asset('front/assets/images/upn-bg.jpg')}}");
+        background-position: center center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 140px 0px;
+    }
+
     .meeting-item .down-content h4 {
         font-size: 18px;
         color: #1f272b;
@@ -106,7 +115,7 @@
                                     @if (!$program->image)
                                     <img src="{{asset('image/img_default.jpg')}}" alt="">
                                     @else
-                                    <img src="{{asset('storage/images/'.$program->image)}}">
+                                    <img src="{{Storage::url('public/images/'.$program->image)}}">
                                     @endif
                                 </div>
                                 <div class="down-content">
