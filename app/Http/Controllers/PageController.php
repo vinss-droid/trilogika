@@ -6,8 +6,6 @@ use App\Models\Card;
 use App\Models\Program;
 use App\Models\Article;
 use App\Models\Course;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class PageController extends Controller
 {
@@ -18,8 +16,6 @@ class PageController extends Controller
         $programs = Program::take(3)->get();
         $articles = Article::take(4)->get();
         $courses = Course::all();
-        // $url = Storage::get('public/images/20231024_cpns.jpg');
-        // dd($url);
         return view('home', compact(['cards', 'programs', 'articles', 'courses']));
     }
 

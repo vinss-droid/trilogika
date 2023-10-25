@@ -23,6 +23,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PageController::class, 'home'])->name('page.home');
+Route::get('/tita', function () {
+    return view('tita');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard2');

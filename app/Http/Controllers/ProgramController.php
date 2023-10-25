@@ -43,13 +43,21 @@ class ProgramController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $newFileName = $date . '_' . $request->file('image')->getClientOriginalName();
-        $request->file('image')->storeAs('public/images', $newFileName);
+        // $newFileName = $date . '_' . $request->file('image')->getClientOriginalName();
+        // $request->file('image')->storeAs('public/images', $newFileName);
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName = $date . '_' . $file->getClientOriginalName();
+            $filePath = public_path() . '/image/program/';
+            $file->move($filePath, $fileName);
+        }
+
 
         Program::create([
             'title' => $validatedData['title'],
             'content' => $validatedData['content'],
-            'image' => $newFileName,
+            'image' => $fileName,
         ]);
 
         return redirect()->route('program.index')->with('success', 'Program berhasil ditambahkan');
@@ -87,17 +95,30 @@ class ProgramController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        if ($request->file('image')) {
-            if (Storage::disk('public')->exists('images/' . $program->image)) {
-                Storage::disk('public')->delete('images/' . $program->image);
+        // if ($request->file('image')) {
+        //     if (Storage::disk('public')->exists('images/' . $program->image)) {
+        //         Storage::disk('public')->delete('images/' . $program->image);
+        //     }
+        //     $newImage = $date . '_' . $request->file('image')->getClientOriginalName();
+        //     $request->file('image')->storeAs('public/images', $newImage);
+        //     $validatedData['image'] = $newImage;
+        // } else {
+        //     $validatedData['image'] = $program->image;
+        // }      
+        // dd($validatedData);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            if (file_exists(public_path('image/program/' . $program->image))) {
+                unlink(public_path('image/program/' . $program->image));
             }
-            $newImage = $date . '_' . $request->file('image')->getClientOriginalName();
-            $request->file('image')->storeAs('public/images', $newImage);
+            $newImage = $date . '_' . $image->getClientOriginalName();
+            $image->move(public_path('image/program'), $newImage);
             $validatedData['image'] = $newImage;
         } else {
             $validatedData['image'] = $program->image;
         }
-        // dd($validatedData);
+
         $program->update($validatedData);
         return redirect()->route('program.index')->with('success', 'Program berhasil diperbarui');
     }
@@ -108,10 +129,16 @@ class ProgramController extends Controller
     public function destroy(program $program)
     {
         //
-        if (Storage::disk('public')->exists('images/' . $program->image)) {
-            Storage::disk('public')->delete('images/' . $program->image);
+        // if (Storage::disk('public')->exists('images/' . $program->image)) {
+        //     Storage::disk('public')->delete('images/' . $program->image);
+        // }
+
+        if (file_exists(public_path('image/program/' . $program->image))) {
+            unlink(public_path('image/program/' . $program->image));
         }
+
         $program->delete();
+
         return redirect()->back()->with('success', 'Program berhasil dihapus');
     }
 }

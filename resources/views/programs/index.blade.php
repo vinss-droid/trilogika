@@ -33,7 +33,11 @@
                     @foreach ($programs as $program)
                     <tr>
                         <td class="text-bold-500">{{$program->title}}</td>
-                        <td class="text-bold-500"><img class="rounded" src="{{asset('storage/images/'.$program->image)}}" alt="" width="100px"></td>
+                        @if (!$program->image)
+                        <td class="text-bold-500"><img class="rounded" src="{{asset('/image/img_default.jpg')}}" alt="" width="100px"></td>
+                        @else
+                        <td class="text-bold-500"><img class="rounded" src="{{asset('/image/program/'.$program->image)}}" alt="" width="100px"></td>
+                        @endif
                         <td>
                             <a href="{{route('program.edit',$program->id)}}" class="btn icon btn-success"><i class="bi bi-pencil"></i></a>
                             <a href="" class="btn icon btn-danger" onclick="deletePost('{{$program->id}}')"><i class="bi bi-trash"></i></a>

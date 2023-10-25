@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             CardSeeder::class,
             ProgramSeeder::class,
             CourseSeeder::class,
+            ArticleSeeder::class,
         ]);
     }
 }

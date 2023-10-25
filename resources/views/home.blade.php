@@ -104,7 +104,6 @@
                     <h2>Upcoming Programs</h2>
                 </div>
             </div>
-
             <div class="col-lg-12">
                 <div class="row">
                     @foreach ($programs as $program)
@@ -115,7 +114,7 @@
                                     @if (!$program->image)
                                     <img src="{{asset('image/img_default.jpg')}}" alt="">
                                     @else
-                                    <img src="{{asset('storage/images/'.$program->image)}}">
+                                    <img src="{{asset('image/program/'.$program->image)}}">
                                     @endif
                                 </div>
                                 <div class="down-content">
@@ -123,7 +122,7 @@
                                         <h6>{{Carbon\Carbon::parse($program->created_at)->locale('id')->isoFormat('MMM')}} <span>{{Carbon\Carbon::parse($program->created_at)->isoFormat('D')}}</span></h6>
                                     </div>
                                     <h4>{{$program->title}}</h4>
-                                    <p>{!! strip_tags(Str::limit($program->content, 100, ' ...')) !!}</p>
+                                    <p>{!! strip_tags(Str::words($program->content, 15, ' ...')) !!}</p>
                                 </div>
                             </div>
                         </a>
@@ -210,12 +209,12 @@
                     <div class="item">
                         <div class="card border-dark">
                             <a href="{{route('article.slug',$article->slug)}}">
-                                <img src="{{asset('storage/images/article/'.$article->image)}}" class="card-img-top" alt="Gambar 1" style="height: 240px; object-fit: cover;">
+                                <img src="{{asset('image/article/'.$article->image)}}" class="card-img-top" alt="Gambar 1" style="height: 240px; object-fit: cover;">
                             </a>
                             <div class="card-body">
-                                <h4 class="card-title">{{$article->title}}</h4>
+                                <h4 class="card-title">{{ Str::words($article->title,6)}}</h4>
                                 <div class="mb-1 text-body-secondary">{{Carbon\Carbon::parse($article->created_at)->locale('id')->isoFormat('DD MMMM YYYY')}}</div>
-                                <p class="card-text">{!! Str::limit(strip_tags($article->content), 100, ' ...') !!}</p>
+                                <p class="card-text">{!! Str::words(strip_tags($article->content), 15, ' ...') !!}</p>
                             </div>
                         </div>
 
@@ -287,7 +286,7 @@
                     @foreach ($courses as $course)
                     <a href="#">
                         <div class="item">
-                            <img src="{{asset('front')}}/assets/images/{{$course->image}}" alt="Course One">
+                            <img src="{{asset('image/course')}}/{{$course->image}}" alt="Course One">
                             <div class="down-content">
                                 <h4>{{$course->title}}</h4>
                                 <div class="info">

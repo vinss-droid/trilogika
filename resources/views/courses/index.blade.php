@@ -35,7 +35,7 @@
                     <tr>
                         <td class="text-bold-500">{{$course->title}}</td>
                         <td>{!!substr($course->content,0,50).' ...'!!}</td>
-                        <td class="text-bold-500"><img class="rounded" src="{{asset('storage/images/course/'.$course->image)}}" alt="" width="100px"></td>
+                        <td class="text-bold-500"><img class="rounded" src="{{asset('image/course/'.$course->image)}}" alt="" width="100px"></td>
                         <td>
                             <a href="{{route('course.edit',$course->id)}}" class="btn icon btn-success"><i class="bi bi-pencil"></i></a>
                             <a href="" class="btn icon btn-danger" onclick="deletePost('{{$course->id}}')"><i class="bi bi-trash"></i></a>

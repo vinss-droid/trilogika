@@ -41,13 +41,20 @@ class CourseController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $newFileName = $date . '_' . $request->file('image')->getClientOriginalName();
-        $request->file('image')->storeAs('public/images/course', $newFileName);
-        // dd($request->all());
+        // $newFileName = $date . '_' . $request->file('image')->getClientOriginalName();
+        // $request->file('image')->storeAs('public/images/course', $newFileName);
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName = $date . '_' . $file->getClientOriginalName();
+            $filePath = public_path() . '/image/course/';
+            $file->move($filePath, $fileName);
+        }
+
         Course::create([
             'title' => $validatedData['title'],
             'content' => $validatedData['content'],
-            'image' => $newFileName,
+            'image' => $fileName,
         ]);
 
         return redirect()->route('course.index')->with('success', 'Course berhasil ditambahkan');
@@ -83,19 +90,31 @@ class CourseController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        if ($request->file('image')) {
-            if (Storage::disk('public')->exists('images/course/' . $course->image)) {
-                Storage::disk('public')->delete('images/course/' . $course->image);
+        // if ($request->file('image')) {
+        //     if (Storage::disk('public')->exists('images/course/' . $course->image)) {
+        //         Storage::disk('public')->delete('images/course/' . $course->image);
+        //     }
+        //     $newImage = $date . '_' . $request->file('image')->getClientOriginalName();
+        //     $request->file('image')->storeAs('public/images/course', $newImage);
+        //     $validatedData['image'] = $newImage;
+        // } else {
+        //     $validatedData['image'] = $course->image;
+        // }
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            if (file_exists(public_path('image/course/' . $course->image))) {
+                unlink(public_path('image/course/' . $course->image));
             }
-            $newImage = $date . '_' . $request->file('image')->getClientOriginalName();
-            $request->file('image')->storeAs('public/images/course', $newImage);
+            $newImage = $date . '_' . $image->getClientOriginalName();
+            $image->move(public_path('image/course'), $newImage);
             $validatedData['image'] = $newImage;
         } else {
             $validatedData['image'] = $course->image;
         }
-        // dd($validatedData);
+
         $course->update($validatedData);
-        return redirect()->route('course.index')->with('success', 'Artikel berhasil diperbarui');
+        return redirect()->route('course.index')->with('success', 'Course berhasil diperbarui');
     }
 
     /**
@@ -104,8 +123,11 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         //
-        if (Storage::disk('public')->exists('images/course/' . $course->image)) {
-            Storage::disk('public')->delete('images/course/' . $course->image);
+        // if (Storage::disk('public')->exists('images/course/' . $course->image)) {
+        //     Storage::disk('public')->delete('images/course/' . $course->image);
+        // }
+        if (file_exists(public_path('image/course/' . $course->image))) {
+            unlink(public_path('image/course/' . $course->image));
         }
         $course->delete();
         return redirect()->back()->with('success', 'Course berhasil dihapus');

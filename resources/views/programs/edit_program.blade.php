@@ -28,7 +28,7 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="basicInput">Image</label>
-                            <img src="{{asset('storage/images/'.$program->image)}}" class="img-thumbnail" width="100px" alt="">
+                            <img src="{{asset('/image/program/'.$program->image)}}" class="img-thumbnail" width="100px" alt="">
                             <input type="file" name="image" class="form-control">
                         </div>
                     </div>

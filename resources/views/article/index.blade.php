@@ -35,7 +35,7 @@
                     <tr>
                         <td class="text-bold-500">{{$article->title}}</td>
                         <td>{!!substr($article->content,0,50).' ...'!!}</td>
-                        <td class="text-bold-500"><img class="rounded" src="{{asset('storage/images/article/'.$article->image)}}" alt="" width="100px"></td>
+                        <td class="text-bold-500"><img class="rounded" src="{{asset('image/article/'.$article->image)}}" alt="" width="100px"></td>
                         <td>
                             <a href="{{route('article.edit',$article->id)}}" class="btn icon btn-success"><i class="bi bi-pencil"></i></a>
                             <a href="" class="btn icon btn-danger" onclick="deletePost('{{$article->id}}')"><i class="bi bi-trash"></i></a>
@@ -48,8 +48,6 @@
         </div>
     </div>
 </div>
-
-
 
 @endsection
 @section('script')

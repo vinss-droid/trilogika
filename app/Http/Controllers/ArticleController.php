@@ -42,13 +42,20 @@ class ArticleController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $newFileName = $date . '_' . $request->file('image')->getClientOriginalName();
-        $request->file('image')->storeAs('public/images/article', $newFileName);
-        // dd($request->all());
+        // $newFileName = $date . '_' . $request->file('image')->getClientOriginalName();
+        // $request->file('image')->storeAs('public/images/article', $newFileName);
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName = $date . '_' . $file->getClientOriginalName();
+            $filePath = public_path() . '/image/article/';
+            $file->move($filePath, $fileName);
+        }
+
         Article::create([
             'title' => $validatedData['title'],
             'content' => $validatedData['content'],
-            'image' => $newFileName,
+            'image' => $fileName,
         ]);
 
         return redirect()->route('article.index')->with('success', 'Program berhasil ditambahkan');
@@ -84,17 +91,30 @@ class ArticleController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        if ($request->file('image')) {
-            if (Storage::disk('public')->exists('images/article/' . $article->image)) {
-                Storage::disk('public')->delete('images/article/' . $article->image);
+        // if ($request->file('image')) {
+        //     if (Storage::disk('public')->exists('images/article/' . $article->image)) {
+        //         Storage::disk('public')->delete('images/article/' . $article->image);
+        //     }
+        //     $newImage = $date . '_' . $request->file('image')->getClientOriginalName();
+        //     $request->file('image')->storeAs('public/images/article', $newImage);
+        //     $validatedData['image'] = $newImage;
+        // } else {
+        //     $validatedData['image'] = $article->image;
+        // }
+        // dd($validatedData);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file();
+            if (file_exists(public_path('image/article/' . $article->image))) {
+                unlink(public_path('image/article/' . $article->image));
             }
-            $newImage = $date . '_' . $request->file('image')->getClientOriginalName();
-            $request->file('image')->storeAs('public/images/article', $newImage);
+            $newImage = $date . '_' . $image->getClientOriginalName();
+            $image->move(public_path('image/article'), $newImage);
             $validatedData['image'] = $newImage;
         } else {
             $validatedData['image'] = $article->image;
         }
-        // dd($validatedData);
+
         $article->update($validatedData);
         return redirect()->route('article.index')->with('success', 'Artikel berhasil diperbarui');
     }
@@ -105,8 +125,12 @@ class ArticleController extends Controller
     public function destroy(article $article)
     {
         //
-        if (Storage::disk('public')->exists('images/article/' . $article->image)) {
-            Storage::disk('public')->delete('images/article/' . $article->image);
+        // if (Storage::disk('public')->exists('images/article/' . $article->image)) {
+        //     Storage::disk('public')->delete('images/article/' . $article->image);
+        // }
+
+        if (file_exists(public_path('image/article/' . $article->image))) {
+            unlink(public_path('image/article/' . $article->image));
         }
         $article->delete();
         return redirect()->back()->with('success', 'Artikel berhasil dihapus');

@@ -17,32 +17,32 @@ class CourseSeeder extends Seeder
         $courses = [
             [
                 'title' => 'Pelatihan Akutansi',
-                'image' => 'course-01.jpg',
+                'image' => 'akutansi.jpg',
                 'content' => '',
             ],
             [
                 'title' => 'Pelatihan Ekonomi',
-                'image' => 'course-02.jpg',
+                'image' => 'ekonomi.jpg',
                 'content' => '',
             ],
             [
                 'title' => 'Pelatihan Manajemen SDM',
-                'image' => 'course-03.jpg',
+                'image' => 'sdm.jpg',
                 'content' => '',
             ],
             [
                 'title' => 'Pelatihan Kewirausahaan',
-                'image' => 'course-04.jpg',
+                'image' => 'kewirausahaan.jpg',
                 'content' => '',
             ],
             [
                 'title' => 'Pelatihan Manajemen Resiko',
-                'image' => 'course-01.jpg',
+                'image' => 'resiko.jpg',
                 'content' => '',
             ],
             [
                 'title' => 'Pelatihan Manajemen Ritel',
-                'image' => 'course-02.jpg',
+                'image' => 'ritel.jpg',
                 'content' => '',
             ],
         ];

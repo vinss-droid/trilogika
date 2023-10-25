@@ -10,7 +10,7 @@
     }
 
     section.heading-page {
-        background-image: url('{{asset("storage/images/article")}}/{{$article->image}}');
+        background-image: url('{{asset("image/article")}}/{{$article->image}}');
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -64,7 +64,7 @@
                         @if (!$article->image)
                         <img src="{{asset('image/img_default.jpg')}}" style="height: 400px; object-fit: cover;" alt="">
                         @else
-                        <img class="object-fit-cover" src="{{asset('storage/images/article/'.$article->image)}}" style="height:400px;" alt="">
+                        <img class="object-fit-cover" src="{{asset('image/article/'.$article->image)}}" style="height:400px;" alt="">
                         @endif
                     </div>
                     <div class="down-content">
