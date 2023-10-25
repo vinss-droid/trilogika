@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PageController::class, 'home'])->name('page.home');
+Route::get('/contact', [PageController::class, 'contact'] )->name('page.contact');
 
 Route::get('/dashboard', function () {
     return view('dashboard2');
