@@ -215,7 +215,7 @@
         }
     </style>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+
 
 @endsection
 @section('content')
@@ -289,39 +289,14 @@
                             <!-- maps -->
 
                             <div class="content-dua"
-                                style="
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
-          margin: 0;
-        ">
+                                style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
                                 <div class="container container-dua" style="text-align: center">
-                                    <div id="map" style="width: 100%; height: 500px"></div>
-                                    <script>
-                                        // Panggil fungsi initMap saat halaman dimuat
-                                        google.maps.event.addDomListener(window, "load", initMap);
-                                    </script>
+                                    <div id="map"></div>
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.143854955198!2d110.32859587450912!3d-7.7745667771267195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5926ebf3cd91%3A0x84837300a36becd1!2sTrilogika%20Edutama!5e0!3m2!1sid!2sid!4v1698207752831!5m2!1sid!2sid"
+                                    width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                 </div>
                             </div>
                         </div>
-
-                        <script>
-                            function initMap() {
-                                var map = new google.maps.Map(document.getElementById("map"), {
-                                    center: {
-                                        lat: -7.774349,
-                                        lng: 110.331117
-                                    }, // Koordinat tengah peta
-                                    zoom: 14, // Perbesar level peta (semakin tinggi, semakin dekat)
-                                });
-                            }
-                        </script>
-
-                        <script>
-                            // Panggil fungsi initMap saat halaman dimuat
-                            google.maps.event.addDomListener(window, "load", initMap);
-                        </script>
                     </div>
                 </div>
             </div>
