@@ -10,8 +10,6 @@
         }
 
         section.heading-page {
-
-
             padding-top: 230px;
             padding-bottom: 110px;
             text-align: center;

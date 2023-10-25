@@ -145,7 +145,7 @@
                             <h3>Galeri</h3>
                             <p>Dokumentasi dari beberapa kegiatan yang ada dilakukan oleh lembaga Trilogika Edutama</p>
                             <div class="main-button-red">
-                                <div class="scroll-to-section"><a href="#">Selengkapnya</a></div>
+                                <div class="{{request()->segment(1) ? '': ''}}"><a href="{{ route("page.show_galeri") }}">Selengkapnya</a></div>
                             </div>
                         </div>
                     </div>

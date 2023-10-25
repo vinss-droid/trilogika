@@ -25,6 +25,10 @@ class PageController extends Controller
         return view('contact_us');
     }
 
+    public function show_galeri(){
+        return view('show_galeri');
+    }
+
     public function programSlug($slug)
     {
         $program = Program::where('slug', $slug)->first();
