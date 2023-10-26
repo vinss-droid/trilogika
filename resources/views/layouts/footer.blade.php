@@ -36,7 +36,7 @@
                         <!-- Instagram -->
                         <a href="https://www.instagram.com/trilogikaedutama" type="button" class="btn btn-floating btn-danger btn-lg"><i class="fab fa-instagram"></i></a>
                         <!-- Google + -->
-                        <a type="button" class="btn btn-floating btn-danger btn-lg"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.youtube.com/@TrilogikaEdutama" type="button" class="btn btn-floating btn-danger btn-lg"><i class="fab fa-youtube"></i></a>
 
                     </div>
                 </div>
@@ -160,10 +160,10 @@
             position: 'right',
             popupMessage: 'Hallo kak, Ada yang bisa kami bantu?',
             showPopup: true,
+            zIndex: 99,
         });
     });
 </script>
-
 </body>
 
 </html>
