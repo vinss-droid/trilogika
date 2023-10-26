@@ -1,4 +1,5 @@
 @extends('layouts.main')
+
 @section('style')
 <style>
     footer {
@@ -79,9 +80,25 @@
                             <div class="col-12">
                                 <span class="fw-bold text-secondary small mb-1">Share</span>
                                 <div class="d-flex flex-row mt-3">
-                                    <div class="me-3"><i class="fab fa-facebook-f fa-lg"></i></div>
-                                    <div class="me-3"><i class="fab fa-twitter fa-lg"></i></div>
-                                    <div class="me-3"><i class="fas fa-paper-plane fa-lg"></i></div>
+                                    <div class="me-3">
+                                        <a class="text-primary" href="#" data-sharer="facebook" data-hashtag="trilogikaedutama" data-url="https://trilogikaedutama.id/article/{{$article->slug}}">
+                                            <i class="fab fa-facebook-f" style="font-size: xx-large;"></i>
+                                        </a>
+                                    </div>
+                                    <div class="me-3">
+                                        <a class="text-success" href="#" data-sharer="whatsapp" data-title="{{$article->title}}" data-url="https://trilogikaedutama.id/article/{{$article->slug}}">
+                                            <i class="fab fa-whatsapp-square" style="font-size: xx-large;"></i>
+                                        </a>
+                                    </div>
+                                    <div class="me-3">
+                                        <i class="fas fa-link" style="cursor: pointer; font-size: xx-large;" onclick="copyURL(this)"></i>
+                                        <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover">
+                                            Popover on top
+                                        </button>
+                                        <!-- <i class="fas fa-link" style="font-size: xx-large;"></i> -->
+                                    </div>
+
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -91,5 +108,27 @@
             </div>
         </div>
     </div>
+    @endsection
+    @section('script')
 
+    <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle="popover"]').popover();
+        });
+
+        function copyURL(icon) {
+            var currentURL = window.location.href;
+
+            var tempInput = document.createElement("input");
+            tempInput.value = currentURL;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            console.log("URL copied: " + currentURL)
+            icon.classList.add('text-warning');
+        }
+    </script>
     @endsection
