@@ -18,7 +18,15 @@ class PageController extends Controller
         $articles = Article::take(4)->get();
         $courses = Course::all();
         // dd($article);
-        return view('home', compact(['cards', 'programs', 'articles', 'courses']));
+        return view('home', compact(['cards', 'programs', 'articles', 'courses', ]));
+    }
+
+    public function contact(){
+        return view('contact_us');
+    }
+
+    public function show_galeri(){
+        return view('show_galeri');
     }
 
     public function programSlug($slug)
@@ -37,4 +45,6 @@ class PageController extends Controller
         }
         return view('show_article', compact('article'));
     }
+
+
 }
