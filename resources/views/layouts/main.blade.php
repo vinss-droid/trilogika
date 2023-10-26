@@ -25,7 +25,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="https://www.youtube.com/@TrilogikaEdutama">
                                     <i class="fab fa-youtube" style="font-size: larger;"></i>
                                 </a>
                             </li>
