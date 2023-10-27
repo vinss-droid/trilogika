@@ -26,6 +26,19 @@
     <link rel="stylesheet" href="{{asset('front')}}/assets/css/lightbox.css">
     <link rel="stylesheet" href="{{asset('front/assets/css/floating-wpp.css')}}">
     @yield('style')
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HF0BK87L9C"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-HF0BK87L9C');
+    </script>
     <!--
 
 TemplateMo 569 Edu Meeting

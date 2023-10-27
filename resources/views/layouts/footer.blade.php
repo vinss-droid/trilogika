@@ -1,23 +1,3 @@
-<!--
-<footer class="border-top">
-         <div class="container ">
-        <div class="row  text-white">
-            <div class="d-flex flex-wrap justify-content-between align-items-center py-3 ">
-                <div class="col-md-5 d-flex align-items-center">
-                    <span class="mb-3 mb-md-0 text-white">© 2023 Trilogika Edutama | Design: <a href="https://templatemo.com/">Templatemo</a></span>
-                </div>
-                <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                    <li class="ms-4"><a class="text-white" href="https://www.instagram.com/trilogikaedutama/"><i class="fab fa-instagram" style="font-size:xx-large;"></i></a></li>
-                    <li class="ms-4"><a class="text-white" href="https://www.facebook.com/trilogikaedutama"><i class="fab fa-facebook" style="font-size:xx-large;"></i></a></li>
-                    <li class="ms-4"><a href="#" class="text-white"><i class="fab fa-youtube" style="font-size:xx-large;"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</footer>
--->
-<!-- Remove the container if you want to extend the Footer to full width. -->
-
 <section class="contact-us" id="contact">
     <footer class="text-white border-top text-center text-lg-start" style="background-color: #23242a;">
         <!-- Grid container -->
