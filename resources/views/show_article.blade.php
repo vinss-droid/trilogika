@@ -91,7 +91,8 @@
                         <h4 class="fs-2 mt-4">{{$article->title}}</h4>
                         <p class="text-secondary">By: Admin | {{Carbon\Carbon::parse($article->created_at)->locale('id')->isoFormat('DD MMMM YYYY')}}</p>
                     </div>
-                    <div class="col-lg-4 mt-5 mb-2 ms-3 float-md-end" id="recent-article">
+
+                    <!-- <div class="col-lg-4 mt-5 mb-2 ms-3 float-md-end" id="recent-article">
                         <h4 class="d-flex justify-content-center mb-3">Recent Article</h4>
                         <hr>
                         <div class="card mt-2" style="border: none;">
@@ -139,7 +140,8 @@
                             </div>
                             <hr>
                         </div>
-                    </div>
+                    </div> -->
+
                     <p class="description mb-5">
                         {!!$article->content!!}
                     </p>
