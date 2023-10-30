@@ -129,6 +129,12 @@
                     </div>
                     @endforeach
                 </div>
+                <div class="d-flex justify-content-center">
+                    <a href="#" class="btn btn-lg btn-danger rounded-pill" style="background-color: #a12c2f; border: none;">
+                        <p class="mx-4 text-white" style="font-size: 15px;">SELENGKAPNYA</p>
+                    </a>
+
+                </div>
             </div>
         </div>
     </div>
@@ -153,7 +159,7 @@
                             <h3>Galeri</h3>
                             <p>Dokumentasi dari beberapa kegiatan yang ada dilakukan oleh lembaga Trilogika Edutama</p>
                             <div class="main-button-red">
-                                <div class="{{request()->segment(1) ? '': ''}}"><a href="{{ route("page.show_galeri") }}">Selengkapnya</a></div>
+                                <div class=""><a href="#">Selengkapnya</a></div>
                             </div>
                         </div>
                     </div>

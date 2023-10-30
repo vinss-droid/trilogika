@@ -13,8 +13,8 @@ class PageController extends Controller
     public function home()
     {
         $cards = Card::all();
-        $programs = Program::take(3)->get();
-        $articles = Article::take(4)->get();
+        $programs = Program::orderBy('created_at', 'desc')->take(3)->get();
+        $articles = Article::orderBy('created_at', 'desc')->take(6)->get();
         $courses = Course::all();
         // dd($article);
         return view('home', compact(['cards', 'programs', 'articles', 'courses',]));
@@ -29,6 +29,10 @@ class PageController extends Controller
     {
         return view('show_galeri');
     }
+    public function programs()
+    {
+        return view('programs');
+    }
 
     public function programSlug($slug)
     {
@@ -41,9 +45,14 @@ class PageController extends Controller
     public function articleSlug($slug)
     {
         $article = Article::where('slug', $slug)->first();
+        $related = Article::whereDate('created_at', '<=', $article->created_at)
+            ->where('id', '!=', $article->id)
+            ->orderBy('created_at', 'desc')
+            ->take(3)->get();
+        // dd($related);
         if (!$article) {
             abort(404);
         }
-        return view('show_article', compact('article'));
+        return view('show_article', compact(['article', 'related']));
     }
 }

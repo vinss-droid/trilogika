@@ -1,5 +1,8 @@
 @extends('layouts.main')
-
+@php
+setlocale(LC_TIME, 'id_ID');
+App::setLocale('id');
+@endphp
 @section('style')
 <style>
     footer {
@@ -66,6 +69,7 @@
     }
 </style>
 @endsection
+
 @section('content')
 <section class="heading-page header-text" id="top">
     <div class="container">
@@ -92,55 +96,32 @@
                         <p class="text-secondary">By: Admin | {{Carbon\Carbon::parse($article->created_at)->locale('id')->isoFormat('DD MMMM YYYY')}}</p>
                     </div>
 
-                    <!-- <div class="col-lg-4 mt-5 mb-2 ms-3 float-md-end" id="recent-article">
-                        <h4 class="d-flex justify-content-center mb-3">Recent Article</h4>
+                    <div class="col-lg-4 mt-5 mb-2 ms-4 float-md-end" id="recent-article">
+                        <h4 class="d-flex justify-content-center mb-3">Related Article</h4>
                         <hr>
+                        @foreach ($related as $relate)
+
                         <div class="card mt-2" style="border: none;">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="{{asset('image/askom.jpg')}}" class="img-fluid " alt="...">
+                                    <img src="{{asset('image/article/'.$relate->image)}}" class="img-fluid " alt="...">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
+                                        <a class="text-dark" href="{{route('article.slug',$relate->slug)}}">
+                                            <h6 class="card-title">{{$relate->title}}</h6>
+                                        </a>
                                         <p class="card-text"></p>
-                                        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                                        <p class="card-text"><small class="text-body-secondary">
+                                                {{$relate->created_at->diffForHumans()}}</small></p>
                                     </div>
                                 </div>
                             </div>
                             <hr>
                         </div>
-                        <div class="card mt-2" style="border: none;">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img src="{{asset('image/img_default.jpg')}}" class="img-fluid " alt="...">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text"></p>
-                                        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                        </div>
-                        <div class="card mt-2" style="border: none;">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img src="{{asset('image/img_default.jpg')}}" class="img-fluid" alt="...">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text"></p>
-                                        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                        </div>
-                    </div> -->
+                        @endforeach
+
+                    </div>
 
                     <p class="description mb-5">
                         {!!$article->content!!}
