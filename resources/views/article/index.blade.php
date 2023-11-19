@@ -25,7 +25,7 @@
                 <thead class="thead-dark">
                     <tr>
                         <th>TITLE</th>
-                        <th>DESCRIPTION</th>
+                        <th>CREATED AT</th>
                         <th>IMAGE</th>
                         <th>ACTION</th>
                     </tr>
@@ -34,7 +34,7 @@
                     @foreach ($articles as $article)
                     <tr>
                         <td class="text-bold-500">{{$article->title}}</td>
-                        <td>{!!substr($article->content,0,50).' ...'!!}</td>
+                        <td>{{$article->created_at}}</td>
                         <td class="text-bold-500"><img class="rounded" src="{{asset('image/article/'.$article->image)}}" alt="" width="100px"></td>
                         <td>
                             <a href="{{route('article.edit',$article->id)}}" class="btn icon btn-success"><i class="bi bi-pencil"></i></a>

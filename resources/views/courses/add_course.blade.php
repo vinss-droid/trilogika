@@ -37,6 +37,7 @@
                             <div id="editor" style="height: 240px;">
                             </div>
                             <textarea name="content" id="quill-content" hidden></textarea>
+                            <!-- <textarea name="content" id="editor" cols="30" rows="10"></textarea> -->
                         </div>
                     </div>
                 </div>
@@ -52,6 +53,10 @@
 @endsection
 @section('script')
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<!-- <script src="//cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script> -->
+<!-- <script>
+    CKEDITOR.replace('editor');
+</script> -->
 <script>
     var toolbarOptions = [
         ['bold', 'italic', 'underline', 'strike'], // toggled buttons

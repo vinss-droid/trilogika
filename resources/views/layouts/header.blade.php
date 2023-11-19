@@ -28,7 +28,7 @@
     @yield('style')
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HF0BK87L9C"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-HF0BK87L9C"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -38,7 +38,7 @@
         gtag('js', new Date());
 
         gtag('config', 'G-HF0BK87L9C');
-    </script>
+    </script> -->
     <!--
 
 TemplateMo 569 Edu Meeting

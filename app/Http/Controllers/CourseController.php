@@ -40,7 +40,6 @@ class CourseController extends Controller
             'content' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
         // $newFileName = $date . '_' . $request->file('image')->getClientOriginalName();
         // $request->file('image')->storeAs('public/images/course', $newFileName);
 

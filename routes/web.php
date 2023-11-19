@@ -26,6 +26,9 @@ Route::get('/', [PageController::class, 'home'])->name('page.home');
 Route::get('/contact', [PageController::class, 'contact'])->name('page.contact');
 Route::get('/show_galeri', [PageController::class, 'show_galeri'])->name('page.show_galeri');
 Route::get('/programs', [PageController::class, 'programs'])->name('page.programs');
+Route::get('/mengapa-perlu-sertifikasi', function () {
+    return view('show_mengapa');
+})->name('page.why-certification');
 
 Route::get('/dashboard', function () {
     return view('dashboard2');
@@ -44,5 +47,6 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/program/{slug}', [PageController::class, 'programSlug'])->name('program.slug');
 Route::get('/article/{slug}', [PageController::class, 'articleSlug'])->name('article.slug');
+Route::get('/course/{slug}', [PageController::class, 'courseSlug'])->name('course.slug');
 
 require __DIR__ . '/auth.php';

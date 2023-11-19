@@ -97,7 +97,7 @@ App::setLocale('id');
                     </div>
 
                     <div class="col-lg-4 mt-5 mb-2 ms-4 float-md-end" id="recent-article">
-                        <h4 class="d-flex justify-content-center mb-3">Related Article</h4>
+                        <h4 class="d-flex justify-content-center mb-3">Artikel Terkait</h4>
                         <hr>
                         @foreach ($related as $relate)
 
@@ -113,7 +113,7 @@ App::setLocale('id');
                                         </a>
                                         <p class="card-text"></p>
                                         <p class="card-text"><small class="text-body-secondary">
-                                                {{$relate->created_at->diffForHumans()}}</small></p>
+                                                <i class="far fa-clock"></i> {{$relate->created_at->diffForHumans()}}</small></p>
                                     </div>
                                 </div>
                             </div>

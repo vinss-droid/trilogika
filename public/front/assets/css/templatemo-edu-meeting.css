@@ -1355,13 +1355,14 @@ section.our-courses {
 our article
 --------------------------------------------- */
 section.our-article {
-  background-image: url(../images/meetings-bg.jpg);
+  /* background-image: url(../images/meetings-bg.jpg); */
+  background-color: var(--bs-gray-dark);
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   padding-top: 140px;
-  padding-bottom: 130px;
+  padding-bottom: 40px;
 }
 
 .our-article .item .down-content {
@@ -1502,12 +1503,14 @@ our facts
 */
 
 section.our-facts {
-  background-image: url(../images/facts-bg2.jpg);
+  /* background-image: url(../images/facts-bg2.jpg); */
+  background-color: var(--bs-gray-dark);
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 140px 0px 125px 0px;
+  padding: 40px 0px 40px 0px;
+  filter: grayscale(50%), brightness(50%);
 }
 
 section.our-facts h2 {

@@ -31,7 +31,8 @@ class PageController extends Controller
     }
     public function programs()
     {
-        return view('programs');
+        $programs = Program::paginate(6);
+        return view('programs', compact('programs'));
     }
 
     public function programSlug($slug)
@@ -49,10 +50,25 @@ class PageController extends Controller
             ->where('id', '!=', $article->id)
             ->orderBy('created_at', 'desc')
             ->take(3)->get();
+        if ($related->count() === 0) {
+            $related = Article::whereDate('created_at', '>=', $article->created_at)
+                ->where('id', '!=', $article->id)
+                ->orderBy('created_at', 'desc')
+                ->take(3)->get();
+        }
+
         // dd($related);
         if (!$article) {
             abort(404);
         }
         return view('show_article', compact(['article', 'related']));
+    }
+    public function courseSlug($slug)
+    {
+        $course = Course::where('slug', $slug)->first();
+        if (!$course) {
+            abort(404);
+        }
+        return view('show_course', compact('course'));
     }
 }

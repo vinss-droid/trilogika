@@ -12,6 +12,11 @@ class Course extends Model
 
     protected $fillable = ['title', 'content', 'image', 'slug'];
 
+    public function schemas()
+    {
+        return $this->hasMany(Schema::class);
+    }
+
     public function sluggable(): array
     {
         return [

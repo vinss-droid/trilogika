@@ -88,6 +88,7 @@ class ArticleController extends Controller
         $validatedData = $request->validate([
             'title' => 'required',
             'content' => 'required',
+            'created_at' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 

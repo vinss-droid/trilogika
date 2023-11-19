@@ -10,17 +10,6 @@
         background-size: cover;
     }
 
-    section.our-facts .video {
-        text-align: center;
-        margin-left: 70px;
-        background-image: url("{{asset('image/askom.jpg')}}");
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-        border-radius: 20px;
-        filter: sepia(70%);
-    }
-
     section.apply-now {
         background-image: url("{{asset('front/assets/images/upn-bg.jpg')}}");
         background-position: center center;
@@ -39,11 +28,120 @@
     }
 
     section.contact-us {
-        background-position: center center;
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-        background-size: cover;
+        background-image: none;
+        background-color: var(--bs-gray-900);
         padding: 10px 0px 0px 0px;
+    }
+
+    section.our-courses {
+        background-image: none;
+        background-color: var(--bs-gray-900);
+    }
+
+    section.upcoming-meetings {
+        background-image: none;
+        background-color: var(--bs-gray-900);
+    }
+
+    .tiles {
+        /* width: 1040px; */
+        font-size: 0;
+        text-align: center;
+        /* position: absolute; */
+        top: 50%;
+        /* left: 50%; */
+        /* transform: translate(-50%, -50%); */
+    }
+
+    .tiles .tile {
+        display: inline-block;
+        margin: 10px;
+        text-align: left;
+        opacity: 0.99;
+        overflow: hidden;
+        position: relative;
+        border-radius: 3px;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.05);
+    }
+
+    .tiles .tile:before {
+        content: "";
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+        width: 100%;
+        height: 50%;
+        opacity: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 2;
+        transition-property: top, opacity;
+        transition-duration: 0.3s;
+    }
+
+    .tiles .tile img {
+        display: block;
+        max-width: 100%;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+
+    .tiles .tile .details {
+        font-size: 16px;
+        padding: 20px;
+        color: #fff;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 3;
+    }
+
+    .tiles .tile .details span {
+        display: block;
+        opacity: 0;
+        position: relative;
+        top: 100px;
+        transition-property: top, opacity;
+        transition-duration: 0.3s;
+        transition-delay: 0s;
+    }
+
+    .tiles .tile .details .title {
+        line-height: 1;
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    .tiles .tile .details .info {
+        line-height: 1.2;
+        margin-top: 5px;
+        font-size: 12px;
+    }
+
+    .tiles .tile:focus:before,
+    .tiles .tile:focus span,
+    .tiles .tile:hover:before,
+    .tiles .tile:hover span {
+        opacity: 1;
+    }
+
+    .tiles .tile:focus:before,
+    .tiles .tile:hover:before {
+        top: 50%;
+    }
+
+    .tiles .tile:focus span,
+    .tiles .tile:hover span {
+        top: 0;
+    }
+
+    .tiles .tile:focus .title,
+    .tiles .tile:hover .title {
+        transition-delay: 0.15s;
+    }
+
+    .tiles .tile:focus .info,
+    .tiles .tile:hover .info {
+        transition-delay: 0.25s;
     }
 </style>
 @endsection
@@ -80,7 +178,7 @@
             <div class="col-lg-12">
                 <div class="owl-service-item owl-carousel">
                     @foreach ($cards as $card)
-                    <div class="item">
+                    <div class="item" style="height: 300px;">
                         <div class="icon">
                             <i class="{{$card->icon}}" style="font-size: 3em; color: orange;"></i>
                         </div>
@@ -101,7 +199,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-heading">
-                    <h2>Upcoming Programs</h2>
+                    <h2>Program Terbaru Kami</h2>
                 </div>
             </div>
             <div class="col-lg-12">
@@ -130,7 +228,7 @@
                     @endforeach
                 </div>
                 <div class="d-flex justify-content-center">
-                    <a href="#" class="btn btn-lg btn-danger rounded-pill" style="background-color: #a12c2f; border: none;">
+                    <a href="{{route('page.programs')}}" class="btn btn-lg btn-danger rounded-pill" style="background-color: #a12c2f; border: none;">
                         <p class="mx-4 text-white" style="font-size: 15px;">SELENGKAPNYA</p>
                     </a>
 
@@ -147,14 +245,18 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="item">
-                            <h3>Bagan Struktur Organisasi</h3>
-                            <p>Alat yang membantu dalam menggambarkan hierarki, tanggung jawab, dan hubungan antara berbagai unit atau departemen dalam organisasi.</p>
+                            <h3>MENGAPA PERLU SERTIFIKASI ?</h3>
+                            <p>
+                                Dalam rangka menuju Masyarakat Ekonomi ASEAN, Trilogika Edutama Yogyakarta
+                                sebagai lembaga Pendidikan Vokasi dan Pelatihan Ketenagakerjaan menyediakan berbagai skema
+                                sertifikasi Profesi untuk memeberikan Program Sertifikasi.
+                            </p>
                             <div class="main-button-red">
-                                <div class="scroll-to-section"><a href="#">Selengkapnya</a></div>
+                                <div class=""><a href="{{route('page.why-certification')}}">Selengkapnya</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12">
+                    <!-- <div class="col-lg-12">
                         <div class="item">
                             <h3>Galeri</h3>
                             <p>Dokumentasi dari beberapa kegiatan yang ada dilakukan oleh lembaga Trilogika Edutama</p>
@@ -162,7 +264,7 @@
                                 <div class=""><a href="#">Selengkapnya</a></div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="col-lg-6">
@@ -201,78 +303,46 @@
     </div>
 </section>
 
-<section class="our-article" id="article">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-heading">
-                    <h2>Headlines News</h2>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="owl-article-item owl-carousel">
-                    @foreach ($articles as $article )
-                    <div class="item">
-                        <div class="card border-dark">
-                            <a href="{{route('article.slug',$article->slug)}}">
-                                <img src="{{asset('image/article/'.$article->image)}}" class="card-img-top" alt="Gambar 1" style="height: 240px; object-fit: cover;">
-                            </a>
-                            <div class="card-body">
-                                <h4 class="card-title">{{ Str::words($article->title,6)}}</h4>
-                                <div class="mb-1 text-body-secondary">{{Carbon\Carbon::parse($article->created_at)->locale('id')->isoFormat('DD MMMM YYYY')}}</div>
-                                <p class="card-text">{!! Str::words(strip_tags($article->content), 15, ' ...') !!}</p>
-                            </div>
-                        </div>
-
-                    </div>
-                    @endforeach
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section class="our-facts">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h2>A Few Facts About Our</h2>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="count-area-content percentage">
-                                    <div class="count-digit">99</div>
-                                    <div class="count-title">Lulusan Siap Kerja</div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="count-area-content">
-                                    <div class="count-digit">24</div>
-                                    <div class="count-title">Mentor</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="count-area-content new-students">
-                                    <div class="count-digit">54</div>
-                                    <div class="count-title">Murid Baru</div>
-                                </div>
-                            </div>
-
-                        </div>
+    <div class="">
+        <div class="container">
+            <hr class="border border-white">
+            <div class="row">
+                <h4 class="text-white text-center mb-3 mt-5">Portofolio Trilogika Edutama</h4>
+                <div class="col-md-6 col-lg-4">
+                    <div class="tiles">
+                        <a href="http://placeholder.com" class="thumbnail tile"><img src="https://source.unsplash.com/400x440/?nature,water">
+                            <div class="details"><span class="title">Lorem Ipsum Dolor</span><span class="info">Quisque vel felis lectus donec vitae dapibus magna</span></div>
+                        </a>
+                        <a href="http://placeholder.com" class="thumbnail tile"><img src="https://source.unsplash.com/400x280/?nature,water">
+                            <div class="details"><span class="title">Lorem Ipsum Dolor</span><span class="info">Quisque vel felis lectus donec vitae dapibus magna</span></div>
+                        </a>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-6 align-self-center">
-                <div class="video">
-                    <a href="#" target="_blank"><img src="{{asset('front')}}/assets/images/play-icon.png" alt=""></a>
+                <div class="col-md-6 col-lg-4">
+                    <div class="tiles">
+                        <a href="http://placeholder.com" class="thumbnail tile"><img src="https://source.unsplash.com/400x200/?nature,water">
+                            <div class="details"><span class="title">Lorem Ipsum Dolor</span><span class="info">Quisque vel felis lectus donec vitae dapibus magna</span></div>
+                        </a>
+                        <a href="http://placeholder.com" class="thumbnail tile"><img src="https://source.unsplash.com/400x300/?nature,water">
+                            <div class="details"><span class="title">Lorem Ipsum Dolor</span><span class="info">Quisque vel felis lectus donec vitae dapibus magna</span></div>
+                        </a>
+                        <a href="http://placeholder.com" class="thumbnail tile"><img src="https://source.unsplash.com/400x200/?nature,water">
+                            <div class="details"><span class="title">Lorem Ipsum Dolor</span><span class="info">Quisque vel felis lectus donec vitae dapibus magna</span></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-4 float-start">
+                    <div class="tiles">
+                        <a href="http://placeholder.com" class="thumbnail tile"><img src="https://source.unsplash.com/400x380/?nature,water">
+                            <div class="details"><span class="title">Lorem Ipsum Dolor</span><span class="info">Quisque vel felis lectus donec vitae dapibus magna</span></div>
+                        </a>
+                        <a href="http://placeholder.com" class="thumbnail tile"><img src="https://source.unsplash.com/400x340/?nature,water">
+                            <div class="details"><span class="title">Lorem Ipsum Dolor</span><span class="info">Quisque vel felis lectus donec vitae dapibus magna</span></div>
+                        </a>
+                    </div>
+                    <div class="tiles">
+                    </div>
                 </div>
             </div>
         </div>
@@ -284,27 +354,60 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-heading">
-                    <h2>Our Popular Courses</h2>
+                    <h2>Pelatihan Populer</h2>
                 </div>
             </div>
             <div class="col-lg-12">
                 <div class="owl-courses-item owl-carousel">
                     @foreach ($courses as $course)
-                    <a href="#">
-                        <div class="item">
-                            <img src="{{asset('image/course')}}/{{$course->image}}" alt="Course One">
-                            <div class="down-content">
-                                <h4>{{$course->title}}</h4>
-                                <div class="info">
-                                    <div class="row">
-                                        <div class="col-12 d-flex justify-content-center">
-                                        </div>
-                                    </div>
+                    <div class="col mb-3">
+                        <a href="{{route('course.slug',$course->slug)}}">
+                            <div class="card border-light rounded-0 p-1 bg-transparent" style="height: 400px;">
+                                <img src="{{asset('image/course')}}/{{$course->image}}" class="img-fluid object-fit-cover" alt="...">
+                                <div class="card-body">
+                                    <h5 class="text-uppercase text-warning fw-light">{{$course->title}}</h5>
+                                    <p class="text-white" style="font-size: small;">{!! Str::words(strip_tags($course->content), 15, ' ...') !!}</p>
                                 </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
+
                     @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="our-article" id="article">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <h2>Artikel Terbaru</h2>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="owl-article-item owl-carousel mb-5">
+                    @foreach ($articles as $article )
+                    <div class="item">
+                        <div class="card border-dark" style="height: 450px;">
+                            <a href="{{route('article.slug',$article->slug)}}">
+                                <img src="{{asset('image/article/'.$article->image)}}" class="card-img-top" alt="Gambar 1" style="height: 240px; object-fit: cover;">
+                            </a>
+                            <div class="card-body">
+                                <small class="mb-1 text-body-secondary"><i class="fas fa-user"></i> By Admin | <i class="fas fa-calendar-alt"></i> {{Carbon\Carbon::parse($article->created_at)->locale('id')->isoFormat('DD MMMM YYYY')}}</small>
+                                <h4 class="card-title">{{ Str::words($article->title,6)}}</h4>
+                                <p class="card-text">{!! Str::words(strip_tags($article->content), 10, ' ...') !!}</p>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                <div class="d-flex justify-content-center">
+                    <a href="#" class="btn btn-lg btn-danger rounded-pill" style="background-color: #a12c2f; border: none;">
+                        <p class="mx-4 text-white" style="font-size: 15px;">SELENGKAPNYA</p>
+                    </a>
                 </div>
             </div>
         </div>

@@ -18,32 +18,32 @@ class CourseSeeder extends Seeder
             [
                 'title' => 'Pelatihan Akutansi',
                 'image' => 'akutansi.jpg',
-                'content' => '',
+                'content' => 'Suatu proses mencatat, meringkas, mengklasifikasikan, mengolah, dan menyajikan data transaksi, serta berbagai aktivitas yang berhubungan dengan keuangan, sehingga informasi tersebut dapat digunakan oleh seseorang yang ahli di bidangnya dan menjadi bahan untuk mengambil suatu keputusan.',
             ],
             [
                 'title' => 'Pelatihan Ekonomi',
                 'image' => 'ekonomi.jpg',
-                'content' => '',
+                'content' => 'Ilmu sosial yang mempelajari perilaku manusia dalam mengelola sumber daya yang terbatas dan menyalurkannya ke dalam berbagai individu atau kelompok yang ada dalam suatu masyarakat.',
             ],
             [
                 'title' => 'Pelatihan Manajemen SDM',
                 'image' => 'sdm.jpg',
-                'content' => '',
+                'content' => 'Pemanfaatan sejumlah individu secara efisien dan efektif serta dapat digunakan secara maksimal untuk mencapai tujuan organisasi atau perusahaan.',
             ],
             [
                 'title' => 'Pelatihan Kewirausahaan',
                 'image' => 'kewirausahaan.jpg',
-                'content' => '',
+                'content' => 'Proses mengidentifikasi, mengembangkan dan membawa visi ke dalam kehidupan. Visi tersebut bisa berupa ide inovatif, ide berjualan, peluang, cara yang lebih baik dalam menjalankan sesuatu.',
             ],
             [
                 'title' => 'Pelatihan Manajemen Resiko',
                 'image' => 'resiko.jpg',
-                'content' => '',
+                'content' => 'Suatu pendekatan terstruktur atau metodologi dalam mengelola ketidakpastian yang berkaitan dengan ancaman',
             ],
             [
                 'title' => 'Pelatihan Manajemen Ritel',
                 'image' => 'ritel.jpg',
-                'content' => '',
+                'content' => 'Proses menjalankan dan mengelola aktivitas keseharian ritel terkait penjualan barang dan jasa kepada pelanggan.',
             ],
         ];
 

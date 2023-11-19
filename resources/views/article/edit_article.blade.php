@@ -20,7 +20,7 @@
                 @method('PUT')
                 <div class="row">
                     <div class="col-12">
-                        <img src="{{asset('storage/images/article/'.$article->image)}}" class="img-fluid w-100" style="height: 200px; object-fit: cover;" alt="">
+                        <img src="{{asset('image/article/'.$article->image)}}" class="img-fluid w-100" style="height: 200px; object-fit: cover;" alt="">
                     </div>
                     <div class="col-6">
                         <div class="form-group">
@@ -32,6 +32,12 @@
                         <div class="form-group">
                             <label for="basicInput">Image</label>
                             <input type="file" name="image" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="basicInput">Created at</label>
+                            <input type="datetime-local" name="created_at" value="{{$article->created_at}}" class="form-control">
                         </div>
                     </div>
 
@@ -69,7 +75,11 @@
         [{
             'header': [1, 2, 3, 4, 5, 6, false]
         }],
-
+        [{
+            'color': []
+        }, {
+            'background': []
+        }],
         [{
             'align': []
         }],

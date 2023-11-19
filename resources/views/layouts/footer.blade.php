@@ -6,7 +6,7 @@
             <div class="row mt-2">
                 <!--Grid column-->
                 <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
-                    <h5 class="text-uppercase mb-4">About</h5>
+                    <h5 class="text-uppercase mb-4">Tentang Kami</h5>
                     <p class="text-white">
                         Adalah lembaga training, riset dan konsultan. Sebagai lembaga prefesional yang bergerak melakukan training untuk masyarakat, Swasta maupun Pemerintahan
                     </p>
@@ -24,8 +24,7 @@
 
                 <!--Grid column-->
                 <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase mb-4 pb-1">Find Me</h5>
-
+                    <h5 class="text-uppercase mb-4 pb-1">Alamat</h5>
                     <ul class="fa-ul" style="margin-left: 1.65em;">
                         <li class="mb-3">
                             <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2">Jl. Nogosaren Kidul, Nogosaren, Nogotirto, Gamping, Sleman, DI Yogyakarta 55592</span>
@@ -45,7 +44,7 @@
 
                 <!--Grid column-->
                 <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase mb-4">Opening hours</h5>
+                    <h5 class="text-uppercase mb-4">Jam Kerja</h5>
                     <ul>
                         <li>Senin - Jumat</li>
                         <li>08:00 - 16.30</li>

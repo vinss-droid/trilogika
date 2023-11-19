@@ -12,7 +12,7 @@
 <section class="section">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">New News</h4>
+            <h4 class="card-title">New Article</h4>
         </div>
         <div class="card-body">
             <form id="form" action="{{route('article.store')}}" method="post" enctype="multipart/form-data">
@@ -65,7 +65,11 @@
         [{
             'header': [1, 2, 3, 4, 5, 6, false]
         }],
-
+        [{
+            'color': []
+        }, {
+            'background': []
+        }],
         [{
             'align': []
         }],

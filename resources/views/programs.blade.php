@@ -1,9 +1,20 @@
 @extends('layouts.main')
-
+@php
+setlocale(LC_TIME, 'id_ID');
+App::setLocale('id');
+@endphp
 @section('style')
 <style>
+    /* html,
+    body {
+        background: var(--bs-gray-300);
+        font-family: 'Poppins', sans-serif;
+    } */
+
     footer {
-        background-image: url("{{asset('front/assets')}}/images/meetings-bg.jpg");
+        background-image: none;
+        /* background-image: url("{{asset('front/assets')}}/images/meetings-bg.jpg"); */
+        background: var(--bs-white);
         background-position: center center;
         background-attachment: fixed;
         background-repeat: no-repeat;
@@ -12,13 +23,14 @@
 
     section.heading-page {
         background-image: none;
+        /* background-image: url("{{asset('front/assets')}}/images/meetings-bg.jpg"); */
+        background-color: var(--bs-white);
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
         padding-top: 300px;
         padding-bottom: 110px;
         text-align: center;
-        filter: grayscale(70%) brightness(50%);
     }
 
     .header-area {
@@ -36,6 +48,7 @@
 
     section.contact-us {
         background-image: none;
+        background-color: var(--bs-white);
     }
 
     .meeting-single-item .down-content p.description {
@@ -58,6 +71,10 @@
         list-style: none;
     }
 
+    .list-group {
+        --bs-list-group-border-width: 0;
+    }
+
     /* recent article<1000px */
     @media (max-width: 1000px) {
         #recent-article {
@@ -77,36 +94,71 @@
         </div>
     </div>
 </section>
-<section class="bg-white" style="margin-top: -350px;">
+<section class="" style="margin-top: -350px;">
     <div class="container">
+        <div class="row d-flex justify-content-center mb-5">
+            <div class="col-4">
+                <h3>Upcoming Program</h3>
+            </div>
+        </div>
         <div class="row mb-5">
             <div class="col-lg-9 ">
-                <div class="card mb-3">
+                @foreach ($programs as $program)
+                <div class="card mb-3 border border-0">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="{{asset('image/askom.jpg')}}" class="img-fluid rounded-start" alt="...">
+                            <img src="{{asset('image/program/'.$program->image)}}" class="img-fluid h-100 object-fit-cover" alt="...">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">Card title <span class="badge bg-success">Baru</span></h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                                <h5 class="card-title">{{$program->title}} <span class="badge bg-primary fw-medium">{{$program->status}}</span></h5>
+                                <p class="card-text">{!!Str::words(strip_tags($program->content),20,' ...')!!}</p>
+                                <p class="card-text">
+                                    <small class="text-body-secondary me-2"><i class="far fa-calendar-alt"></i> {{Carbon\Carbon::parse($program->created_at)->locale('id')->isoFormat('DD MMMM YYYY')}}</small>
+                                    <small class="text-body-secondary"><i class="far fa-clock"></i> {{$program->updated_at->diffForHumans()}}</small>
+                                </p>
                                 <div class="d-flex justify-content-end">
-                                    <a href="#" class="btn btn-sm btn-danger">Lihat detail</a>
+                                    <a href="{{route('program.slug',$program->slug)}}" class="btn btn-sm btn-primary">Lihat detail</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                @endforeach
+                {{$programs->links()}}
             </div>
-            <div class="col-lg-3">
-                <div class="card">
+            <div class="col-lg-3 border-start border-2 border-dark-subtle">
+                <form class="d-flex mb-2" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-light" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+                <div class="card border-0 mb-3">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+                        <h5 class="card-title mb-3">Kategori</h5>
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Pendidikan
+                                <span class="badge bg-primary rounded-pill">14</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Sertifikasi
+                                <span class="badge bg-primary rounded-pill">2</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Diklat
+                                <span class="badge bg-primary rounded-pill">1</span>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="card border-0 mb-3">
+                    <img src="{{asset('image/course/ekonomi.jpg')}}" class="img-fluid" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Pelatihan & Sertifikasi</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">Basic Digital Marketing</h6>
+                        <p class="card-text">Kegiatan pemasaran produk menggunakan media digital atau internet dengan tujuan untuk menarik konsumen secara cepat.</p>
+                        <a href="#" class="btn btn-sm btn-outline-secondary">Daftar</a>
                     </div>
                 </div>
             </div>
