@@ -1,10 +1,10 @@
 @extends('layouts.admin.main')
 @section('style')
+
+<!-- include summernote css/js -->
 <link rel="stylesheet" href="{{asset('mazer')}}/assets/css/pages/summernote.css">
 <link rel="stylesheet" href="{{asset('mazer')}}/assets/extensions/summernote/summernote-lite.css">
 
-
-<!-- <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet"> -->
 <style>
     body.theme-dark p {
         margin-bottom: 0rem;
@@ -26,33 +26,28 @@
 <section class="section">
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Course Edit</h4>
+            <h4 class="card-title">New Portofolio</h4>
         </div>
         <div class="card-body">
-            <form id="form" action="{{route('course.update',$course->id)}}" method="post" enctype="multipart/form-data">
+            <form id="form" action="{{route('portofolio.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
-                @method('PUT')
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-12">
                         <div class="form-group">
                             <label for="basicInput">Title</label>
-                            <input type="text" value="{{$course->title}}" name="title" class="form-control">
+                            <input type="text" name="title" class="form-control">
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-12">
                         <div class="form-group">
                             <label for="basicInput">Image</label>
-                            <img src="{{asset('storage/images/course/'.$course->image)}}" class="img-thumbnail" width="100px" alt="">
                             <input type="file" name="image" class="form-control">
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="form-group">
                             <label for="basicInput">Content</label>
-                            <textarea name="content" id="summernote">{!!$course->content!!}</textarea>
-                            <!-- <div id="editor" style="height: 240px;">{{--$course->content--}}
-                            </div> -->
-                            <!-- <textarea name="content" id="quill-content" hidden></textarea> -->
+                            <textarea name="content" id="summernote"></textarea>
                         </div>
                     </div>
                 </div>
@@ -67,43 +62,16 @@
 </section>
 @endsection
 @section('script')
+
 <script src="{{asset('mazer')}}/assets/extensions/summernote/summernote-lite.min.js"></script>
 <script src="{{asset('mazer')}}/assets/js/pages/summernote.js"></script>
-
-<!-- <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 <script>
-    var toolbarOptions = [
-        ['bold', 'italic', 'underline', 'strike'], // toggled buttons
-        ['blockquote'],
-        [{
-            'list': 'ordered'
-        }, {
-            'list': 'bullet'
-        }],
-
-        [{
-            'header': [1, 2, 3, 4, 5, 6, false]
-        }],
-
-        [{
-            'align': []
-        }],
-
-    ];
-    var quill = new Quill('#editor', {
-        theme: 'snow',
-        modules: {
-            toolbar: toolbarOptions
-        }
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            tabsize: 2,
+            height: 200
+        });
     });
+</script>
 
-    // Tambahkan event listener ke form untuk mengisi nilai input teks saat formulir dikirim
-    document.querySelector('#form').addEventListener('submit', function() {
-        // Dapatkan isi dari editor Quill.js
-        var quillContent = document.querySelector('#editor .ql-editor').innerHTML;
-
-        // Set nilai input teks dengan konten dari Quill.js
-        document.querySelector('#quill-content').value = quillContent;
-    });
-</script> -->
 @endsection

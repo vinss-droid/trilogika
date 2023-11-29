@@ -5,10 +5,12 @@ use App\Http\Controllers\CardController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
 use App\Models\Article;
 use App\Models\Courses;
+use App\Models\Portofolio;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,9 +28,10 @@ Route::get('/', [PageController::class, 'home'])->name('page.home');
 Route::get('/contact', [PageController::class, 'contact'])->name('page.contact');
 Route::get('/show_galeri', [PageController::class, 'show_galeri'])->name('page.show_galeri');
 Route::get('/programs', [PageController::class, 'programs'])->name('page.programs');
-Route::get('/mengapa-perlu-sertifikasi', function () {
-    return view('show_mengapa');
-})->name('page.why-certification');
+Route::get('/articles', [PageController::class, 'articles'])->name('page.articles');
+// Route::get('/mengapa-perlu-sertifikasi', function () {
+//     return view('show_mengapa');
+// })->name('page.why-certification');
 
 Route::get('/dashboard', function () {
     return view('dashboard2');
@@ -43,6 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/admin/program', ProgramController::class);
     Route::resource('/admin/article', ArticleController::class);
     Route::resource('/admin/course', CourseController::class);
+    Route::resource('/admin/portofolio', PortofolioController::class);
 });
 
 Route::get('/program/{slug}', [PageController::class, 'programSlug'])->name('program.slug');

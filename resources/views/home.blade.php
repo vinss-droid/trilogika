@@ -16,7 +16,7 @@
         background-attachment: fixed;
         background-repeat: no-repeat;
         background-size: cover;
-        padding: 140px 0px;
+        padding: 40px 0px;
     }
 
     .meeting-item .down-content h4 {
@@ -66,7 +66,7 @@
 
     .tiles .tile:before {
         content: "";
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
         width: 100%;
         height: 50%;
         opacity: 0;
@@ -247,24 +247,20 @@
                         <div class="item">
                             <h3>MENGAPA PERLU SERTIFIKASI ?</h3>
                             <p>
-                                Dalam rangka menuju Masyarakat Ekonomi ASEAN, Trilogika Edutama Yogyakarta
-                                sebagai lembaga Pendidikan Vokasi dan Pelatihan Ketenagakerjaan menyediakan berbagai skema
-                                sertifikasi Profesi untuk memeberikan Program Sertifikasi.
+                                Dalam rangka menuju Masyarakat Ekonomi ASEAN, Trilogika Edutama Yogyakarta sebagai lembaga Pendidikan Vokasi dan Pelatihan Ketenagakerjaan menyediakan berbagai skema sertifikasi Profesi untuk memeberikan Program Sertifikasi.
+                            </p>
+                            <p>
+                                Sertifikat Kompetensi untuk membuktikan bahwa seseorang telah mempunyai kemampuan dan keahlian dalam hal Pengetahuan, Keterampilan dan Sikap Kerja yang sesuai dengan tuntutan pekerjaannya.
+
+                            </p>
+                            <p>
+                                Sertifikat Kompetensi menjadi salah satu pemenuhan akan akreditasi bagi Lembaga Pendidikan. Menjadi dokumen penting dalam mengembangkan karir SDM pada kategori Kualifikasi Pekerjaan.
                             </p>
                             <div class="main-button-red">
-                                <div class=""><a href="{{route('page.why-certification')}}">Selengkapnya</a></div>
+                                <div class=""><a href="">Daftar Sertifikasi Sekarang</a></div>
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="col-lg-12">
-                        <div class="item">
-                            <h3>Galeri</h3>
-                            <p>Dokumentasi dari beberapa kegiatan yang ada dilakukan oleh lembaga Trilogika Edutama</p>
-                            <div class="main-button-red">
-                                <div class=""><a href="#">Selengkapnya</a></div>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
             <div class="col-lg-6">
@@ -304,45 +300,57 @@
 </section>
 
 <section class="our-facts">
-    <div class="">
-        <div class="container">
-            <hr class="border border-white">
-            <div class="row">
-                <h4 class="text-white text-center mb-3 mt-5">Portofolio Trilogika Edutama</h4>
-                <div class="col-md-6 col-lg-4">
-                    <div class="tiles">
-                        <a href="http://placeholder.com" class="thumbnail tile"><img src="https://source.unsplash.com/400x440/?nature,water">
-                            <div class="details"><span class="title">Lorem Ipsum Dolor</span><span class="info">Quisque vel felis lectus donec vitae dapibus magna</span></div>
-                        </a>
-                        <a href="http://placeholder.com" class="thumbnail tile"><img src="https://source.unsplash.com/400x280/?nature,water">
-                            <div class="details"><span class="title">Lorem Ipsum Dolor</span><span class="info">Quisque vel felis lectus donec vitae dapibus magna</span></div>
-                        </a>
-                    </div>
+    <div class="container">
+        <h4 class="text-white text-center mb-5 mt-5">Portofolio Trilogika Edutama</h4>
+        <div class="row">
+            <div class="col-md-6 col-lg-4">
+                <div class="tiles">
+                    <a href="#" class="thumbnail tile"><img src="{{asset('image/portofolio/20231113_unila.jpg')}}" style="width: 400px; height: 440px; object-fit: cover;">
+                        <div class="details">
+                            <span class="title">UNILA</span>
+                            <span class="info">Pelatihan dan Sertifikasi Digital Marketing dan Konsultan Pendamping UMKM Level 5 Universitas Lampung</span>
+                        </div>
+                    </a>
+                    <a href="#" class="thumbnail tile"><img src="{{asset('image/portofolio/20231113_jps2.jpg')}}" style="width: 400px; height: 280px; object-fit: cover;">
+                        <div class="details"><span class="title">JPS Batch 2</span><span class="info">Jaring Pengaman Sosial Kloter 2</span></div>
+                    </a>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="tiles">
-                        <a href="http://placeholder.com" class="thumbnail tile"><img src="https://source.unsplash.com/400x200/?nature,water">
-                            <div class="details"><span class="title">Lorem Ipsum Dolor</span><span class="info">Quisque vel felis lectus donec vitae dapibus magna</span></div>
-                        </a>
-                        <a href="http://placeholder.com" class="thumbnail tile"><img src="https://source.unsplash.com/400x300/?nature,water">
-                            <div class="details"><span class="title">Lorem Ipsum Dolor</span><span class="info">Quisque vel felis lectus donec vitae dapibus magna</span></div>
-                        </a>
-                        <a href="http://placeholder.com" class="thumbnail tile"><img src="https://source.unsplash.com/400x200/?nature,water">
-                            <div class="details"><span class="title">Lorem Ipsum Dolor</span><span class="info">Quisque vel felis lectus donec vitae dapibus magna</span></div>
-                        </a>
-                    </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="tiles">
+                    <a href="#" class="thumbnail tile"><img src="{{asset('image/portofolio/20231113_jps.jpg')}}" style="width: 400px; height: 200px; object-fit: cover;">
+                        <div class="details">
+                            <span class="title">JPS Batch 1</span>
+                            <span class="info">Jaring Pengaman Sosial Kolter 1 </span>
+                        </div>
+                    </a>
+                    <a href="#" class="thumbnail tile"><img src="{{asset('image/portofolio/20231113_4pilar.jpg')}}" style="width: 400px; height: 300px; object-fit: cover;">
+                        <div class="details">
+                            <span class="title">Sosialisasi 4 Pilar MPR RI</span>
+                            <span class="info">Sosialisasi 4 Pilar MPR RI</span>
+                        </div>
+                    </a>
+                    <a href="#" class="thumbnail tile"><img src="{{asset('image/portofolio/20231113_upn.jpg')}}" style="width: 400px; height: 200px; object-fit: cover;">
+                        <div class="details">
+                            <span class="title">UPN Veteran Yogyakarta</span>
+                            <span class="info">Pelatihan dan Sertifikasi Digital Marketing UPN Veteran Yogyakarta</span>
+                        </div>
+                    </a>
                 </div>
-                <div class="col-md-12 col-lg-4 float-start">
-                    <div class="tiles">
-                        <a href="http://placeholder.com" class="thumbnail tile"><img src="https://source.unsplash.com/400x380/?nature,water">
-                            <div class="details"><span class="title">Lorem Ipsum Dolor</span><span class="info">Quisque vel felis lectus donec vitae dapibus magna</span></div>
-                        </a>
-                        <a href="http://placeholder.com" class="thumbnail tile"><img src="https://source.unsplash.com/400x340/?nature,water">
-                            <div class="details"><span class="title">Lorem Ipsum Dolor</span><span class="info">Quisque vel felis lectus donec vitae dapibus magna</span></div>
-                        </a>
-                    </div>
-                    <div class="tiles">
-                    </div>
+            </div>
+            <div class="col-md-12 col-lg-4 float-start">
+                <div class="tiles">
+                    <a href="#" class="thumbnail tile"><img src="{{asset('image/portofolio/20231113_polinela.jpeg')}}" style="width: 400px; height: 380px; object-fit: cover;">
+                        <div class="details"><span class="title">POLINELA</span><span class="info">Pelatihan dan sertifikasi kompetensi Kewirausahaan Industri Jenjang IV dan Manajemen Strategis bagi dosen Prodi Ekonomi dan Bisnis Politeknik Negeri Lampung</span></div>
+                    </a>
+                    <a href="#" class="thumbnail tile"><img src="{{asset('image/portofolio/20231113_feuny2.jpg')}}" style="width: 400px; height: 340px; object-fit: cover;">
+                        <div class="details">
+                            <span class="title">Bimbingan Teknis dan Sertifikasi Kompetensi BNSP UNY</span>
+                            <span class="info">Bimbingan Teknis dan Sertifikasi Kompetensi BNSP KKNI Level 3 "Asisten Instruktur" Fakultas Ekonomi Universitas Negeri Yogyakarta </span>
+                        </div>
+                    </a>
+                </div>
+                <div class="tiles">
                 </div>
             </div>
         </div>
@@ -405,7 +413,7 @@
                     @endforeach
                 </div>
                 <div class="d-flex justify-content-center">
-                    <a href="#" class="btn btn-lg btn-danger rounded-pill" style="background-color: #a12c2f; border: none;">
+                    <a href="{{route('page.articles')}}" class="btn btn-lg btn-danger rounded-pill" style="background-color: #a12c2f; border: none;">
                         <p class="mx-4 text-white" style="font-size: 15px;">SELENGKAPNYA</p>
                     </a>
                 </div>

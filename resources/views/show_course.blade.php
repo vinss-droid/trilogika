@@ -93,7 +93,7 @@ App::setLocale('id');
                     @endif
                     <div class="text-center">
                         <h4 class="fs-2 mt-4">{{$course->title}}</h4>
-                        <p class="text-secondary">By: Admin | {{Carbon\Carbon::parse($course->created_at)->locale('id')->isoFormat('DD MMMM YYYY')}}</p>
+                        <p class="text-secondary"><i class="fas fa-user"></i> Admin | <i class="fas fa-calendar-alt"></i> {{Carbon\Carbon::parse($course->created_at)->locale('id')->isoFormat('DD MMMM YYYY')}}</p>
                     </div>
                     <p class="description mb-5">
                         {!!$course->content!!}

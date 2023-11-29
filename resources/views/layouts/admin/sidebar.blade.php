@@ -39,11 +39,13 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
+                <li class="sidebar-title">Pendaftaran</li>
 
+                </li>
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-gear"></i>
-                        <span>Setting</span>
+                        <span>Pages Feature</span>
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
@@ -57,6 +59,9 @@
                         </li>
                         <li class="submenu-item ">
                             <a href="{{route('article.index')}}">Article</a>
+                        </li>
+                        <li class="submenu-item ">
+                            <a href="{{route('portofolio.index')}}">Portofolio</a>
                         </li>
                     </ul>
                 </li>

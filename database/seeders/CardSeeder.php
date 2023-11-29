@@ -25,11 +25,11 @@ class CardSeeder extends Seeder
                 'icon' => 'fas fa-users-cog',
                 'content' => 'layanan bimbingan yang bertujuan meningkatkan kualitas Sumber Daya Manusia.',
             ],
-            [
-                'title' => 'Computer Assisted Test',
-                'icon' => 'fas fa-desktop',
-                'content' => 'Suatu sistem yang dipakai untuk membantu proses seleksi dengan alat bantu komputer.',
-            ],
+            // [
+            //     'title' => 'Computer Assisted Test',
+            //     'icon' => 'fas fa-desktop',
+            //     'content' => 'Suatu sistem yang dipakai untuk membantu proses seleksi dengan alat bantu komputer.',
+            // ],
             [
                 'title' => 'Management Consulting',
                 'icon' => 'fas fa-briefcase',

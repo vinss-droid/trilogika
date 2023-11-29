@@ -1,10 +1,25 @@
 @extends('layouts.admin.main')
 @section('style')
-<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<!-- <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet"> -->
+
+<!-- include summernote css/js -->
+<link rel="stylesheet" href="{{asset('mazer')}}/assets/css/pages/summernote.css">
+<link rel="stylesheet" href="{{asset('mazer')}}/assets/extensions/summernote/summernote-lite.css">
+
 <style>
     body.theme-dark p {
         margin-bottom: 0rem;
         margin-top: 0;
+    }
+
+    body.theme-dark .dataTable-table,
+    body.theme-dark .table {
+        --bs-table-color: #1b1b1b;
+    }
+
+    .note-editor .note-editing-area .note-editable table td,
+    .note-editor .note-editing-area .note-editable table th {
+        border: 1px solid #3f3f3f;
     }
 </style>
 @endsection
@@ -34,10 +49,9 @@
                     <div class="col-12">
                         <div class="form-group">
                             <label for="basicInput">Content</label>
-                            <div id="editor" style="height: 240px;">
-                            </div>
-                            <textarea name="content" id="quill-content" hidden></textarea>
-                            <!-- <textarea name="content" id="editor" cols="30" rows="10"></textarea> -->
+                            <!-- <div id="editor" style="height: 240px;"></div> -->
+                            <!-- <textarea name="content" id="quill-content" hidden></textarea> -->
+                            <textarea name="content" id="summernote"></textarea>
                         </div>
                     </div>
                 </div>
@@ -52,12 +66,25 @@
 </section>
 @endsection
 @section('script')
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script src="{{asset('mazer')}}/assets/extensions/summernote/summernote-lite.min.js"></script>
+<script src="{{asset('mazer')}}/assets/js/pages/summernote.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            tabsize: 2,
+            height: 200
+        });
+
+    });
+</script>
+
 <!-- <script src="//cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script> -->
 <!-- <script>
     CKEDITOR.replace('editor');
 </script> -->
-<script>
+
+<!-- <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script> -->
+<!-- <script>
     var toolbarOptions = [
         ['bold', 'italic', 'underline', 'strike'], // toggled buttons
         ['blockquote'],
@@ -91,5 +118,5 @@
         // Set nilai input teks dengan konten dari Quill.js
         document.querySelector('#quill-content').value = quillContent;
     });
-</script>
+</script> -->
 @endsection

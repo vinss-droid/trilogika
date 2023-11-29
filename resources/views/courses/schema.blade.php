@@ -14,25 +14,25 @@
             <table class="table mb-0">
                 <thead class="thead-dark">
                     <tr>
-                        <th>TITLE</th>
-                        <th>CREATED AT</th>
-                        <th>IMAGE</th>
+                        <th>NOMOR</th>
+                        <th>KODE UNIT</th>
+                        <th>JUDUL UNIT</th>
+                        <th>JAM PELATIHAN</th>
                         <th>ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($courses as $course)
+
                     <tr>
-                        <td class="text-bold-500">{{$course->title}}</td>
-                        <td class="text-bold-500">{{$course->created_at}}</td>
-                        <td class="text-bold-500"><img class="rounded" src="{{asset('image/course/'.$course->image)}}" alt="" width="100px"></td>
+                        <td class="text-bold-500"></td>
+                        <td class="text-bold-500"></td>
+                        <td class="text-bold-500"></td>
                         <td>
                             <a href="#" class="btn icon btn-primary"><i class="bi bi-book"></i></a>
-                            <a href="{{route('course.edit',$course->id)}}" class="btn icon btn-success"><i class="bi bi-pencil"></i></a>
-                            <a href="" class="btn icon btn-danger" onclick="deletePost('{{$course->id}}')"><i class="bi bi-trash"></i></a>
+                            <a href="" class="btn icon btn-success"><i class="bi bi-pencil"></i></a>
+                            <a href="" class="btn icon btn-danger" onclick="deletePost('{{--$course->id--}}')"><i class="bi bi-trash"></i></a>
                         </td>
                     </tr>
-                    @endforeach
 
                 </tbody>
             </table>

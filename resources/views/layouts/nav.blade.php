@@ -9,10 +9,10 @@
     <!-- ***** Menu Start ***** -->
     <ul class="nav">
         <li class="{{request()->segment(1) ? '': 'scroll-to-section'}}"><a href="{{request()->segment(1) ? '/' : '#top'}}">Home</a></li>
-        <li class="{{request()->segment(1) ? '': 'scroll-to-section'}}"><a href="{{request()->segment(1) ? '/' : '#meetings'}}">Programs</a></li>
-        <li class="{{request()->segment(1) ? '': 'scroll-to-section'}}"><a href="{{request()->segment(1) ? '/' : '#article'}}">News</a></li>
-        <li class="{{request()->segment(1) ? '': 'scroll-to-section'}}"><a href="{{request()->segment(1) ? '/' : '#courses'}}">Courses</a></li>
-        <li class="{{request()->segment(1) ? '': ''}}"><a href="{{ route("page.contact") }}">Contact Us</a></li>
+        <li class="{{request()->segment(1) ? '': 'scroll-to-section'}}"><a href="{{request()->segment(1) ? '/' : '#meetings'}}">Program</a></li>
+        <li class="{{request()->segment(1) ? '': 'scroll-to-section'}}"><a href="{{request()->segment(1) ? '/' : '#article'}}">Artikel</a></li>
+        <li class="{{request()->segment(1) ? '': 'scroll-to-section'}}"><a href="{{request()->segment(1) ? '/' : '#courses'}}">Pelatihan</a></li>
+        <li class="{{request()->segment(1) ? '': ''}}"><a href="{{ route("page.contact") }}">Kontak</a></li>
     </ul>
     <a class='menu-trigger'>
         <span>Menu</span>

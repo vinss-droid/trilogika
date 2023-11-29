@@ -98,34 +98,34 @@ App::setLocale('id');
     <div class="container">
         <div class="row d-flex justify-content-center mb-5">
             <div class="col-4">
-                <h3>Program Terbaru Kami</h3>
+                <h3>Artikel Utama</h3>
             </div>
         </div>
         <div class="row mb-5">
             <div class="col-lg-9 ">
-                @foreach ($programs as $program)
+                @foreach ($articles as $article)
                 <div class="card mb-3 border border-0">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="{{asset('image/program/'.$program->image)}}" class="img-fluid h-100 object-fit-cover" alt="...">
+                            <img src="{{asset('image/article/'.$article->image)}}" class="img-fluid h-100 object-fit-cover" alt="...">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">{{$program->title}} <span class="badge bg-primary fw-medium">{{$program->status}}</span></h5>
-                                <p class="card-text">{!!Str::words(strip_tags($program->content),20,' ...')!!}</p>
+                                <h5 class="card-title">{{$article->title}} <span class="badge bg-primary fw-medium">{{$article->status}}</span></h5>
+                                <p class="card-text">{!!Str::words(strip_tags($article->content),20,' ...')!!}</p>
                                 <p class="card-text">
-                                    <small class="text-body-secondary me-2"><i class="far fa-calendar-alt"></i> {{Carbon\Carbon::parse($program->created_at)->locale('id')->isoFormat('DD MMMM YYYY')}}</small>
-                                    <small class="text-body-secondary"><i class="far fa-clock"></i> {{$program->updated_at->diffForHumans()}}</small>
+                                    <small class="text-body-secondary me-2"><i class="far fa-calendar-alt"></i> {{Carbon\Carbon::parse($article->created_at)->locale('id')->isoFormat('DD MMMM YYYY')}}</small>
+                                    <small class="text-body-secondary"><i class="far fa-clock"></i> {{$article->updated_at->diffForHumans()}}</small>
                                 </p>
                                 <div class="d-flex justify-content-end">
-                                    <a href="{{route('program.slug',$program->slug)}}" class="btn text-white btn-warning" style="--bs-btn-bg:var(--bs-orange); --bs-btn-border-color:(--bs-orange)">Lihat detail</a>
+                                    <a href="{{route('article.slug',$article->slug)}}" class="btn text-white btn-warning" style="--bs-btn-bg:var(--bs-orange); --bs-btn-border-color:(--bs-orange)">Lihat detail</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 @endforeach
-                {{$programs->links()}}
+                {{$articles->links()}}
             </div>
             <div class="col-lg-3 border-start border-2 border-dark-subtle">
                 <form class="d-flex mb-2" role="search">
@@ -141,15 +141,14 @@ App::setLocale('id');
                                 <span class="badge bg-danger rounded-pill">14</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Sertifikasi
+                                Umum
                                 <span class="badge bg-danger rounded-pill">2</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Diklat
+                                Sosial
                                 <span class="badge bg-danger rounded-pill">1</span>
                             </li>
                         </ul>
-
                     </div>
                 </div>
                 <div class="card border-0 mb-3">

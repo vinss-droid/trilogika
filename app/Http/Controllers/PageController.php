@@ -34,6 +34,11 @@ class PageController extends Controller
         $programs = Program::paginate(6);
         return view('programs', compact('programs'));
     }
+    public function articles()
+    {
+        $articles = Article::paginate(6);
+        return view('articles', compact('articles'));
+    }
 
     public function programSlug($slug)
     {
