@@ -102,7 +102,7 @@ App::setLocale('id');
             </div>
         </div>
         <div class="row mb-5">
-            <div class="col-lg-9 ">
+            <div class="col-lg-9 mb-5 ">
                 @foreach ($articles as $article)
                 <div class="card mb-3 border border-0">
                     <div class="row g-0">
@@ -125,7 +125,7 @@ App::setLocale('id');
                     </div>
                 </div>
                 @endforeach
-                {{$articles->links()}}
+                {{$articles->onEachSide(1)->links()}}
             </div>
             <div class="col-lg-3 border-start border-2 border-dark-subtle">
                 <form class="d-flex mb-2" role="search">

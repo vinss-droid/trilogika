@@ -149,7 +149,6 @@
 		}
 	})
 
-
 	$(".owl-article-item").owlCarousel({
 		item: 3,
 		loop: false,
@@ -166,21 +165,25 @@
 				items: 3
 			}
 		},
-		// onInitialized: function (event) {
-		// 	// Mengukur tinggi kartu terpanjang
-		// 	var maxHeight = 0;
-		// 	$(".owl-item", event.target).each(function () {
-		// 		var cardHeight = $(this).find(".card").outerHeight();
-		// 		if (cardHeight > maxHeight) {
-		// 			maxHeight = cardHeight;
-		// 		}
-		// 	});
+	});
 
-		// 	// Mengatur tinggi kartu lainnya sesuai dengan tinggi terpanjang
-		// 	$(".owl-item", event.target).each(function () {
-		// 		$(this).find(".card").css("height", maxHeight + "px");
-		// 	});
-		// }
+	$(".owl-program-item").owlCarousel({
+		item: 3,
+		loop: false,
+		nav: true,
+		margin: 10,
+		responsive: {
+			0: {
+				items: 1
+			},
+			600: {
+				items: 1
+			},
+			1000: {
+				items: 1
+			}
+		},
+		stagePadding:20,
 	});
 
 

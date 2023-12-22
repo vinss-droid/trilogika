@@ -196,45 +196,67 @@
 
 <section class="upcoming-meetings" id="meetings">
     <div class="container">
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-lg-12">
                 <div class="section-heading">
-                    <h2>Program Terbaru Kami</h2>
                 </div>
             </div>
-            <div class="col-lg-12">
-                <div class="row">
-                    @foreach ($programs as $program)
-                    <div class="col-lg-4">
-                        <a href="{{route('program.slug',$program->slug)}}">
-                            <div class="meeting-item">
-                                <div class="thumb">
-                                    @if (!$program->image)
-                                    <img src="{{asset('image/img_default.jpg')}}" alt="">
-                                    @else
-                                    <img src="{{asset('image/program/'.$program->image)}}">
-                                    @endif
-                                </div>
-                                <div class="down-content">
-                                    <div class="date me-2">
-                                        <h6>{{Carbon\Carbon::parse($program->created_at)->locale('id')->isoFormat('MMM')}} <span>{{Carbon\Carbon::parse($program->created_at)->isoFormat('D')}}</span></h6>
-                                    </div>
-                                    <h4>{{$program->title}}</h4>
-                                    <p>{!! strip_tags(Str::words($program->content, 15, ' ...')) !!}</p>
+            <div class="col-lg-5 text-white mb-3">
+                <h1>Program Terbaru Kami</h1>
+                <p class="text-white">Program ini didesain untuk meningkatkan kualitas SDM di Indonesia melalui program pendidikan yang berkualitas. Kami berkomitmen untuk membuka pintu akses pendidikan yang lebih luas untuk masyarakat</p>
+            </div>
+            <div class="col-lg-7">
+                <div class="owl-program-item owl-carousel mb-5">
+                    @foreach ($programs as $program )
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-5">
+                                <h2 class="badge text-dark bg-white" style="position: absolute;">
+                                    {{Carbon\Carbon::parse($program->created_at)->locale('id')->isoFormat('DD MMMM YY')}}
+                                </h2>
+                                </p>
+                                <img src="{{asset('image/program/'.$program->image)}}" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{$program->title}}</h5>
+                                    <p class="card-text">{!! strip_tags(Str::words($program->content, 15, ' ...')) !!}</p>
+
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </div>
-                    @endforeach
-                </div>
-                <div class="d-flex justify-content-center">
-                    <a href="{{route('page.programs')}}" class="btn btn-lg btn-danger rounded-pill" style="background-color: #a12c2f; border: none;">
-                        <p class="mx-4 text-white" style="font-size: 15px;">SELENGKAPNYA</p>
+                    {{--
+                        <div class="item">
+                            <a href="{{route('program.slug',$program->slug)}}">
+                    <div class="meeting-item">
+                        <div class="thumb">
+                            @if (!$program->image)
+                            <img src="{{asset('image/img_default.jpg')}}" alt="">
+                            @else
+                            <img src="{{asset('image/program/'.$program->image)}}">
+                            @endif
+                        </div>
+                        <div class="down-content">
+                            <div class="date me-2">
+                                <h6>{{Carbon\Carbon::parse($program->created_at)->locale('id')->isoFormat('MMM')}} <span>{{Carbon\Carbon::parse($program->created_at)->isoFormat('D')}}</span></h6>
+                            </div>
+                            <h4>{{$program->title}}</h4>
+                            <p>{!! strip_tags(Str::words($program->content, 15, ' ...')) !!}</p>
+                        </div>
+                    </div>
                     </a>
-
                 </div>
+                --}}
+                @endforeach
+            </div>
+            <div class="d-flex justify-content-center">
+                <a href="{{route('page.programs')}}" class="btn btn-lg btn-danger rounded-pill" style="background-color: #a12c2f; border: none;">
+                    <p class="mx-4 text-white" style="font-size: 15px;">SELENGKAPNYA</p>
+                </a>
             </div>
         </div>
+    </div>
     </div>
 </section>
 
@@ -338,19 +360,25 @@
                     </a>
                 </div>
             </div>
-            <div class="col-md-12 col-lg-4 float-start">
-                <div class="tiles">
-                    <a href="#" class="thumbnail tile"><img src="{{asset('image/portofolio/20231113_polinela.jpeg')}}" style="width: 400px; height: 380px; object-fit: cover;">
-                        <div class="details"><span class="title">POLINELA</span><span class="info">Pelatihan dan sertifikasi kompetensi Kewirausahaan Industri Jenjang IV dan Manajemen Strategis bagi dosen Prodi Ekonomi dan Bisnis Politeknik Negeri Lampung</span></div>
-                    </a>
-                    <a href="#" class="thumbnail tile"><img src="{{asset('image/portofolio/20231113_feuny2.jpg')}}" style="width: 400px; height: 340px; object-fit: cover;">
-                        <div class="details">
-                            <span class="title">Bimbingan Teknis dan Sertifikasi Kompetensi BNSP UNY</span>
-                            <span class="info">Bimbingan Teknis dan Sertifikasi Kompetensi BNSP KKNI Level 3 "Asisten Instruktur" Fakultas Ekonomi Universitas Negeri Yogyakarta </span>
+            <div class="col-md-12 col-lg-4">
+                <div class="row">
+                    <div class="col-md-6 col-lg-12">
+                        <div class="tiles">
+                            <a href="#" class="thumbnail tile"><img src="{{asset('image/portofolio/20231113_polinela.jpeg')}}" style="width: 400px; height: 380px; object-fit: cover;">
+                                <div class="details"><span class="title">POLINELA</span><span class="info">Pelatihan dan sertifikasi kompetensi Kewirausahaan Industri Jenjang IV dan Manajemen Strategis bagi dosen Prodi Ekonomi dan Bisnis Politeknik Negeri Lampung</span></div>
+                            </a>
                         </div>
-                    </a>
-                </div>
-                <div class="tiles">
+                    </div>
+                    <div class="col-md-6 col-lg-12">
+                        <div class="tiles">
+                            <a href="#" class="thumbnail tile"><img src="{{asset('image/portofolio/20231113_feuny2.jpg')}}" style="width: 400px; height: 340px; object-fit: cover;">
+                                <div class="details">
+                                    <span class="title">Bimbingan Teknis dan Sertifikasi Kompetensi BNSP UNY</span>
+                                    <span class="info">Bimbingan Teknis dan Sertifikasi Kompetensi BNSP KKNI Level 3 "Asisten Instruktur" Fakultas Ekonomi Universitas Negeri Yogyakarta </span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -399,7 +427,7 @@
                 <div class="owl-article-item owl-carousel mb-5">
                     @foreach ($articles as $article )
                     <div class="item">
-                        <div class="card border-dark" style="height: 450px;">
+                        <div class="card" style="height: 450px;">
                             <a href="{{route('article.slug',$article->slug)}}">
                                 <img src="{{asset('image/article/'.$article->image)}}" class="card-img-top" alt="Gambar 1" style="height: 240px; object-fit: cover;">
                             </a>

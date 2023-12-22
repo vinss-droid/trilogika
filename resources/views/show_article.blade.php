@@ -120,9 +120,7 @@ App::setLocale('id');
                             <hr>
                         </div>
                         @endforeach
-
                     </div>
-
                     <p class="description mb-5">
                         {!!$article->content!!}
                     </p>
@@ -163,7 +161,6 @@ App::setLocale('id');
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
