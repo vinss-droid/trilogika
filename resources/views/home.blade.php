@@ -215,7 +215,7 @@
                                     {{Carbon\Carbon::parse($program->created_at)->locale('id')->isoFormat('DD MMMM YY')}}
                                 </h2>
                                 </p>
-                                <img src="{{asset('image/program/'.$program->image)}}" class="img-fluid rounded-start" alt="...">
+                                <img src="{{asset('image/program/'.$program->image)}}" class="img-fluid rounded-start" alt="..." style="max-height: 200px">
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body">
