@@ -7,18 +7,16 @@
                 <!--Grid column-->
                 <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
                     <h5 class="text-uppercase mb-4">Tentang Kami</h5>
-                    <p class="text-white">
-                        Adalah lembaga training, riset dan konsultan. Sebagai lembaga prefesional yang bergerak melakukan training untuk masyarakat, Swasta maupun Pemerintahan
-                    </p>
-                    <div class="mt-4">
-                        <!-- Facebook -->
-                        <a href="https://www.facebook.com/trilogikaedutama?locale=id_ID" type="button" class="btn btn-floating btn-danger btn-lg"><i class="fab fa-facebook-f"></i></a>
-                        <!-- Instagram -->
-                        <a href="https://www.instagram.com/trilogikaedutama" type="button" class="btn btn-floating btn-danger btn-lg"><i class="fab fa-instagram"></i></a>
-                        <!-- Google + -->
-                        <a href="https://www.youtube.com/@TrilogikaEdutama" type="button" class="btn btn-floating btn-danger btn-lg"><i class="fab fa-youtube"></i></a>
+                    <ul class="text-white">
+                        <li><a class="text-white" href="#">Visi & Misi</a></li>
+                        <li><a class="text-white" href="#">History</a></li>
+                        <li><a class="text-white" href="#">Patner</a></li>
+                        <li><a class="text-white" href="#">Career</a></li>
+                        <li><a class="text-white" href="#">Pricing</a></li>
+                        <li><a class="text-white" href="#">About us</a></li>
 
-                    </div>
+                    </ul>
+
                 </div>
                 <!--Grid column-->
 
@@ -49,11 +47,14 @@
                         <li>Senin - Jumat</li>
                         <li>08:00 - 16.30</li>
                     </ul>
-                    <!-- <div class="">
-                        <p class="text-white">Senin - Jumat:</p>
-                        <p class="text-white">08:00 - 16.30</p>
-                    </div> -->
-
+                    <div class="mt-4">
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/trilogikaedutama?locale=id_ID" type="button" class="btn btn-floating btn-danger btn-lg"><i class="fab fa-facebook-f"></i></a>
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/trilogikaedutama" type="button" class="btn btn-floating btn-danger btn-lg"><i class="fab fa-instagram"></i></a>
+                        <!-- Google + -->
+                        <a href="https://www.youtube.com/@TrilogikaEdutama" type="button" class="btn btn-floating btn-danger btn-lg"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
                 <!--Grid column-->
             </div>

@@ -81,7 +81,6 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        //
         $date = str_replace([' ', '-', ':'], '', date('Y-m-d', time()));
         $validatedData = $request->validate([
             'title' => 'required',

@@ -50,9 +50,7 @@
                         <div class="form-group">
                             <label for="basicInput">Content</label>
                             <textarea name="content" id="summernote">{!!$course->content!!}</textarea>
-                            <!-- <div id="editor" style="height: 240px;">{{--$course->content--}}
-                            </div> -->
-                            <!-- <textarea name="content" id="quill-content" hidden></textarea> -->
+
                         </div>
                     </div>
                 </div>
@@ -70,40 +68,5 @@
 <script src="{{asset('mazer')}}/assets/extensions/summernote/summernote-lite.min.js"></script>
 <script src="{{asset('mazer')}}/assets/js/pages/summernote.js"></script>
 
-<!-- <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-<script>
-    var toolbarOptions = [
-        ['bold', 'italic', 'underline', 'strike'], // toggled buttons
-        ['blockquote'],
-        [{
-            'list': 'ordered'
-        }, {
-            'list': 'bullet'
-        }],
 
-        [{
-            'header': [1, 2, 3, 4, 5, 6, false]
-        }],
-
-        [{
-            'align': []
-        }],
-
-    ];
-    var quill = new Quill('#editor', {
-        theme: 'snow',
-        modules: {
-            toolbar: toolbarOptions
-        }
-    });
-
-    // Tambahkan event listener ke form untuk mengisi nilai input teks saat formulir dikirim
-    document.querySelector('#form').addEventListener('submit', function() {
-        // Dapatkan isi dari editor Quill.js
-        var quillContent = document.querySelector('#editor .ql-editor').innerHTML;
-
-        // Set nilai input teks dengan konten dari Quill.js
-        document.querySelector('#quill-content').value = quillContent;
-    });
-</script> -->
 @endsection

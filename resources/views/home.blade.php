@@ -1,6 +1,14 @@
 @extends('layouts.main')
 @section('style')
 <style>
+    section.our-facts {
+        background-color: var(--bs-gray-900);
+    }
+
+    section.our-article {
+        background-color: var(--bs-gray-900);
+    }
+
     footer {
         /* background-image: url("{{asset('front/assets')}}/images/meetings-bg.jpg"); */
         background-color: #a12c2f;
@@ -115,6 +123,8 @@
         line-height: 1.2;
         margin-top: 5px;
         font-size: 12px;
+        font-weight: 300;
+        color: #dee2e6;
     }
 
     .tiles .tile:focus:before,
@@ -203,7 +213,10 @@
             </div>
             <div class="col-lg-5 text-white mb-3">
                 <h1>Program Terbaru Kami</h1>
-                <p class="text-white">Program ini didesain untuk meningkatkan kualitas SDM di Indonesia melalui program pendidikan yang berkualitas. Kami berkomitmen untuk membuka pintu akses pendidikan yang lebih luas untuk masyarakat</p>
+                <p class="text-white mb-2">Program ini didesain untuk meningkatkan kualitas SDM di Indonesia melalui program pendidikan yang berkualitas. Kami berkomitmen untuk membuka pintu akses pendidikan yang lebih luas untuk masyarakat</p>
+                <a href="{{route('page.programs')}}" class="btn btn-lg btn-danger rounded-pill" style="background-color: #a12c2f; border: none;">
+                    <p class="mx-4 text-white" style="font-size: 15px;">SELENGKAPNYA</p>
+                </a>
             </div>
             <div class="col-lg-7">
                 <div class="owl-program-item owl-carousel mb-5">
@@ -220,8 +233,7 @@
                             <div class="col-md-7">
                                 <div class="card-body">
                                     <h5 class="card-title">{{$program->title}}</h5>
-                                    <p class="card-text">{!! strip_tags(Str::words($program->content, 15, ' ...')) !!}</p>
-
+                                    <p class="card-text">{!! strip_tags(Str::words($program->content, 12, ' ...')) !!}</p>
                                 </div>
                             </div>
                         </div>
@@ -251,14 +263,13 @@
                 @endforeach
             </div>
             <div class="d-flex justify-content-center">
-                <a href="{{route('page.programs')}}" class="btn btn-lg btn-danger rounded-pill" style="background-color: #a12c2f; border: none;">
-                    <p class="mx-4 text-white" style="font-size: 15px;">SELENGKAPNYA</p>
-                </a>
+
             </div>
         </div>
     </div>
     </div>
 </section>
+{{--
 
 <section class="apply-now" id="apply">
     <div class="container">
@@ -320,67 +331,27 @@
         </div>
     </div>
 </section>
-
+--}}
 <section class="our-facts">
     <div class="container">
-        <h4 class="text-white text-center mb-5 mt-5">Portofolio Trilogika Edutama</h4>
-        <div class="row">
-            <div class="col-md-6 col-lg-4">
+        <div class="mb-3">
+            <h1 class="text-white text-end">Portofolio Trilogika Edutama</h1>
+            <p class="text-white text-end">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum consequuntur possimus fuga ducimus laborum ipsa dignissimos natus eveniet atque dolore.</p>
+        </div>
+        <div class="row g-2">
+            @foreach ($portofolios as $porto)
+            <div class="col-md-4">
                 <div class="tiles">
-                    <a href="#" class="thumbnail tile"><img src="{{asset('image/portofolio/20231113_unila.jpg')}}" style="width: 400px; height: 440px; object-fit: cover;">
+                    <a href="#" class="thumbnail tile">
+                        <img src="{{asset('image/portofolio/'.$porto->image)}}" style="min-height: 50vh; object-fit: cover;">
                         <div class="details">
-                            <span class="title">UNILA</span>
-                            <span class="info">Pelatihan dan Sertifikasi Digital Marketing dan Konsultan Pendamping UMKM Level 5 Universitas Lampung</span>
-                        </div>
-                    </a>
-                    <a href="#" class="thumbnail tile"><img src="{{asset('image/portofolio/20231113_jps2.jpg')}}" style="width: 400px; height: 280px; object-fit: cover;">
-                        <div class="details"><span class="title">JPS Batch 2</span><span class="info">Jaring Pengaman Sosial Kloter 2</span></div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="tiles">
-                    <a href="#" class="thumbnail tile"><img src="{{asset('image/portofolio/20231113_jps.jpg')}}" style="width: 400px; height: 200px; object-fit: cover;">
-                        <div class="details">
-                            <span class="title">JPS Batch 1</span>
-                            <span class="info">Jaring Pengaman Sosial Kolter 1 </span>
-                        </div>
-                    </a>
-                    <a href="#" class="thumbnail tile"><img src="{{asset('image/portofolio/20231113_4pilar.jpg')}}" style="width: 400px; height: 300px; object-fit: cover;">
-                        <div class="details">
-                            <span class="title">Sosialisasi 4 Pilar MPR RI</span>
-                            <span class="info">Sosialisasi 4 Pilar MPR RI</span>
-                        </div>
-                    </a>
-                    <a href="#" class="thumbnail tile"><img src="{{asset('image/portofolio/20231113_upn.jpg')}}" style="width: 400px; height: 200px; object-fit: cover;">
-                        <div class="details">
-                            <span class="title">UPN Veteran Yogyakarta</span>
-                            <span class="info">Pelatihan dan Sertifikasi Digital Marketing UPN Veteran Yogyakarta</span>
+                            <span class="title">{{$porto->title}}</span>
+                            <span class="info">{!! strip_tags(Str::words($porto->content,'10','...')) !!}</span>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="col-md-12 col-lg-4">
-                <div class="row">
-                    <div class="col-md-6 col-lg-12">
-                        <div class="tiles">
-                            <a href="#" class="thumbnail tile"><img src="{{asset('image/portofolio/20231113_polinela.jpeg')}}" style="width: 400px; height: 380px; object-fit: cover;">
-                                <div class="details"><span class="title">POLINELA</span><span class="info">Pelatihan dan sertifikasi kompetensi Kewirausahaan Industri Jenjang IV dan Manajemen Strategis bagi dosen Prodi Ekonomi dan Bisnis Politeknik Negeri Lampung</span></div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-12">
-                        <div class="tiles">
-                            <a href="#" class="thumbnail tile"><img src="{{asset('image/portofolio/20231113_feuny2.jpg')}}" style="width: 400px; height: 340px; object-fit: cover;">
-                                <div class="details">
-                                    <span class="title">Bimbingan Teknis dan Sertifikasi Kompetensi BNSP UNY</span>
-                                    <span class="info">Bimbingan Teknis dan Sertifikasi Kompetensi BNSP KKNI Level 3 "Asisten Instruktur" Fakultas Ekonomi Universitas Negeri Yogyakarta </span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

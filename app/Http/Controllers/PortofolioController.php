@@ -34,7 +34,7 @@ class PortofolioController extends Controller
     {
         //
         $date = str_replace([' ', '-', ':'], '', date('Y-m-d', time()));
-        // dd($request->all());
+
         $validatedData = $request->validate([
             'title' => 'required',
             'content' => 'required',
@@ -47,7 +47,7 @@ class PortofolioController extends Controller
             $filePath = public_path() . '/image/portofolio/';
             $file->move($filePath, $fileName);
         }
-        // dd($fileName);
+
         Portofolio::create([
             'title' => $validatedData['title'],
             'content' => $validatedData['content'],
@@ -71,6 +71,8 @@ class PortofolioController extends Controller
     public function edit(Portofolio $portofolio)
     {
         //
+        // dd($portofolio);
+        return view('portofolio.edit_portofolio', compact('portofolio'));
     }
 
     /**
@@ -78,7 +80,27 @@ class PortofolioController extends Controller
      */
     public function update(Request $request, Portofolio $portofolio)
     {
-        //
+        $date = str_replace([' ', '-', ':'], '', date('Y-m-d', time()));
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            if (file_exists(public_path('image/program/' . $portofolio->image))) {
+                unlink(public_path('image/portofolio/' . $portofolio->image));
+            }
+            $newImage = $date . '_' . $image->getClientOriginalName();
+            $image->move(public_path('image/portofolio'), $newImage);
+            $validatedData['image'] = $newImage;
+        } else {
+            $validatedData['image'] = $portofolio->image;
+        }
+
+        $portofolio->update($validatedData);
+        return redirect()->route('portofolio.index')->with('success', 'Portofolio berhasil diperbarui');
     }
 
     /**

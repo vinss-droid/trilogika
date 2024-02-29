@@ -6,6 +6,7 @@ use App\Models\Card;
 use App\Models\Program;
 use App\Models\Article;
 use App\Models\Course;
+use App\Models\Portofolio;
 
 class PageController extends Controller
 {
@@ -15,9 +16,10 @@ class PageController extends Controller
         $cards = Card::all();
         $programs = Program::orderBy('created_at', 'desc')->take(3)->get();
         $articles = Article::orderBy('created_at', 'desc')->take(6)->get();
+        $portofolios = Portofolio::orderBy('created_at', 'desc')->take(6)->get();
         $courses = Course::all();
         // dd($article);
-        return view('home', compact(['cards', 'programs', 'articles', 'courses',]));
+        return view('home', compact(['cards', 'programs', 'articles', 'courses', 'portofolios']));
     }
 
     public function contact()

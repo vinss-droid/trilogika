@@ -33,8 +33,7 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // dd($date);
+
         $date = str_replace([' ', '-', ':'], '', date('Y-m-d', time()));
 
         $validatedData = $request->validate([
@@ -45,6 +44,7 @@ class ProgramController extends Controller
 
         // $newFileName = $date . '_' . $request->file('image')->getClientOriginalName();
         // $request->file('image')->storeAs('public/images', $newFileName);
+        // dd($request->all());
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -52,7 +52,6 @@ class ProgramController extends Controller
             $filePath = public_path() . '/image/program/';
             $file->move($filePath, $fileName);
         }
-
 
         Program::create([
             'title' => $validatedData['title'],
