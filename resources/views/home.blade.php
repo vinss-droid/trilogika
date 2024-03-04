@@ -221,6 +221,7 @@
             <div class="col-lg-7">
                 <div class="owl-program-item owl-carousel mb-5">
                     @foreach ($programs as $program )
+                    
                     <div class="card mb-3">
                         <div class="row g-0">
                             <div class="col-md-5">
@@ -232,34 +233,15 @@
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{$program->title}}</h5>
+                                    <a href="{{ route('program.slug',$program->slug) }}">
+                                        <h5 class="card-title">{{$program->title}}</h5>
+                                    </a>
                                     <p class="card-text">{!! strip_tags(Str::words($program->content, 12, ' ...')) !!}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {{--
-                        <div class="item">
-                            <a href="{{route('program.slug',$program->slug)}}">
-                    <div class="meeting-item">
-                        <div class="thumb">
-                            @if (!$program->image)
-                            <img src="{{asset('image/img_default.jpg')}}" alt="">
-                            @else
-                            <img src="{{asset('image/program/'.$program->image)}}">
-                            @endif
-                        </div>
-                        <div class="down-content">
-                            <div class="date me-2">
-                                <h6>{{Carbon\Carbon::parse($program->created_at)->locale('id')->isoFormat('MMM')}} <span>{{Carbon\Carbon::parse($program->created_at)->isoFormat('D')}}</span></h6>
-                            </div>
-                            <h4>{{$program->title}}</h4>
-                            <p>{!! strip_tags(Str::words($program->content, 15, ' ...')) !!}</p>
-                        </div>
-                    </div>
-                    </a>
-                </div>
-                --}}
+                
                 @endforeach
             </div>
             <div class="d-flex justify-content-center">

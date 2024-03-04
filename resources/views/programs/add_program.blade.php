@@ -19,7 +19,7 @@
                 @csrf
                 @method('POST')
                 <div class="row">
-                    <div class="col-5">
+                    <div class="col-6">
                         <div class="form-group">
                             <label for="basicInput">Title</label>
                             <input type="text" name="title" class="form-control">
@@ -27,11 +27,17 @@
                     </div>
                     <div class="col-3">
                         <div class="form-group">
-                            <label for="basicInput">Tanggal</label>
-                            <input type="date" name="created_at" class="form-control">
+                            <label for="basicInput">Dimulai</label>
+                            <input type="date" name="start_date" class="form-control">
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label for="basicInput">selesai</label>
+                            <input type="date" name="end_date" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-12">
                         <div class="form-group">
                             <label for="basicInput">Image</label>
                             <input type="file" name="image" class="form-control">

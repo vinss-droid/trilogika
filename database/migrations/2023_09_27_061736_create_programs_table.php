@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('slug')->unique()->nullable();
             $table->string('status')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->timestamps();
         });
     }

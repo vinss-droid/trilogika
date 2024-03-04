@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Storage;
 use App\Models\Card;
 use App\Models\Program;
 use App\Models\Article;
 use App\Models\Course;
 use App\Models\Portofolio;
+use Illuminate\Support\Facades\File;
 
 class PageController extends Controller
 {

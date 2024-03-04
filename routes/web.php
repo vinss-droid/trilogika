@@ -29,6 +29,7 @@ Route::get('/contact', [PageController::class, 'contact'])->name('page.contact')
 Route::get('/show_galeri', [PageController::class, 'show_galeri'])->name('page.show_galeri');
 Route::get('/programs', [PageController::class, 'programs'])->name('page.programs');
 Route::get('/articles', [PageController::class, 'articles'])->name('page.articles');
+
 // Route::get('/mengapa-perlu-sertifikasi', function () {
 //     return view('show_mengapa');
 // })->name('page.why-certification');
