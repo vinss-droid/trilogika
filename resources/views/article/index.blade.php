@@ -1,6 +1,7 @@
 @extends('layouts.admin.main')
 @section('meta')
 <meta name="csrf-token" content="{{ csrf_token() }}">
+<link  href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
 @endsection
 @section('style')
 <style>
@@ -11,7 +12,33 @@
 </style>
 @endsection
 @section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">Daftar Artikel</div>
 
+                <div class="card-body">
+                    <a href="{{ route('article.create') }}" class="btn btn-sm btn-success mb-2">Tambah Data</a>
+                    <table id="tbl_list" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Title</th>
+                            <th>image</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- 
 <div class="card">
     <div class="card-header">
         <h4 class="card-title">Article Management</h4>
@@ -48,10 +75,27 @@
         </div>
     </div>
 </div>
+ --}}
 
 @endsection
 @section('script')
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script>
+$(document).ready(function () {
+   $('#tbl_list').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{{ url()->current() }}',
+        order: [[ 0, "desc" ]], 
+        columns: [
+            { data: "DT_RowIndex"},
+            { data: 'title' },
+            { data: 'image' },
+            {data:'action'},
+        ]
+    });
+ });
+
     document.addEventListener('DOMContentLoaded', function() {
         if ("{{session('success')}}") {
             Toastify({

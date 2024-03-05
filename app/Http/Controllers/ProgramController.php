@@ -15,7 +15,7 @@ class ProgramController extends Controller
     public function index()
     {
         //
-        $programs = Program::all();
+        $programs = Program::orderBy('created_at','desc')->get();
         return view('programs.index', compact('programs'));
     }
 
@@ -39,6 +39,7 @@ class ProgramController extends Controller
         $validatedData = $request->validate([
             'title' => 'required',
             'content' => 'required',
+            'start_date'=>'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -56,6 +57,8 @@ class ProgramController extends Controller
         Program::create([
             'title' => $validatedData['title'],
             'content' => $validatedData['content'],
+            'start_date'=>$validatedData['start_date'],
+            'end_date'=>$request['end_date'],
             'image' => $fileName,
         ]);
 
@@ -91,6 +94,7 @@ class ProgramController extends Controller
         $validatedData = $request->validate([
             'title' => 'required',
             'content' => 'required',
+            'start_date'=>'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -119,6 +123,7 @@ class ProgramController extends Controller
         }
 
         $program->update($validatedData);
+        $program->update(['end_date'=>$request['end_date']]);
         return redirect()->route('program.index')->with('success', 'Program berhasil diperbarui');
     }
 

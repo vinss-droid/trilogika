@@ -226,7 +226,7 @@
                         <div class="row g-0">
                             <div class="col-md-5">
                                 <h2 class="badge text-dark bg-white" style="position: absolute;">
-                                    {{Carbon\Carbon::parse($program->created_at)->locale('id')->isoFormat('DD MMMM YY')}}
+                                    {{Carbon\Carbon::parse($program->start_date)->locale('id')->isoFormat('DD MMM YYYY')}}
                                 </h2>
                                 </p>
                                 <img src="{{asset('image/program/'.$program->image)}}" class="img-fluid rounded-start" alt="..." style="max-height: 200px">

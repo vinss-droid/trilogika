@@ -13,8 +13,7 @@ class PortofolioController extends Controller
     public function index()
     {
         //
-        $portofolios = Portofolio::all();
-        // dd($portofolios);
+        $portofolios = Portofolio::orderBy('created_at','desc')->get();
         return view('portofolio.index', compact('portofolios'));
     }
 

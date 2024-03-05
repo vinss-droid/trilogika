@@ -13,8 +13,7 @@ class CardController extends Controller
     public function index()
     {
         //
-        $cards = Card::all();
-        // dd($cards);
+        $cards = Card::orderBy('created_at','desc')->get();
         return view('cards.index', compact('cards'));
     }
 

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\HtmlString;
+
 
 class ArticleController extends Controller
 {
@@ -13,10 +15,28 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
-        $articles = Article::all();
-        // dd($articles);
-        return view('article.index', compact('articles'));
+        if (request()->ajax()) {
+            $articles = Article::orderBy('created_at','desc');
+            $counter = 1;
+            return datatables()->of($articles)
+                ->addColumn('DT_RowIndex',  function() use (&$counter){
+                    return $counter++;
+                })
+                ->addColumn('image', function ($row) {
+                    return '<img src="' . asset("image/article/" . $row->image) . '" alt="Image" width="100" height="100">';
+                })
+                ->addColumn('action', function ($row) {
+                    $button = '<a href="'.route('article.edit',$row->id).'" class="btn icon btn-success"><i class="bi bi-pencil"></i></a>
+                    <a href="" class="btn icon btn-danger" onclick="deletePost('.$row->id.')"><i class="bi bi-trash"></i></a>
+                    ';
+                    return new HtmlString($button);
+                })
+                ->rawColumns(['image'])
+                ->make(true);
+        }
+        // $articles = Article::orderBy('created_at','desc')->get();
+        // return view('article.index', compact('articles'));
+        return view('article.index');
     }
 
     /**
@@ -24,8 +44,6 @@ class ArticleController extends Controller
      */
     public function create()
     {
-
-        //
         return view('article.add_article');
     }
 

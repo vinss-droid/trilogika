@@ -32,6 +32,18 @@
                             <input type="file" name="image" class="form-control">
                         </div>
                     </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="basicInput">Mulai</label>
+                            <input type="date" value="{{$program->start_date}}" name="start_date" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="basicInput">Selesai</label>
+                            <input type="date" value="{{$program->end_date}}" name="end_date" class="form-control">
+                        </div>
+                    </div>
                     <div class="col-12">
                         <div class="form-group">
                             <label for="basicInput">Content</label>
