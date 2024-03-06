@@ -1,7 +1,6 @@
 @extends('layouts.main')
 @section('style')
 <style>
-
     footer {
         background-image: none;
         background-color: var(--bs-gray-900);
@@ -9,6 +8,15 @@
         background-attachment: fixed;
         background-repeat: no-repeat;
         background-size: cover;
+    }
+    section.heading-page h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 36px;
+    text-transform: uppercase;
+    font-weight: 800;
+    color:var(--bs-gray-900);
+    letter-spacing: 1px;
     }
     section.meetings-page {
     background-image: none;
@@ -21,7 +29,7 @@
       background-image: none;
         padding-top: 230px;
         padding-bottom: 110px;
-        text-align: center;
+        text-align: left;
     }
     section.contact-us {
     background-image: none;
@@ -164,26 +172,32 @@
     </div>
 </section> --}}
 <section class="heading-page header-text" id="top">
-    <div class="container">
-        <div class="row">
-          <h1 class="text-white mb-5">Portofolio Trilogika Edutama</h1>
-                      @foreach ($portofolios as $porto)
-                      <div class="col-md-4">
-                          <div class="tiles">
-                              <a href="#" class="thumbnail tile">
-                                  <img src="{{asset('image/portofolio/'.$porto->image)}}" style="min-height: 40vh; object-fit: cover;">
-                                  <div class="details">
-                                      <span class="title">{{$porto->title}}</span>
-                                      <span class="info">{!! strip_tags(Str::words($porto->content,'10','...')) !!}</span>
-                                  </div>
-                              </a>
-                          </div>
-                      </div>
-                      @endforeach
-                <div class="pagination justify-content-center">
-                  {{ $portofolios->links() }}
-                </div>
+    <div class="container py-4">    
+        <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+          <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">Visi</h1>
+            <p class="col-md-8 fs-4">Lembaga yang kredibel sebagai partner dalam meningkatkan kualitas sumber Daya Manusia Indonesia berbasis kompetensi secara komprehensif</p>
+            {{-- <button class="btn btn-primary btn-lg" type="button">Example button</button> --}}
+          </div>
         </div>
-    </div>
+    
+        <div class="row align-items-md-stretch">
+          <div class="col-md-6">
+            <div class="h-100 p-5 text-bg-dark rounded-3">
+              <h2 class="text-white">MENGAPA PERLU SERTIFIKASI ?</h2>
+              <p class="text-white">Dalam rangka menuju Masyarakat Ekonomi ASEAN, Trilogika Edutama Yogyakarta sebagai lembaga Pendidikan Vokasi dan Pelatihan Ketenagakerjaan menyediakan berbagai skema sertifikasi Profesi untuk memeberikan Program Sertifikasi.
+                Sertifikat Kompetensi untuk membuktikan bahwa seseorang telah mempunyai kemampuan dan keahlian dalam hal Pengetahuan, Keterampilan dan Sikap Kerja yang sesuai dengan tuntutan pekerjaannya.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+              <h2>Misi</h2>
+                <p><strong>a.</strong> Menyelenggarakan berbagai studi, pelatihan (bimtek), vokasi dan pemagangan dalam bidang sumber daya manusia dan produktivitas</p>
+                <p><strong>b.</strong> Merencanakan, memasarkan, menyelenggarakan, hingga mengevaluasi program pengembangan sumber daya manusia</p>
+                <p><strong>c.</strong> Memberikan layanan terbaik dengan focus pada pemecahan masalah sumber daya manusia</p>
+            </div>
+          </div>
+        </div>
+      </div>
 </section>
     @endsection

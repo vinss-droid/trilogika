@@ -1,6 +1,6 @@
 <nav class="main-nav">
     <!-- ***** Logo Start ***** -->
-    <a href="index.html" class="logo" style=" font-size: 16px;">
+    <a href="{{ route('page.home') }}" class="logo" style=" font-size: 16px;">
         <img src="{{asset('front/assets/images/lpk.svg')}}" alt="" style="width: 80px; ">
         Trilogika Edutama
     </a>

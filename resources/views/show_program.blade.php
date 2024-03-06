@@ -1,8 +1,19 @@
 @extends('layouts.main')
 @section('style')
 <style>
+    section.contact-us {
+        background-image: none;
+        background-color: var(--bs-gray-900);
+        padding: 10px 0px 0px 0px;
+}
+    section.meetings-page {
+        background-image: none;
+        background-color: var(--bs-gray-900);
+    padding-top: 140px;
+    padding-bottom: 0px;
+}
     footer {
-        background-image: url("{{asset('front/assets')}}/images/meetings-bg.jpg");
+        /* background-image: url("{{asset('front/assets')}}/images/meetings-bg.jpg"); */
         background-position: center center;
         background-attachment: fixed;
         background-repeat: no-repeat;
@@ -59,7 +70,7 @@
                 <div class="meeting-single-item">
                     <div class="thumb">
                         <div class="date">
-                            <h6>{{Carbon\Carbon::parse($program->created_at)->locale('id')->isoFormat('D MMM')}}<span>{{Carbon\Carbon::parse($program->created_at)->locale('id')->isoFormat('YYYY')}}</span></h6>
+                            <h6>{{Carbon\Carbon::parse($program->start_date)->locale('id')->isoFormat('D MMM')}}<span>{{Carbon\Carbon::parse($program->created_at)->locale('id')->isoFormat('YYYY')}}</span></h6>
                         </div>
                         @if (!$program->image)
                         <img src="{{asset('image/img_default.jpg')}}" style="height: 400px; object-fit: cover;" alt="">
@@ -70,7 +81,7 @@
                     <div class="down-content">
                         <div class="text-center">
                             <h4 class="fs-2 ">{{$program->title}}</h4>
-                            <p class="text-secondary">By: Admin | {{Carbon\Carbon::parse($program->created_at)->locale('id')->isoFormat('DD MMMM YYYY')}}</p>
+                            <p class="text-secondary">By: Admin | {{Carbon\Carbon::parse($program->update_at)->locale('id')->isoFormat('DD MMMM YYYY')}}</p>
                         </div>
                         <p class="description mb-5">
                             {!!$program->content!!}

@@ -17,7 +17,7 @@ class PageController extends Controller
         $cards = Card::all();
         $programs = Program::orderBy('created_at', 'desc')->take(3)->get();
         $articles = Article::orderBy('created_at', 'desc')->take(6)->get();
-        $portofolios = Portofolio::orderBy('created_at', 'desc')->take(6)->get();
+        $portofolios = Portofolio::orderBy('created_at', 'desc')->take(3)->get();
         $courses = Course::all();
         // dd($article);
         return view('home', compact(['cards', 'programs', 'articles', 'courses', 'portofolios']));
@@ -30,7 +30,8 @@ class PageController extends Controller
 
     public function show_galeri()
     {
-        return view('show_galeri');
+        $portofolios = Portofolio::orderBy('created_at','desc')->paginate(12);
+        return view('show_galeri',compact('portofolios'));
     }
     public function programs()
     {
@@ -41,6 +42,10 @@ class PageController extends Controller
     {
         $articles = Article::paginate(6);
         return view('articles', compact('articles'));
+    }
+
+    public function visiMisi(){
+        return view('visi_misi');
     }
 
     public function programSlug($slug)

@@ -316,16 +316,18 @@
 --}}
 <section class="our-facts">
     <div class="container">
-        <div class="mb-3">
-            <h1 class="text-white text-end">Portofolio Trilogika Edutama</h1>
-            <p class="text-white text-end">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum consequuntur possimus fuga ducimus laborum ipsa dignissimos natus eveniet atque dolore.</p>
+        <div class="d-flex justify-content-end">
+            <div class="mb-3 col-md-6">
+                <h1 class="text-white">Portofolio Trilogika Edutama</h1>
+                <p class="text-white">Proyek yang sudah berhasil dilaksanakan oleh Trilogika Edutama dalam membangun kepercayaan di antara klien-klien kami.</p>
+            </div>
         </div>
         <div class="row g-2">
             @foreach ($portofolios as $porto)
             <div class="col-md-4">
                 <div class="tiles">
                     <a href="#" class="thumbnail tile">
-                        <img src="{{asset('image/portofolio/'.$porto->image)}}" style="min-height: 50vh; object-fit: cover;">
+                        <img src="{{asset('image/portofolio/'.$porto->image)}}" style="min-height: 40vh; object-fit: cover;">
                         <div class="details">
                             <span class="title">{{$porto->title}}</span>
                             <span class="info">{!! strip_tags(Str::words($porto->content,'10','...')) !!}</span>
@@ -334,6 +336,11 @@
                 </div>
             </div>
             @endforeach
+        </div>
+        <div class="d-flex justify-content-center mt-3">
+            <a href="{{route('page.show_galeri')}}" class="btn btn-lg btn-danger rounded-pill" style="background-color: #a12c2f; border: none;">
+                <p class="mx-4 text-white" style="font-size: 15px;">SELENGKAPNYA</p>
+            </a>
         </div>
     </div>
 </section>

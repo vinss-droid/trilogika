@@ -47,7 +47,7 @@
                         <i class="bi bi-gear"></i>
                         <span>Pages Feature</span>
                     </a>
-                    <ul class="submenu ">
+                    <ul class="submenu active">
                         <li class="submenu-item ">
                             <a href="{{route('card.index')}}">Cards</a>
                         </li>
