@@ -170,6 +170,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Spatie\Analytics\AnalyticsServiceProvider::class,
+        Spatie\Html\HtmlServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
     ])->toArray(),
 

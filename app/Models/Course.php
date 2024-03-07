@@ -10,7 +10,7 @@ class Course extends Model
 {
     use HasFactory, Sluggable;
 
-    protected $fillable = ['title', 'content', 'image', 'slug'];
+    protected $fillable = ['title', 'content', 'image', 'slug','status'];
 
     public function schemas()
     {

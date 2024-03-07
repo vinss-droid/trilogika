@@ -180,13 +180,10 @@
             {{-- <button class="btn btn-primary btn-lg" type="button">Example button</button> --}}
           </div>
         </div>
-    
         <div class="row align-items-md-stretch">
           <div class="col-md-6">
+            {{-- <img class="img-fluid rounded " src="{{asset('front')}}/assets/images/visi.jpg" alt="" style="height: 40vh"> --}}
             <div class="h-100 p-5 text-bg-dark rounded-3">
-              <h2 class="text-white">MENGAPA PERLU SERTIFIKASI ?</h2>
-              <p class="text-white">Dalam rangka menuju Masyarakat Ekonomi ASEAN, Trilogika Edutama Yogyakarta sebagai lembaga Pendidikan Vokasi dan Pelatihan Ketenagakerjaan menyediakan berbagai skema sertifikasi Profesi untuk memeberikan Program Sertifikasi.
-                Sertifikat Kompetensi untuk membuktikan bahwa seseorang telah mempunyai kemampuan dan keahlian dalam hal Pengetahuan, Keterampilan dan Sikap Kerja yang sesuai dengan tuntutan pekerjaannya.</p>
             </div>
           </div>
           <div class="col-md-6">
@@ -197,6 +194,16 @@
                 <p><strong>c.</strong> Memberikan layanan terbaik dengan focus pada pemecahan masalah sumber daya manusia</p>
             </div>
           </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+            <div class="h-100 p-5 text-bg-dark rounded-3">
+                <h2 class="text-white">MENGAPA PERLU SERTIFIKASI ?</h2>
+                <p class="text-white">Dalam rangka menuju Masyarakat Ekonomi ASEAN, Trilogika Edutama Yogyakarta sebagai lembaga Pendidikan Vokasi dan Pelatihan Ketenagakerjaan menyediakan berbagai skema sertifikasi Profesi untuk memeberikan Program Sertifikasi.
+                  Sertifikat Kompetensi untuk membuktikan bahwa seseorang telah mempunyai kemampuan dan keahlian dalam hal Pengetahuan, Keterampilan dan Sikap Kerja yang sesuai dengan tuntutan pekerjaannya.</p>
+              </div>
+            </div>
+            <div class="col-md-6"></div>
         </div>
       </div>
 </section>

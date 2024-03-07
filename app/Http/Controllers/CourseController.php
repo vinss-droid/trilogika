@@ -129,4 +129,11 @@ class CourseController extends Controller
         $course->delete();
         return redirect()->back()->with('success', 'Course berhasil dihapus');
     }
+
+    public function status(Course $course){
+
+        $newStatus = $course->status == 'active' ? 'inactive' : 'active';
+        $course->update(['status' => $newStatus]);
+        return response()->json(['message' => "Status updated to $newStatus"], 200);
+    }
 }

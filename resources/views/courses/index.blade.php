@@ -37,7 +37,11 @@
                         <td class="text-bold-500">{{$course->created_at}}</td>
                         <td class="text-bold-500"><img class="rounded" src="{{asset('image/course/'.$course->image)}}" alt="" width="100px"></td>
                         <td>
-                            <a href="#" class="btn icon btn-primary"><i class="bi bi-book"></i></a>
+                            @if ($course->status == 'active')
+                            <a href="#" class="btn icon btn-primary" id="updateStatusBtn" data-id={{ $course->id }}><i class="bi bi-eye"></i></a>
+                            @else
+                            <a href="#" class="btn icon btn-secondary" id="updateStatusBtn" data-id={{ $course->id }}><i class="bi bi-eye-slash"></i></a>
+                            @endif
                             <a href="{{route('course.edit',$course->id)}}" class="btn icon btn-success"><i class="bi bi-pencil"></i></a>
                             <a href="" class="btn icon btn-danger" onclick="deletePost('{{$course->id}}')"><i class="bi bi-trash"></i></a>
                         </td>
@@ -55,6 +59,32 @@
 @endsection
 @section('script')
 <script>
+$(document).ready(function() {
+    $('#updateStatusBtn').click(function(event) {
+        event.preventDefault(); // Mencegah tindakan default dari link
+        var id = $(this).data('id'); 
+        // Kirim permintaan AJAX untuk memperbarui status
+        $.ajax({
+            url: '{{ route("course.status",":id") }}'.replace(':id', id),
+            type: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+            },
+            data: {
+                // Kirim data apa pun yang Anda butuhkan untuk menentukan status
+                _method: 'PATCH', // Menggunakan metode PUT
+            },
+            success: function(response) {
+                // Handle response data, misalnya, tampilkan pesan sukses atau perbarui tampilan
+                console.log(response);
+            },
+            error: function(xhr, status, error) {
+                console.error('There has been a problem with your AJAX request:', error);
+            }
+        });
+    });
+});
+
     document.addEventListener('DOMContentLoaded', function() {
         if ("{{session('success')}}") {
             Toastify({

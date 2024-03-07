@@ -48,6 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/admin/program', ProgramController::class);
     Route::resource('/admin/article', ArticleController::class);
     Route::resource('/admin/course', CourseController::class);
+    Route::patch('/admin/course-status/{course}',[CourseController::class,'status'])->name('course.status');
     Route::resource('/admin/portofolio', PortofolioController::class);
 });
 

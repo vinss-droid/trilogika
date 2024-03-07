@@ -46,6 +46,13 @@
                             <input type="file" name="image" class="form-control">
                         </div>
                     </div>
+                    <div class="col-6">
+                            <h6>Status</h6>
+                            <p>status pelatihan aktif dan tidak aktif</p>
+                            <fieldset class="form-group">
+                            {{ Html::select('status', ['active' => 'Aktif', 'inactive' => 'mati'], null)->class('form-control') }}
+                            </fieldset>
+                    </div>
                     <div class="col-12">
                         <div class="form-group">
                             <label for="basicInput">Content</label>
