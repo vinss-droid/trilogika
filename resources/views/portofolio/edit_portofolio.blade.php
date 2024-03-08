@@ -21,17 +21,23 @@
                 @csrf
                 @method('PUT')
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-md-6 col-sm-12">
                         <div class="form-group">
                             <label for="basicInput">Title</label>
                             <input type="text" value="{{$portofolio->title}}" name="title" class="form-control">
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-3 col-sm-6">
                         <div class="form-group">
                             <label for="basicInput">Image</label>
                             <img src="{{asset('/image/portofolio/'.$portofolio->image)}}" class="img-thumbnail" width="100px" alt="">
                             <input type="file" name="image" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="form-group">
+                            <label for="basicInput">Image</label>
+                            <input type="datetime-local" name="created_at" value="{{ $portofolio->created_at }}" class="form-control">
                         </div>
                     </div>
                     <div class="col-12">

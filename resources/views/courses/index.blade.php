@@ -38,9 +38,9 @@
                         <td class="text-bold-500"><img class="rounded" src="{{asset('image/course/'.$course->image)}}" alt="" width="100px"></td>
                         <td>
                             @if ($course->status == 'active')
-                            <a href="#" class="btn icon btn-primary" id="updateStatusBtn" data-id={{ $course->id }}><i class="bi bi-eye"></i></a>
+                            <a href="#" class="btn icon btn-primary updateStatusBtn "  data-id={{ $course->id }}><i class="bi bi-eye"></i></a>
                             @else
-                            <a href="#" class="btn icon btn-secondary" id="updateStatusBtn" data-id={{ $course->id }}><i class="bi bi-eye-slash"></i></a>
+                            <a href="#" class="btn icon btn-secondary updateStatusBtn" data-id={{ $course->id }}><i class="bi bi-eye-slash"></i></a>
                             @endif
                             <a href="{{route('course.edit',$course->id)}}" class="btn icon btn-success"><i class="bi bi-pencil"></i></a>
                             <a href="" class="btn icon btn-danger" onclick="deletePost('{{$course->id}}')"><i class="bi bi-trash"></i></a>
@@ -60,7 +60,7 @@
 @section('script')
 <script>
 $(document).ready(function() {
-    $('#updateStatusBtn').click(function(event) {
+    $('.updateStatusBtn').click(function(event) {
         event.preventDefault(); // Mencegah tindakan default dari link
         var id = $(this).data('id'); 
         // Kirim permintaan AJAX untuk memperbarui status
@@ -75,9 +75,13 @@ $(document).ready(function() {
                 _method: 'PATCH', // Menggunakan metode PUT
             },
             success: function(response) {
-                // Handle response data, misalnya, tampilkan pesan sukses atau perbarui tampilan
-                console.log(response);
-            },
+                // Toggle kelas-kelas untuk tombol
+                $(this).toggleClass('btn-primary btn-secondary');
+                // Toggle ikon tombol
+                $(this).find('i').toggleClass('bi-eye bi-eye-slash');
+                // Tampilkan pesan sukses atau perbarui tampilan jika perlu
+                // console.log(response);
+            }.bind(this), // Mengikat konteks klik tombol
             error: function(xhr, status, error) {
                 console.error('There has been a problem with your AJAX request:', error);
             }

@@ -18,7 +18,7 @@ class PageController extends Controller
         $programs = Program::orderBy('created_at', 'desc')->take(3)->get();
         $articles = Article::orderBy('created_at', 'desc')->take(6)->get();
         $portofolios = Portofolio::orderBy('created_at', 'desc')->take(3)->get();
-        $courses = Course::all();
+        $courses = Course::orderBy('created_at','desc')->where('status','active')->take(6)->get();
         // dd($article);
         return view('home', compact(['cards', 'programs', 'articles', 'courses', 'portofolios']));
     }

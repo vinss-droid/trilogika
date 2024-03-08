@@ -32,16 +32,22 @@
             <form id="form" action="{{route('portofolio.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-md-6 col-sm-12">
                         <div class="form-group">
                             <label for="basicInput">Title</label>
                             <input type="text" name="title" class="form-control">
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-md-3 col-sm-6 ">
                         <div class="form-group">
                             <label for="basicInput">Image</label>
                             <input type="file" name="image" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="form-group">
+                            <label for="basicInput">Tanggal</label>
+                            <input type="datetime-local" name="created_at" class="form-control">
                         </div>
                     </div>
                     <div class="col-12">

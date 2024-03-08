@@ -10,7 +10,7 @@ class Portofolio extends Model
 {
     use HasFactory, Sluggable;
 
-    protected $fillable = ['title', 'content', 'image', 'slug'];
+    protected $fillable = ['title', 'content', 'image', 'slug','created_at'];
 
     public function sluggable(): array
     {

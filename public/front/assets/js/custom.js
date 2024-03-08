@@ -131,7 +131,7 @@
 
 	$('.owl-courses-item').owlCarousel({
 		items: 4,
-		loop: true,
+		loop: false,
 		dots: true,
 		nav: true,
 		autoplay: true,

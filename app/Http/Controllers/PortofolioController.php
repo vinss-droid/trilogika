@@ -23,7 +23,7 @@ class PortofolioController extends Controller
     public function create()
     {
         //
-        return view('portofolio.create');
+        return view('portofolio.add_portofolio');
     }
 
     /**
@@ -33,7 +33,7 @@ class PortofolioController extends Controller
     {
         //
         $date = str_replace([' ', '-', ':'], '', date('Y-m-d', time()));
-
+// dd($request->all());
         $validatedData = $request->validate([
             'title' => 'required',
             'content' => 'required',
@@ -51,6 +51,7 @@ class PortofolioController extends Controller
             'title' => $validatedData['title'],
             'content' => $validatedData['content'],
             'image' => $fileName,
+            'created_at'=> $request['created_at'],
         ]);
 
         return redirect()->route('portofolio.index')->with('success', 'Portofolio berhasil ditambahkan');
@@ -99,6 +100,7 @@ class PortofolioController extends Controller
         }
 
         $portofolio->update($validatedData);
+        $portofolio->update(['created_at'=>$request['created_at']]);
         return redirect()->route('portofolio.index')->with('success', 'Portofolio berhasil diperbarui');
     }
 
