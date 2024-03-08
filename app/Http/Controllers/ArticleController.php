@@ -134,6 +134,7 @@ class ArticleController extends Controller
             $validatedData['image'] = $article->image;
         }
 
+        $article->slug = null;
         $article->update($validatedData);
         return redirect()->route('article.index')->with('success', 'Artikel berhasil diperbarui');
     }

@@ -99,6 +99,7 @@ class PortofolioController extends Controller
             $validatedData['image'] = $portofolio->image;
         }
 
+        $portofolio->slug = null;
         $portofolio->update($validatedData);
         $portofolio->update(['created_at'=>$request['created_at']]);
         return redirect()->route('portofolio.index')->with('success', 'Portofolio berhasil diperbarui');

@@ -121,7 +121,7 @@ class ProgramController extends Controller
         } else {
             $validatedData['image'] = $program->image;
         }
-
+        $program->slug = null;
         $program->update($validatedData);
         $program->update(['end_date'=>$request['end_date']]);
         return redirect()->route('program.index')->with('success', 'Program berhasil diperbarui');

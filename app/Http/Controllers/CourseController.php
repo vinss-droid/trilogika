@@ -110,6 +110,7 @@ class CourseController extends Controller
             $validatedData['image'] = $course->image;
         }
 
+        $course->slug = null;
         $course->update($validatedData);
         return redirect()->route('course.index')->with('success', 'Course berhasil diperbarui');
     }
