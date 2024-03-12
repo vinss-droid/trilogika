@@ -1,9 +1,11 @@
 @extends('layouts.admin.main')
 @section('meta')
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<link  href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
 @endsection
 @section('style')
+{{-- <link  href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet"> --}}
+<link rel="stylesheet" href="{{asset('mazer')}}/assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="{{asset('mazer')}}/assets/compiled/css/table-datatable-jquery.css">
 <style>
     body.theme-dark p {
         margin-bottom: 0rem;
@@ -12,7 +14,6 @@
 </style>
 @endsection
 @section('content')
-<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
@@ -36,7 +37,7 @@
             </div>
         </div>
     </div>
-</div>
+
 
 {{-- 
 <div class="card">
@@ -79,7 +80,10 @@
 
 @endsection
 @section('script')
+{{-- <script src="{{asset('mazer')}}/assets/extensions/datatables.net/js/jquery.dataTables.min.js"></script> --}}
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="{{asset('mazer')}}/assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+<script src="{{asset('mazer')}}/assets/static/js/pages/datatables.js"></script>
 <script>
 $(document).ready(function () {
    $('#tbl_list').DataTable({

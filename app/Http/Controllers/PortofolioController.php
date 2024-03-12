@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Portofolio;
 use Illuminate\Http\Request;
+use Illuminate\Support\HtmlString;
 
 class PortofolioController extends Controller
 {
@@ -13,8 +14,28 @@ class PortofolioController extends Controller
     public function index()
     {
         //
-        $portofolios = Portofolio::orderBy('created_at','desc')->get();
-        return view('portofolio.index', compact('portofolios'));
+        // $portofolios = Portofolio::orderBy('created_at','desc')->get();
+        // return view('portofolio.index', compact('portofolios'));
+        if (request()->ajax()) {
+            $portofolios = Portofolio::orderBy('created_at','desc');
+            return datatables()->of($portofolios)
+            ->addColumn('DT_RowIndex', function ($user) {
+                // Menghitung nomor urut secara manual
+                return $user->id;
+            })
+                ->addColumn('image', function ($row) {
+                    return '<img src="' . asset("image/portofolio/" . $row->image) . '" alt="Image" width="100" height="100">';
+                })
+                ->addColumn('action', function ($row) {
+                    $button = '<a href="'.route('portofolio.edit',$row->id).'" class="btn icon btn-success"><i class="bi bi-pencil"></i></a>
+                    <a href="" class="btn icon btn-danger" onclick="deletePost('.$row->id.')"><i class="bi bi-trash"></i></a>
+                    ';
+                    return new HtmlString($button);
+                })
+                ->rawColumns(['image'])
+                ->make(true);
+        }
+        return view('portofolio.index');
     }
 
     /**

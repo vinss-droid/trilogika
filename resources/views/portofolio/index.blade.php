@@ -3,6 +3,8 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 @section('style')
+<link rel="stylesheet" href="{{asset('mazer')}}/assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="{{asset('mazer')}}/assets/compiled/css/table-datatable-jquery.css">
 <style>
     body.theme-dark p {
         margin-bottom: 0rem;
@@ -12,10 +14,38 @@
 @endsection
 @section('content')
 
-<div class="card">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">
+                Minimal jQuery Datatable
+            </h5>
+            <a href="{{route('portofolio.create')}}" class="btn btn-success mt-2">Tambah</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive datatable-minimal">
+                <table class="table" id="tbl_list">
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>JUDUL</th>
+                            <th>GAMBAR</th>
+                            <th>AKSI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+{{-- <div class="card">
     <div class="card-header">
         <h4 class="card-title">Portofolio</h4>
-        <!-- <button class="btn btn-success mt-2" data-bs-toggle="modal" data-bs-target="#inlineForm">Tambah</button> -->
+       
         <a href="{{route('portofolio.create')}}" class="btn btn-success mt-2">Tambah</a>
     </div>
     <div class="card-content">
@@ -47,11 +77,28 @@
             </table>
         </div>
     </div>
-</div>
+</div> --}}
 
 @endsection
 @section('script')
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="{{asset('mazer')}}/assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+<script src="{{asset('mazer')}}/assets/static/js/pages/datatables.js"></script>
 <script>
+    $(document).ready(function () {
+   $('#tbl_list').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{{ url()->current() }}',
+        // order: [[ 0, "desc" ]], 
+        columns: [
+            { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: true, searchable: false },
+            { data: 'title' },
+            { data: 'image' },
+            {data:'action'},
+        ]
+    });
+ });
     document.addEventListener('DOMContentLoaded', function() {
         if ("{{session('success')}}") {
             Toastify({
