@@ -84,4 +84,8 @@ class PageController extends Controller
         }
         return view('show_course', compact('course'));
     }
+
+    public function history(){
+        return view('history');
+    }
 }

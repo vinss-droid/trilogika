@@ -30,6 +30,7 @@ Route::get('/show_galeri', [PageController::class, 'show_galeri'])->name('page.s
 Route::get('/programs', [PageController::class, 'programs'])->name('page.programs');
 Route::get('/articles', [PageController::class, 'articles'])->name('page.articles');
 Route::get('/visi-misi',[PageController::class,'visiMisi'])->name('page.visi-misi');
+Route::get('/history',[PageController::class,'history'])->name('page.history');
 
 // Route::get('/mengapa-perlu-sertifikasi', function () {
 //     return view('show_mengapa');

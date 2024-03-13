@@ -8,8 +8,8 @@
                 <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
                     <h5 class="text-uppercase mb-4">Tentang Kami</h5>
                     <ul class="text-white">
-                        <li><a class="text-white" href="#">Visi & Misi</a></li>
-                        <li><a class="text-white" href="#">History</a></li>
+                        <li><a class="text-white" href="{{ route('page.visi-misi') }}">Visi & Misi</a></li>
+                        <li><a class="text-white" href="{{ route('page.history') }}">History</a></li>
                         <li><a class="text-white" href="#">Patner</a></li>
                         <li><a class="text-white" href="#">Career</a></li>
                         <li><a class="text-white" href="#">Pricing</a></li>
