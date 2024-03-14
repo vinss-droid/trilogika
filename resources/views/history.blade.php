@@ -136,7 +136,7 @@ App::setLocale('id');
             <div class="col-5">
                 <img class="img-fluid" src="{{ asset('image/history/yayasanbhakti.jpg') }}" alt="" style="height: 30vh; object-fit: cover">
             </div>
-            <p class="border-bottom border-dark-subtle border-2 my-5"></p>
+            <p class="border-bottom border-dark-subtle border-2 my-3"></p>
 
             <div class="col-3">
                 <h6 class="display-6">
@@ -152,7 +152,7 @@ App::setLocale('id');
             <div class="col-5">
                 <img class="img-fluid" src="{{ asset('image/history/trilogika.JPG') }}" alt="" style="height: 30vh; object-fit: cover">
             </div>
-            <p class="border-bottom border-dark-subtle border-2 my-5"></p>
+            <p class="border-bottom border-dark-subtle border-2 my-3"></p>
 
             <div class="col-3">
                 <h6 class="display-6">
@@ -170,7 +170,7 @@ App::setLocale('id');
             <div class="col-5">
                 <img class="img-fluid" src="{{ asset('image/history/lsppin.JPG') }}" alt="" style="height: 30vh; object-fit: cover">
             </div>
-            <p class="border-bottom border-dark-subtle border-2 my-5"></p>
+            <p class="border-bottom border-dark-subtle border-2 my-3"></p>
 
             <div class="col-3">
                 <h6 class="display-6">
@@ -180,29 +180,31 @@ App::setLocale('id');
             <div class="col-4">
                 <strong>Trilogika Beauty Academy</strong>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi animi perspiciatis ipsa expedita vero consequatur. Voluptatibus aliquam libero sed fugiat.
+                    Lembaga kursus dan pelatihan Trilogika Beauty Academy adalah salah satu lembaga yang bergerak pada bidang kursus dan pelatihan bagi masyarakat Indonesia.
+                    Pendirian LKP Trilogika Beauty Academy dilatarbelakangi oleh tujuan untuk membantu pemerintah dalam memberantas pengangguran dengan memberikan
+                    keterampilan yang berdaya guna bagi masyarakat, khususnya pada bidang kecantikan.
                 </p>
             </div>
             <div class="col-5">
                 <img class="img-fluid" src="{{ asset('image/history/tebeauty.jpg') }}" alt="" style="height: 30vh; object-fit: cover">
             </div>
-            <p class="border-bottom border-dark-subtle border-2 my-5"></p>
+            <p class="border-bottom border-dark-subtle border-2 my-3"></p>
         </div>
         <div class="row">
             {{-- <div class="col-3">
             </div> --}}
-            <div class="col-6 mt-5">
-                
+            <div class="col-4 ">
             </div>
-            <div class="col-6">
+            <div class="col-4 mt-5">
                 <div class="d-flex justify-content-center">
                     <a href="#">
                         {{-- <h5 class="display-5 text-center text-dark">Join us !</h5> --}}
                         <button type="button" class="btn btn-outline-secondary"><h5 class="display-5">Join us <i class="fas fa-arrow-right"></i></h5></button>
                     </a>
                 </div>
-                    <p class="border-bottom border-dark-subtle border-2 my-5"></p>
+                    <p class="border-bottom border-dark-subtle border-2 mt-5"></p>
             </div>
+            <div class="col-4"></div>
         </div>
     </div>
 </section>

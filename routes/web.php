@@ -1,16 +1,14 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\CourseController;
-use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
-use App\Models\Article;
-use App\Models\Courses;
-use App\Models\Portofolio;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +33,10 @@ Route::get('/history',[PageController::class,'history'])->name('page.history');
 // Route::get('/mengapa-perlu-sertifikasi', function () {
 //     return view('show_mengapa');
 // })->name('page.why-certification');
+
+// socialite auth
+Route::get('auth/{provider}',[SocialiteController::class,'redirectToProvider']);
+Route::get('auth/{provider}/callback',[SocialiteController::class,'handleProvideCallback']);
 
 Route::get('/dashboard', function () {
     return view('dashboard2');
