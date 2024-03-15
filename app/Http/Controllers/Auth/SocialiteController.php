@@ -27,7 +27,6 @@ class SocialiteController extends Controller
     }
 
     public function findOrCreateUser($provider , $socialUser){
-        // dd($socialUser); 
         $socialAccount = SocialAccount::where('provider_id', $socialUser->getId())->where('provider_name', $provider)->first();
 
         if($socialAccount){
@@ -46,6 +45,7 @@ class SocialiteController extends Controller
                 'provider_id'=> $socialUser->getId(),
                 'provider_name'=> $provider,
             ]);
+            $user->assignRole('guest');
 
             return $user;
         }

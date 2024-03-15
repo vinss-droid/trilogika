@@ -52,8 +52,11 @@
                         <a href="https://www.facebook.com/trilogikaedutama?locale=id_ID" type="button" class="btn btn-floating btn-danger btn-lg"><i class="fab fa-facebook-f"></i></a>
                         <!-- Instagram -->
                         <a href="https://www.instagram.com/trilogikaedutama" type="button" class="btn btn-floating btn-danger btn-lg"><i class="fab fa-instagram"></i></a>
-                        <!-- Google + -->
+                        {{-- tiktok --}}
+                        <a href="https://www.tiktok.com/@trilogikaedutama" type="button" class="btn btn-floating btn-danger btn-lg"><i class="fab fa-tiktok"></i></a>
+                        <!-- Youtube -->
                         <a href="https://www.youtube.com/@TrilogikaEdutama" type="button" class="btn btn-floating btn-danger btn-lg"><i class="fab fa-youtube"></i></a>
+
                     </div>
                 </div>
                 <!--Grid column-->

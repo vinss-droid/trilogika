@@ -25,6 +25,11 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="https://www.tiktok.com/@trilogikaedutama">
+                                  <i class="fab fa-tiktok" style="font-size: larger;"></i>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="https://www.youtube.com/@TrilogikaEdutama">
                                     <i class="fab fa-youtube" style="font-size: larger;"></i>
                                 </a>

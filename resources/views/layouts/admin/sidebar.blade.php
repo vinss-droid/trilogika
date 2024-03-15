@@ -39,9 +39,9 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li class="sidebar-title">Pendaftaran</li>
-
-                </li>
+                {{-- <li class="sidebar-title">Pendaftaran</li>
+                </li> --}}
+                @role('admin')
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-gear"></i>
@@ -65,6 +65,7 @@
                         </li>
                     </ul>
                 </li>
+                @endrole
                 <li class="sidebar-item  ">
                     <form action="{{route('logout')}}" method="post">
                         @csrf
