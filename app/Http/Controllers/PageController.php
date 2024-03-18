@@ -40,7 +40,7 @@ class PageController extends Controller
     }
     public function articles()
     {
-        $articles = Article::paginate(6);
+        $articles = Article::orderBy('created_at','desc')->paginate(6);
         return view('articles', compact('articles'));
     }
 
