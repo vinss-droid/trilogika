@@ -182,12 +182,14 @@
         </div>
         <div class="row align-items-md-stretch">
           <div class="col-md-6">
-            {{-- <img class="img-fluid rounded " src="{{asset('front')}}/assets/images/visi.jpg" alt="" style="height: 40vh"> --}}
+            <div class="ratio ratio-16x9">
+                <iframe src="https://www.youtube.com/embed/wTq7wdlWGWs?si=gwh5vNHQUFAHjCe0" title="YouTube video" allowfullscreen></iframe>
+              </div>
             <div class="h-100 p-5 text-bg-dark rounded-3">
             </div>
           </div>
           <div class="col-md-6">
-            <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+            <div class="p-5 bg-body-tertiary border rounded-3">
               <h2>Misi</h2>
                 <p><strong>a.</strong> Menyelenggarakan berbagai studi, pelatihan (bimtek), vokasi dan pemagangan dalam bidang sumber daya manusia dan produktivitas</p>
                 <p><strong>b.</strong> Merencanakan, memasarkan, menyelenggarakan, hingga mengevaluasi program pengembangan sumber daya manusia</p>
@@ -196,7 +198,7 @@
           </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
             <div class="h-100 p-5 text-bg-dark rounded-3">
                 <h2 class="text-white">MENGAPA PERLU SERTIFIKASI ?</h2>
                 <p class="text-white">Dalam rangka menuju Masyarakat Ekonomi ASEAN, Trilogika Edutama Yogyakarta sebagai lembaga Pendidikan Vokasi dan Pelatihan Ketenagakerjaan menyediakan berbagai skema sertifikasi Profesi untuk memeberikan Program Sertifikasi.

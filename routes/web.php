@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\ProfileController;
@@ -46,6 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/from-app',[GuestController::class,'formApp'])->name('page.formApp');
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
