@@ -34,6 +34,11 @@
                                     <i class="fab fa-youtube" style="font-size: larger;"></i>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('login') }}">
+                                    <span>Login</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>

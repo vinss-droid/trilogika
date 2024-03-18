@@ -212,7 +212,7 @@
                 </div>
             </div>
             <div class="col-lg-5 text-white mb-3">
-                <h1>Program Terbaru Kami</h1>
+                <h1>Up Coming Program</h1>
                 <p class="text-white mb-2">Program ini didesain untuk meningkatkan kualitas SDM di Indonesia melalui program pendidikan yang berkualitas. Kami berkomitmen untuk membuka pintu akses pendidikan yang lebih luas untuk masyarakat</p>
                 <a href="{{route('page.programs')}}" class="btn btn-lg btn-danger rounded-pill" style="background-color: #a12c2f; border: none;">
                     <p class="mx-4 text-white" style="font-size: 15px;">SELENGKAPNYA</p>
@@ -221,7 +221,6 @@
             <div class="col-lg-7">
                 <div class="owl-program-item owl-carousel mb-5">
                     @foreach ($programs as $program )
-                    
                     <div class="card mb-3">
                         <div class="row g-0">
                             <div class="col-md-5">
@@ -251,69 +250,7 @@
     </div>
     </div>
 </section>
-{{--
 
-<section class="apply-now" id="apply">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 align-self-center">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="item">
-                            <h3>MENGAPA PERLU SERTIFIKASI ?</h3>
-                            <p>
-                                Dalam rangka menuju Masyarakat Ekonomi ASEAN, Trilogika Edutama Yogyakarta sebagai lembaga Pendidikan Vokasi dan Pelatihan Ketenagakerjaan menyediakan berbagai skema sertifikasi Profesi untuk memeberikan Program Sertifikasi.
-                            </p>
-                            <p>
-                                Sertifikat Kompetensi untuk membuktikan bahwa seseorang telah mempunyai kemampuan dan keahlian dalam hal Pengetahuan, Keterampilan dan Sikap Kerja yang sesuai dengan tuntutan pekerjaannya.
-
-                            </p>
-                            <p>
-                                Sertifikat Kompetensi menjadi salah satu pemenuhan akan akreditasi bagi Lembaga Pendidikan. Menjadi dokumen penting dalam mengembangkan karir SDM pada kategori Kualifikasi Pekerjaan.
-                            </p>
-                            <div class="main-button-red">
-                                <div class=""><a href="">Daftar Sertifikasi Sekarang</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="accordions is-first-expanded">
-                    <article class="accordion">
-                        <div class="accordion-head">
-                            <span>Visi</span>
-                            <span class="icon">
-                                <i class="icon fa fa-chevron-right"></i>
-                            </span>
-                        </div>
-                        <div class="accordion-body">
-                            <div class="content">
-                                <p>Lembaga yang kredibel sebagai partner dalam meningkatkan kualitas sumber Daya Manusia Indonesia berbasis kompetensi secara komprehensif</p>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="accordion">
-                        <div class="accordion-head">
-                            <span>Misi</span>
-                            <span class="icon">
-                                <i class="icon fa fa-chevron-right"></i>
-                            </span>
-                        </div>
-                        <div class="accordion-body">
-                            <div class="content">
-                                <p><strong>a.</strong> Menyelenggarakan berbagai studi, pelatihan (bimtek), vokasi dan pemagangan dalam bidang sumber daya manusia dan produktivitas</p>
-                                <p><strong>b.</strong> Merencanakan, memasarkan, menyelenggarakan, hingga mengevaluasi program pengembangan sumber daya manusia</p>
-                                <p><strong>c.</strong> Memberikan layanan terbaik dengan focus pada pemecahan masalah sumber daya manusia</p>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
---}}
 <section class="our-facts">
     <div class="container">
         <div class="d-flex justify-content-end">

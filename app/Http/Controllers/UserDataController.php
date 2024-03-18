@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserBio;
+use App\Models\UserData;
 use Illuminate\Http\Request;
 
-class UserBioController extends Controller
+class UserDataController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class UserBioController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(UserBio $userBio)
+    public function show(UserData $userData)
     {
         //
     }
@@ -42,7 +42,7 @@ class UserBioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(UserBio $userBio)
+    public function edit(UserData $userData)
     {
         //
     }
@@ -50,7 +50,7 @@ class UserBioController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, UserBio $userBio)
+    public function update(Request $request, UserData $userData)
     {
         //
     }
@@ -58,7 +58,7 @@ class UserBioController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(UserBio $userBio)
+    public function destroy(UserData $userData)
     {
         //
     }
