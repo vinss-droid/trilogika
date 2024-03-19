@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\IndoRegionController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\ProfileController;
@@ -49,6 +50,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/from-app',[GuestController::class,'formApp'])->name('page.formApp');
+    Route::post('/regence',[IndoRegionController::class,'getRegencies'])->name('get_regencies');
+    Route::post('/district',[IndoRegionController::class,'getDistricts'])->name('get_districts');
+    Route::post('/village',[IndoRegionController::class,'getVillages'])->name('get_villages');
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
