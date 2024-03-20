@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('schemas', function (Blueprint $table) {
+        Schema::create('unit_kompetensis', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string('jenis');
-            $table->string('nomor');
+            $table->unsignedBigInteger('schema_id');
+            $table->string('kode');
             $table->string('judul');
-            $table->string('tujuan');
-            $table->enum('status',['active','inactive'])->default('inactive');
+            $table->string('jenis_standar');
             $table->timestamps();
 
+            $table->foreign('schema_id')->references('id')->on('schemas')->onDelete('cascade');
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('schemas');
+        Schema::dropIfExists('unit_kompetensis');
     }
 };

@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Schema;
+use App\Models\UnitKompetensi;
 use Illuminate\Http\Request;
 
-class SchemaController extends Controller
+class UnitKompetensiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $schemas = Schema::orderBy('created_at','desc')->get();
-        return view('schema.index',['schemas' => $schemas->toJson()]);
+        //
     }
 
     /**
@@ -35,7 +34,7 @@ class SchemaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Schema $schema)
+    public function show(UnitKompetensi $unitKompetensi)
     {
         //
     }
@@ -43,7 +42,7 @@ class SchemaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Schema $schema)
+    public function edit(UnitKompetensi $unitKompetensi)
     {
         //
     }
@@ -51,7 +50,7 @@ class SchemaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Schema $schema)
+    public function update(Request $request, UnitKompetensi $unitKompetensi)
     {
         //
     }
@@ -59,7 +58,7 @@ class SchemaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Schema $schema)
+    public function destroy(UnitKompetensi $unitKompetensi)
     {
         //
     }

@@ -5,20 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Schema extends Model
+class BuktiPersyaratan extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'jenis',
-        'nomor',
-        'judul',
-        'tujuan',
+        'user_id',
+        'ijazah',
+        'sk_kerja',
+        'ktp',
+        'pas_foto',
+        'cv',
         'status',
     ];
-
- public function unitKompetensis()
-    {
-        return $this->hasMany(UnitKompetensi::class);
-    }
 }

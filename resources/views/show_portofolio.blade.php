@@ -171,7 +171,7 @@
                       <div class="col-md-4">
                           <div class="tiles">
                               <a href="#" class="thumbnail tile">
-                                  <img src="{{asset('image/portofolio/'.$porto->image)}}" style="min-height: 40vh; object-fit: cover;">
+                                  <img src="{{asset('image/portofolio/'.$porto->image)}}" style="height: 40vh; object-fit: cover;">
                                   <div class="details">
                                       <span class="title">{{$porto->title}}</span>
                                       <span class="info">{!! strip_tags(Str::words($porto->content,'10','...')) !!}</span>

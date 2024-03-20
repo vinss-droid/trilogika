@@ -275,7 +275,7 @@
             @endforeach
         </div>
         <div class="d-flex justify-content-center mt-3">
-            <a href="{{route('page.show_galeri')}}" class="btn btn-lg btn-danger rounded-pill" style="background-color: #a12c2f; border: none;">
+            <a href="{{route('page.show_portofolio')}}" class="btn btn-lg btn-danger rounded-pill" style="background-color: #a12c2f; border: none;">
                 <p class="mx-4 text-white" style="font-size: 15px;">SELENGKAPNYA</p>
             </a>
         </div>

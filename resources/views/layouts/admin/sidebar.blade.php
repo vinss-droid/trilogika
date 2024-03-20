@@ -65,6 +65,20 @@
                         </li>
                     </ul>
                 </li>
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-gear"></i>
+                        <span>APL 01 Feature</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="submenu-item ">
+                            <a href="{{ route('schema.index') }}">Schema</a>
+                        </li>
+                        <li class="submenu-item ">
+                            <a href="#">Unit Kompetensi</a>
+                        </li>
+                    </ul>
+                </li>
                 @endrole
                 <li class="sidebar-item  ">
                     <form action="{{route('logout')}}" method="post">

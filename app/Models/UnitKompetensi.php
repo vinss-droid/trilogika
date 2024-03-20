@@ -5,20 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Schema extends Model
+class UnitKompetensi extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'jenis',
-        'nomor',
+        'kode',
         'judul',
-        'tujuan',
-        'status',
+        'jenis_standar',
+        'schema_id',
     ];
 
- public function unitKompetensis()
+    public function schema()
     {
-        return $this->hasMany(UnitKompetensi::class);
+        return $this->belongsTo(Schema::class);
     }
 }

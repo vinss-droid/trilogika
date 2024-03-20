@@ -11,6 +11,7 @@ use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
 
+use App\Http\Controllers\SchemaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'home'])->name('page.home');
 Route::get('/contact', [PageController::class, 'contact'])->name('page.contact');
-Route::get('/show_galeri', [PageController::class, 'show_galeri'])->name('page.show_galeri');
+Route::get('/show_portofolio', [PageController::class, 'show_portofolio'])->name('page.show_portofolio');
 Route::get('/programs', [PageController::class, 'programs'])->name('page.programs');
 Route::get('/articles', [PageController::class, 'articles'])->name('page.articles');
 Route::get('/visi-misi',[PageController::class,'visiMisi'])->name('page.visi-misi');
@@ -62,6 +63,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('/admin/course', CourseController::class);
     Route::patch('/admin/course-status/{course}',[CourseController::class,'status'])->name('course.status');
     Route::resource('/admin/portofolio', PortofolioController::class);
+    Route::resource('/admin/schema', SchemaController::class);
 });
 
 Route::get('/program/{slug}', [PageController::class, 'programSlug'])->name('program.slug');

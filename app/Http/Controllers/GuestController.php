@@ -17,4 +17,8 @@ class GuestController extends Controller
         return view('guest.form_app',compact('provinces'));
     }
 
+    public function formAppStore(Request $request){
+        
+    }
+
 }

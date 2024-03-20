@@ -28,10 +28,10 @@ class PageController extends Controller
         return view('contact_us');
     }
 
-    public function show_galeri()
+    public function show_portofolio()
     {
         $portofolios = Portofolio::orderBy('created_at','desc')->paginate(12);
-        return view('show_galeri',compact('portofolios'));
+        return view('show_portofolio',compact('portofolios'));
     }
     public function programs()
     {

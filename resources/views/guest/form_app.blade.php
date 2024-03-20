@@ -9,24 +9,25 @@
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Form Application 01</h3>
-                <p class="text-subtitle text-muted">Give textual form controls like input upgrade with custom styles,
-                    sizing, focus states, and more.</p>
+                <h3>Form Application 01 Permohonan Sertifikasi Kompetensi</h3>
+                <p class="text-subtitle text-muted">Rincian Data Pemohon Sertifikasi
+                    Pada bagian ini, cantumlan data pribadi, data pendidikan formal serta data pekerjaan anda pada saat ini.
+                    </p>
             </div>
         </div>
     </div>
 <section class="section">
-<form action="">
-<div class="col-md-8">
+
+<form action="" method="POST">
+    @csrf
+<div class="row">
+<div class="col-lg-8">
     <div class="card">
-        <div class="card-header">
-            <h4 class="card-title">Form Data diri</h4>
-        </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">
                     <div class="col-md-12 mt-5 mb-2">
-                        <h6>Alamat Lengkap</h6>
+                        <h6>Data Diri</h6>
                         <hr>
                     </div>
                     
@@ -46,13 +47,19 @@
                     </div>
                     
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Tempat Lahir</label>
-                                {{ html()->select('tempat_lahir', $provinces)->id('tempat_lahir')->class('form-control') }}
+                                <label for="">Nomor KTP/Paspor/NIK</label>
+                                <input type="text" id="" class="form-control" placeholder="0340217xxxxxxxx">
                             </div>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="">Tempat Lahir</label>
+                                <input type="text" name="tempat_lahir" id="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label for="">Tanggal Lahir</label>
                                 <input type="date" id="" class="form-control">
@@ -74,7 +81,7 @@
                         </div>
                     </div>
                     <div class="col-md-12 mt-5 mb-2">
-                        <h6>Pendidikan Terakhir</h6>
+                        <h6>Kualifikasi Pendidikan</h6>
                         <hr>
                     </div>
                    <div class="row">
@@ -107,10 +114,20 @@
                        <h6>Alamat Lengkap</h6>
                        <hr>
                    </div>
-                    <div class="form-group">
-                        <label for="">Nomor Telepon</label>
-                        <input type="text" id="" class="form-control" placeholder="082313123123">
+                   <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label for="">Nomor Telepon</label>
+                            <input type="text" id="" class="form-control" placeholder="082313123123">
+                        </div>
                     </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="">Kode Pos</label>
+                            <input type="text" id="" class="form-control" placeholder="082313123123">
+                        </div>
+                    </div>
+                   </div>
                     <div class="form-group">
                         <label for="">Alamat</label>
                         <input type="text" id="" class="form-control" placeholder="Jl. Jend. Gatot Subroto no.1 RT 001/RW 001">
@@ -139,32 +156,25 @@
                         </div>
                     </div>
                 </div>
-                {{-- <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="disabledInput">Disabled Input</label>
-                        <input type="text" class="form-control" id="disabledInput" placeholder="Disabled Text"
-                            disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="readonlyInput">Readonly Input</label>
-                        <input type="text" class="form-control" id="readonlyInput" readonly="readonly"
-                            value="You can't update me :P">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="disabledInput">Static Text</label>
-                        <p class="form-control-static" id="staticInput">email@mazer.com</p>
-                    </div>
-                </div> --}}
+                
                 <div class="col-md-12 mt-3">
                     <div class="d-flex justify-content-end">
-                        <input type="submit" name="submit" id="" class="btn btn-primary" value="Simpan">
-
+                        <input type="submit" name="submit" id="" class="btn btn-primary me-2" value="Simpan">
+                        <button type="button" class="btn btn-primary">Next</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div class="col-md-4">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 </form>
 </section>
