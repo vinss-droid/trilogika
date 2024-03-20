@@ -34,8 +34,6 @@ class ArticleController extends Controller
                 ->rawColumns(['image'])
                 ->make(true);
         }
-        // $articles = Article::orderBy('created_at','desc')->get();
-        // return view('article.index', compact('articles'));
         return view('article.index');
     }
 

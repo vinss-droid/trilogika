@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Schema;
 use Illuminate\Http\Request;
+use Illuminate\Support\HtmlString;
 
 class SchemaController extends Controller
 {
@@ -12,8 +13,23 @@ class SchemaController extends Controller
      */
     public function index()
     {
-        $schemas = Schema::orderBy('created_at','desc')->get();
-        return view('schema.index',['schemas' => $schemas->toJson()]);
+        if (request()->ajax()) {
+            $schemas = Schema::orderBy('created_at','desc');
+            $counter = 1;
+            return datatables()->of($schemas)
+                ->addColumn('DT_RowIndex',  function() use (&$counter){
+                    return $counter++;
+                })
+                ->addColumn('action', function ($row) {
+                    $button = '<a href="'.route('schema.edit',$row->id).'" class="btn icon btn-success"><i class="bi bi-pencil"></i></a>
+                    <a href="" class="btn icon btn-danger" onclick="deletePost('.$row->id.')"><i class="bi bi-trash"></i></a>
+                    ';
+                    return new HtmlString($button);
+                })
+                ->rawColumns(['image'])
+                ->make(true);
+        }
+        return view('schema.index');
     }
 
     /**

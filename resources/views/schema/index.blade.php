@@ -19,8 +19,8 @@
             <div class="card">
                 <div class="card-header">Daftar Skema</div>
                 <div class="card-body">
-                    <a href="#" class="btn btn-sm btn-success mb-2">Tambah Data</a>
-                    <table id="tbl_list" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <a href="#" class="btn btn-sm btn-success mb-2" data-bs-toggle="modal" data-bs-target="#large">Tambah Data</a>
+                    <table id="tbl_list" class="table table-striped" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -38,45 +38,72 @@
         </div>
     </div>
 
+<!--Modal lg size -->
+<div class="me-1 mb-1 d-inline-block">
+    <!-- Button trigger for large size modal -->
+        <!--large size Modal -->
+    <div class="modal fade text-left" id="large" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel17" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+            role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel17">Large Modal</h4>
+                    <button type="button" class="close" data-bs-dismiss="modal"
+                        aria-label="Close">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label for="">Judul</label>
+                    <input type="text" name="judul" class="form-control">
+                    <label for="">Nomor</label>
+                    <input type="text" name="nomor" class="form-control">
+                    <label for="">Jenis</label>
+                    <select name="jenis" id="jenis" class="form-control">
+                        <option value="kkni">KKNI</option>
+                        <option value="klaste">Klaster</option>
+                        <option value="okupasi">Okupasi</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light-secondary"
+                        data-bs-dismiss="modal">
+                        <i class="bx bx-x d-block d-sm-none"></i>
+                        <span class="d-none d-sm-block">Close</span>
+                    </button>
+                    <button type="button" class="btn btn-primary ms-1"
+                        data-bs-dismiss="modal">
+                        <i class="bx bx-check d-block d-sm-none"></i>
+                        <span class="d-none d-sm-block">Simpan</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 @section('script')
 {{-- <script src="{{asset('mazer')}}/assets/extensions/datatables.net/js/jquery.dataTables.min.js"></script> --}}
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script src="{{asset('mazer')}}/assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
-<script src="{{asset('mazer')}}/assets/static/js/pages/datatables.js"></script>
+{{-- <script src="{{asset('mazer')}}/assets/static/js/pages/datatables.js"></script> --}}
 <script>
-$(document).ready(function() {
-    $.ajax({
-        url: "{{ route('schema.index') }}",
-        type: "GET",
-        dataType: "json",
-        success: function(response) {
-            // Inisialisasi DataTable menggunakan data dari response
-            $('#tableContainer').DataTable({
-                data: response.schemas,
-                columns: [
-                    // Kolom nomor baris
-                    { 
-                        data: null,
-                        render: function(data, type, row, meta) {
-                            return meta.row + 1;
-                        }
-                    },
-                    { data: 'nomor' },
-                    { data: 'jenis' },
-                    { data: 'judul' },
-                    // Tambahkan kolom aksi
-                    {
-                        data: null,
-                        render: function(data, type, row) {
-                            return '<button onclick="editRow('+row.id+')">Edit</button>';
-                        }
-                    }
-                ]
-            });
-        }
+$(document).ready(function () {
+   $('#tbl_list').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{{ url()->current() }}',
+        order: [[ 0, "desc" ]], 
+        columns: [
+            { data: "DT_RowIndex"},
+            { data: 'judul' },
+            { data: 'nomor' },
+            { data: 'jenis'},
+            { data: 'action'},
+        ]
     });
-});
+ });
 
     document.addEventListener('DOMContentLoaded', function() {
         if ("{{session('success')}}") {

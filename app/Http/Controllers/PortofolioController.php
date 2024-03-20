@@ -11,6 +11,7 @@ class PortofolioController extends Controller
     /**
      * Display a listing of the resource.
      */
+    private $index = 0;
     public function index()
     {
         //
@@ -19,9 +20,9 @@ class PortofolioController extends Controller
         if (request()->ajax()) {
             $portofolios = Portofolio::orderBy('created_at','desc');
             return datatables()->of($portofolios)
-            ->addColumn('DT_RowIndex', function ($user) {
+            ->addColumn('DT_RowIndex', function ($row) {
                 // Menghitung nomor urut secara manual
-                return $user->id;
+                return ++$this->index;
             })
                 ->addColumn('image', function ($row) {
                     return '<img src="' . asset("image/portofolio/" . $row->image) . '" alt="Image" width="100" height="100">';

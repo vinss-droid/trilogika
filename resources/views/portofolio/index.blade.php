@@ -13,32 +13,29 @@
 </style>
 @endsection
 @section('content')
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">Daftar Portofolio</div>
 
-    <div class="card">
-        <div class="card-header">
-            <h5 class="card-title">
-                Minimal jQuery Datatable
-            </h5>
-            <a href="{{route('portofolio.create')}}" class="btn btn-success mt-2">Tambah</a>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive datatable-minimal">
-                <table class="table" id="tbl_list">
-                    <thead>
-                        <tr>
-                            <th>NO</th>
-                            <th>JUDUL</th>
-                            <th>GAMBAR</th>
-                            <th>AKSI</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-                    </tbody>
-                </table>
+            <div class="card-body">
+                <a href="{{ route('portofolio.create') }}" class="btn btn-sm btn-success mb-2">Tambah Data</a>
+                <table id="tbl_list" class="table table-striped" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>NO</th>
+                        <th>JUDUL</th>
+                        <th>GAMBAR</th>
+                        <th>AKSI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
             </div>
         </div>
     </div>
+</div>
 
 @endsection
 @section('script')

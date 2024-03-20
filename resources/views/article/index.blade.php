@@ -21,7 +21,7 @@
 
                 <div class="card-body">
                     <a href="{{ route('article.create') }}" class="btn btn-sm btn-success mb-2">Tambah Data</a>
-                    <table id="tbl_list" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <table id="tbl_list" class="table table-striped" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -38,52 +38,12 @@
         </div>
     </div>
 
-
-{{-- 
-<div class="card">
-    <div class="card-header">
-        <h4 class="card-title">Article Management</h4>
-        <!-- <button class="btn btn-success mt-2" data-bs-toggle="modal" data-bs-target="#inlineForm">Tambah</button> -->
-        <a href="{{route('article.create')}}" class="btn btn-success mt-2">Tambah</a>
-    </div>
-    <div class="card-content">
-        <!-- table head dark -->
-        <div class="table-responsive">
-            <table class="table mb-0">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>TITLE</th>
-                        <th>CREATED AT</th>
-                        <th>IMAGE</th>
-                        <th>ACTION</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($articles as $article)
-                    <tr>
-                        <td class="text-bold-500">{{$article->title}}</td>
-                        <td>{{$article->created_at}}</td>
-                        <td class="text-bold-500"><img class="rounded" src="{{asset('image/article/'.$article->image)}}" alt="" width="100px"></td>
-                        <td>
-                            <a href="{{route('article.edit',$article->id)}}" class="btn icon btn-success"><i class="bi bi-pencil"></i></a>
-                            <a href="" class="btn icon btn-danger" onclick="deletePost('{{$article->id}}')"><i class="bi bi-trash"></i></a>
-                        </td>
-                    </tr>
-                    @endforeach
-
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
- --}}
-
 @endsection
 @section('script')
 {{-- <script src="{{asset('mazer')}}/assets/extensions/datatables.net/js/jquery.dataTables.min.js"></script> --}}
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script src="{{asset('mazer')}}/assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
-<script src="{{asset('mazer')}}/assets/static/js/pages/datatables.js"></script>
+{{-- <script src="{{asset('mazer')}}/assets/static/js/pages/datatables.js"></script> --}}
 <script>
 $(document).ready(function () {
    $('#tbl_list').DataTable({
