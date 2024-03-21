@@ -13,12 +13,10 @@ return new class extends Migration
     {
         Schema::create('schemas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
             $table->string('jenis');
             $table->string('nomor');
             $table->string('judul');
-            $table->string('tujuan');
-            $table->enum('status',['active','inactive'])->default('inactive');
+            $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
 
         });

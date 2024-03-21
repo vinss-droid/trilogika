@@ -63,7 +63,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('/admin/course', CourseController::class);
     Route::patch('/admin/course-status/{course}',[CourseController::class,'status'])->name('course.status');
     Route::resource('/admin/portofolio', PortofolioController::class);
+    // SCHEMA
+    Route::get('/admin/schema/get-schema',[SchemaController::class,'getSchema'])->name('getSchema');
     Route::resource('/admin/schema', SchemaController::class);
+    // END SCHEMA
 });
 
 Route::get('/program/{slug}', [PageController::class, 'programSlug'])->name('program.slug');

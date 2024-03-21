@@ -24,9 +24,9 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Judul</th>
                             <th>Nomor</th>
                             <th>Jenis</th>
-                            <th>Judul</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -42,46 +42,97 @@
 <div class="me-1 mb-1 d-inline-block">
     <!-- Button trigger for large size modal -->
         <!--large size Modal -->
-    <div class="modal fade text-left" id="large" tabindex="-1" role="dialog"
-        aria-labelledby="myModalLabel17" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
-            role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel17">Large Modal</h4>
-                    <button type="button" class="close" data-bs-dismiss="modal"
-                        aria-label="Close">
-                        <i data-feather="x"></i>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <label for="">Judul</label>
-                    <input type="text" name="judul" class="form-control">
-                    <label for="">Nomor</label>
-                    <input type="text" name="nomor" class="form-control">
-                    <label for="">Jenis</label>
-                    <select name="jenis" id="jenis" class="form-control">
-                        <option value="kkni">KKNI</option>
-                        <option value="klaste">Klaster</option>
-                        <option value="okupasi">Okupasi</option>
-                    </select>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light-secondary"
-                        data-bs-dismiss="modal">
-                        <i class="bx bx-x d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">Close</span>
-                    </button>
-                    <button type="button" class="btn btn-primary ms-1"
-                        data-bs-dismiss="modal">
-                        <i class="bx bx-check d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">Simpan</span>
-                    </button>
+    <form action="{{ route('schema.store') }}" method="post" id="">
+        @csrf
+        <div class="modal fade text-left" id="large" tabindex="-1" role="dialog"
+            aria-labelledby="myModalLabel17" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+                role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel17">Large Modal</h4>
+                        <button type="button" class="close" data-bs-dismiss="modal"
+                            aria-label="Close">
+                            <i data-feather="x"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="">Judul</label>
+                        <input type="text" name="judul" class="form-control">
+                        <label for="">Nomor</label>
+                        <input type="text" name="nomor" class="form-control">
+                        <label for="">Jenis</label>
+                        <select name="jenis" id="jenis" class="form-control">
+                            <option value="kkni">KKNI</option>
+                            <option value="klaster">Klaster</option>
+                            <option value="okupasi">Okupasi</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light-secondary"
+                            data-bs-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Close</span>
+                        </button>
+                        <button type="submit" class="btn btn-primary ms-1"
+                            data-bs-dismiss="modal">
+                            <i class="bx bx-check d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Simpan</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>
+
+<div class="me-1 mb-1 d-inline-block">
+    <!-- Button trigger for large size modal -->
+        <!--large size Modal -->
+    <form action="#" method="post" id="">
+        @csrf
+        <div class="modal fade text-left" id="modal-edit" tabindex="-1" role="dialog"
+            aria-labelledby="myModalLabel17" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+                role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel17">Large Modal</h4>
+                        <button type="button" class="close" data-bs-dismiss="modal"
+                            aria-label="Close">
+                            <i data-feather="x"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="">Judul</label>
+                        <input type="text" name="judul" class="form-control" id="judul">
+                        <label for="">Nomor</label>
+                        <input type="text" name="nomor" class="form-control" id="nomor">
+                        <label for="">Jenis</label>
+                        <select name="jenis" id="jenis" class="form-control ">
+                            <option value="kkni">KKNI</option>
+                            <option value="klaster">Klaster</option>
+                            <option value="okupasi">Okupasi</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light-secondary"
+                            data-bs-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Close</span>
+                        </button>
+                        <button type="submit" class="btn btn-primary ms-1"
+                            data-bs-dismiss="modal">
+                            <i class="bx bx-check d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Simpan</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
 @endsection
 @section('script')
 {{-- <script src="{{asset('mazer')}}/assets/extensions/datatables.net/js/jquery.dataTables.min.js"></script> --}}
@@ -89,21 +140,58 @@
 <script src="{{asset('mazer')}}/assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
 {{-- <script src="{{asset('mazer')}}/assets/static/js/pages/datatables.js"></script> --}}
 <script>
-$(document).ready(function () {
-   $('#tbl_list').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: '{{ url()->current() }}',
-        order: [[ 0, "desc" ]], 
-        columns: [
-            { data: "DT_RowIndex"},
-            { data: 'judul' },
-            { data: 'nomor' },
-            { data: 'jenis'},
-            { data: 'action'},
-        ]
-    });
- });
+
+        $(document).ready(function () {
+           $('#tbl_list').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "{{ route('getSchema') }}",
+                    type: 'GET',
+                },
+                order: [[ 0, "desc" ]], 
+                columns: [
+                    { data: "DT_RowIndex"},
+                    { data: 'judul' },
+                    { data: 'nomor' },
+                    { data: 'jenis'},
+                    { data: 'action'},
+                ]
+            });
+         });
+  
+
+$('body').on('click', '#btn-edit-post', function () {
+
+let id = $(this).data('id');
+
+//fetch detail post with ajax
+$.ajax({
+    url: `/admin/schema/${id}/edit`,
+    type: "GET",
+    cache: false,
+    success:function(response){
+
+        //fill data to form
+        $('#judul').val(response.data.judul);
+        $('#nomor').val(response.data.nomor);
+        $('#jenis option').each(function() {
+                // Jika nilai opsi cocok dengan nilai yang diterima dari respons JSON
+                if ($(this).val() == response.data.jenis) {
+                    // Atur opsi tersebut sebagai yang dipilih
+                    $(this).prop('selected', true);
+                } else {
+                    // Pastikan opsi tersebut tidak dipilih
+                    $(this).prop('selected', false);
+                }
+            });
+
+        //open modal
+        $('#modal-edit').modal('show');
+    }
+});
+});
+
 
     document.addEventListener('DOMContentLoaded', function() {
         if ("{{session('success')}}") {
