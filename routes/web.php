@@ -12,6 +12,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
 
 use App\Http\Controllers\SchemaController;
+use App\Http\Controllers\UnitKompetensiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,9 +65,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::patch('/admin/course-status/{course}',[CourseController::class,'status'])->name('course.status');
     Route::resource('/admin/portofolio', PortofolioController::class);
     // SCHEMA
+    Route::patch('/admin/schema-status/{schema}',[SchemaController::class,'status'])->name('schema.status');
     Route::get('/admin/schema/get-schema',[SchemaController::class,'getSchema'])->name('getSchema');
     Route::resource('/admin/schema', SchemaController::class);
     // END SCHEMA
+    Route::get('/admin/unit-kompetensi/{schemaId}',[UnitKompetensiController::class,'index'])->name('unit-kompetensi.index');
+    Route::resource('/admin/unit-kompetensi',UnitKompetensiController::class)->except('index');
 });
 
 Route::get('/program/{slug}', [PageController::class, 'programSlug'])->name('program.slug');

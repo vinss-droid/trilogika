@@ -4,15 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\UnitKompetensi;
 use Illuminate\Http\Request;
+use App\Models\Schema;
 
 class UnitKompetensiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($schemaId)
     {
-        //
+        $schema = Schema::findOrFail($schemaId);
+        $units = UnitKompetensi::where('schema_id', $schemaId)->get();
+        if (!$units) {
+            return view('schema.unitKom');
+        }
+        return view('schema.unitKom', compact(['units','schema']));
     }
 
     /**
@@ -28,7 +34,16 @@ class UnitKompetensiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'kode' => 'required',
+            'judul' => 'required',
+            'jenis_standar' => 'required',
+        ]);
+
+        $validate['schema_id'] = $request->schema_id;
+        UnitKompetensi::create($validate);
+
+        return redirect()->back()->with('success', 'Unit Kompetensi berhasil ditambahkan');
     }
 
     /**
@@ -60,6 +75,9 @@ class UnitKompetensiController extends Controller
      */
     public function destroy(UnitKompetensi $unitKompetensi)
     {
-        //
+        $unitKompetensi->delete();
+        return redirect()->back()->with('success', 'Unit Kompetensi berhasil di hapus');
     }
+
+    
 }

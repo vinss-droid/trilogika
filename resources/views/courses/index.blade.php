@@ -24,17 +24,17 @@
             <table class="table mb-0">
                 <thead class="thead-dark">
                     <tr>
-                        <th>TITLE</th>
-                        <th>CREATED AT</th>
-                        <th>IMAGE</th>
-                        <th>ACTION</th>
+                        <th>Nomor</th>
+                        <th>Judul</th>
+                        <th>Image</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($courses as $course)
                     <tr>
+                        <td class="text-bold-500">{{$loop->iteration}}</td>
                         <td class="text-bold-500">{{$course->title}}</td>
-                        <td class="text-bold-500">{{$course->created_at}}</td>
                         <td class="text-bold-500"><img class="rounded" src="{{asset('image/course/'.$course->image)}}" alt="" width="100px"></td>
                         <td>
                             @if ($course->status == 'active')
@@ -59,6 +59,7 @@
 @endsection
 @section('script')
 <script>
+    
 $(document).ready(function() {
     $('.updateStatusBtn').click(function(event) {
         event.preventDefault(); // Mencegah tindakan default dari link

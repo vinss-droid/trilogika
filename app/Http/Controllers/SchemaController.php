@@ -29,10 +29,7 @@ class SchemaController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // dd($request->all());
-
-        $validate=$request->validate([
+        $validate = $request->validate([
             'judul' => 'required',
             'nomor' => 'required',
             'jenis' => 'required',
@@ -68,7 +65,14 @@ class SchemaController extends Controller
      */
     public function update(Request $request, Schema $schema)
     {
-        //
+        $validate = $request->validate([
+            'judul' => 'required',
+            'nomor' => 'required',
+            'jenis' => 'required',
+        ]);
+
+        $schema->update($validate);
+        return redirect()->back()->with('success', 'Schema berhasil di update');
     }
 
     /**
@@ -76,7 +80,8 @@ class SchemaController extends Controller
      */
     public function destroy(Schema $schema)
     {
-        //
+        $schema->delete();
+        return redirect()->back()->with('success', 'Schema berhasil di hapus');
     }
 
     public function getSchema(){
@@ -88,14 +93,26 @@ class SchemaController extends Controller
                     return $counter++;
                 })
                 ->addColumn('action', function ($row) {
-                    $button = '<a href="javascript:void(0)" id="btn-edit-post" class="btn icon btn-success btn-edit" data-id=' .$row->id.'><i class="bi bi-pencil"></i></a>
-                    <a href="" class="btn icon btn-danger" onclick="deletePost('.$row->id.')"><i class="bi bi-trash"></i></a>
-                    <a href="#" class="btn icon btn-primary">UK</a>
+                    $button =  ($row->status == 'active') ? 
+                    '<a href="javascript:void(0)" class="btn icon btn-primary updateStatusBtn" data-id=' .$row->id.'><i class="bi bi-eye"></i></a>' :
+                    '<a href="javascript:void(0)" class="btn icon btn-secondary updateStatusBtn" data-id=' .$row->id.'><i class="bi bi-eye-slash"></i></a>';
+
+                    $button .='
+                    <a href="javascript:void(0)" id="btn-edit-post" class="btn icon btn-success btn-edit" data-id=' .$row->id.'><i class="bi bi-pencil"></i></a>
+                    <a href="" class="btn icon btn-danger" onclick="deleteSchema('.$row->id.')"><i class="bi bi-trash"></i></a>
+                    <a href="'.route('unit-kompetensi.index',$row->id).'" class="btn icon btn-primary">UK</a>
                     ';
                     return new HtmlString($button);
                 })
                 ->rawColumns(['image'])
                 ->make(true);
         }
+    }
+
+    public function status(Schema $schema){
+
+        $newStatus = $schema->status == 'active' ? 'inactive' : 'active';
+        $schema->update(['status' => $newStatus]);
+        return response()->json(['message' => "Status updated to $newStatus"], 200);
     }
 }

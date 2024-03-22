@@ -17,7 +17,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Daftar Skema</div>
+                <div class="card-header"><h5>Daftar Unit Kompetensi Skema {{ $schema->judul }}</h5></div>
                 <div class="card-body">
                     <a href="#" class="btn btn-sm btn-success mb-2" data-bs-toggle="modal" data-bs-target="#large">Tambah Data</a>
                     <table id="tbl_list" class="table table-striped" cellspacing="0" width="100%">
@@ -25,12 +25,25 @@
                         <tr>
                             <th>No</th>
                             <th>Judul</th>
-                            <th>Kode</th>
-                            <th>Jenis Standar</th>
+                            <th>Nomor</th>
+                            <th>Jenis</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($units as $unit)
+                        <tr>
+                            <td>{{$loop->iteration}}</td>
+                            <td class="text-bold-500">{{$unit->kode}}</td>
+                            <td>{{ $unit->judul }}</td>
+                            <td class="text-bold-500">{{ $unit->jenis_standar }}</td>
+                            <td>
+                                
+                                <a href="#" class="btn icon btn-success"><i class="bi bi-pencil"></i></a>
+                                <a href="#" class="btn icon btn-danger" onclick="deleteUnit('{{ $unit->id }}')"><i class="bi bi-trash"></a>
+                            </td>
+                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
                 </div>
@@ -42,7 +55,7 @@
 <div class="me-1 mb-1 d-inline-block">
     <!-- Button trigger for large size modal -->
         <!--large size Modal -->
-    <form action="{{ route('schema.store') }}" method="post" id="">
+    <form action="{{ route('unit-kompetensi.store') }}" method="post" id="">
         @csrf
         <div class="modal fade text-left" id="large" tabindex="-1" role="dialog"
             aria-labelledby="myModalLabel17" aria-hidden="true">
@@ -57,15 +70,18 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        <label for="">Skema</label>
+                        <input type="text" class="form-control" value="{{ $schema->judul }}" disabled>
+                        <input type="text" name="schema_id" id="" value="{{ $schema->id }}" hidden>
+                        <label for="">Kode</label>
+                        <input type="text" name="kode" class="form-control">
                         <label for="">Judul</label>
                         <input type="text" name="judul" class="form-control">
-                        <label for="">Nomor</label>
-                        <input type="text" name="nomor" class="form-control">
-                        <label for="">Jenis</label>
-                        <select name="jenis" id="jenis" class="form-control">
-                            <option value="kkni">KKNI</option>
-                            <option value="klaster">Klaster</option>
-                            <option value="okupasi">Okupasi</option>
+                        <label for="">Jenis Standar</label>
+                        <select name="jenis_standar" id="jenis_standar" class="form-control">
+                            <option value="Standar Khusus">Standar Khusus</option>
+                            <option value="Standar Internasional">Standar Internasional</option>
+                            <option value="SKKNI">SKKNI</option>
                         </select>
                     </div>
                     <div class="modal-footer">
@@ -89,9 +105,8 @@
 <div class="me-1 mb-1 d-inline-block">
     <!-- Button trigger for large size modal -->
         <!--large size Modal -->
-    <form action="" method="post" id="formEdit">
+    <form action="#" method="post" id="">
         @csrf
-        @method('PUT')
         <div class="modal fade text-left" id="modal-edit" tabindex="-1" role="dialog"
             aria-labelledby="myModalLabel17" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
@@ -106,6 +121,7 @@
                     </div>
                     <div class="modal-body">
                         <label for="">Judul</label>
+                       
                         <input type="text" name="judul" class="form-control" id="judul">
                         <label for="">Nomor</label>
                         <input type="text" name="nomor" class="form-control" id="nomor">
@@ -141,55 +157,25 @@
 <script src="{{asset('mazer')}}/assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
 {{-- <script src="{{asset('mazer')}}/assets/static/js/pages/datatables.js"></script> --}}
 <script>
-$(document).ready(function() {
-    $('body').on('click', '.updateStatusBtn', function () {
-        event.preventDefault(); // Mencegah tindakan default dari link
-        var id = $(this).data('id'); 
-        // Kirim permintaan AJAX untuk memperbarui status
-        $.ajax({
-            // url: '{{ route("schema.status",":id") }}'.replace(':id', id),
-            url: '/admin/schema-status/' + id,
-            type: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': '{{ csrf_token() }}',
-            },
-            data: {
-                // Kirim data apa pun yang Anda butuhkan untuk menentukan status
-                _method: 'PATCH', // Menggunakan metode PUT
-            },
-            success: function(response) {
-                // Toggle kelas-kelas untuk tombol
-                $(this).toggleClass('btn-primary btn-secondary');
-                // Toggle ikon tombol
-                $(this).find('i').toggleClass('bi-eye bi-eye-slash');
-                // Tampilkan pesan sukses atau perbarui tampilan jika perlu
-                // console.log(response);
-            }.bind(this), // Mengikat konteks klik tombol
-            error: function(xhr, status, error) {
-                console.error('There has been a problem with your AJAX request:', error);
-            }
-        });
-    });
-});
 
-        $(document).ready(function () {
-           $('#tbl_list').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: {
-                    url: "{{ route('getSchema') }}",
-                    type: 'GET',
-                },
-                order: [[ 0, "desc" ]], 
-                columns: [
-                    { data: "DT_RowIndex"},
-                    { data: 'judul' },
-                    { data: 'nomor' },
-                    { data: 'jenis'},
-                    { data: 'action'},
-                ]
-            });
-         });
+        // $(document).ready(function () {
+        //    $('#tbl_list').DataTable({
+        //         processing: true,
+        //         serverSide: true,
+        //         ajax: {
+        //             url: "#",
+        //             type: 'GET',
+        //         },
+        //         order: [[ 0, "desc" ]], 
+        //         columns: [
+        //             { data: "DT_RowIndex"},
+        //             { data: 'judul' },
+        //             { data: 'nomor' },
+        //             { data: 'jenis'},
+        //             { data: 'action'},
+        //         ]
+        //     });
+        //  });
   
 
 $('body').on('click', '#btn-edit-post', function () {
@@ -204,7 +190,6 @@ $.ajax({
     success:function(response){
 
         //fill data to form
-        $('#formEdit').attr('action', `/admin/schema/${response.data.id}`)
         $('#judul').val(response.data.judul);
         $('#nomor').val(response.data.nomor);
         $('#jenis option').each(function() {
@@ -237,11 +222,11 @@ $.ajax({
         }
     });
 
-    function deleteSchema(id) {
+    function deleteUnit(id) {
         var data = {};
-        if (confirm('Apakah Anda yakin ingin menghapus skema ini?')) {
+        if (confirm('Apakah Anda yakin ingin menghapus unit kompetensi ini?')) {
             // Menggunakan Fetch API untuk mengirim permintaan DELETE
-            fetch('/admin/schema/' + id, {
+            fetch('/admin/unit-kompetensi/' + id, {
                     method: 'DELETE',
                     headers: {
                         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
