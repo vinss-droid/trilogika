@@ -13,19 +13,22 @@ return new class extends Migration
     {
         Schema::create('user_data', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('education');
-            $table->date('birth_date');
-            $table->string('place_of_birth');
-            $table->string('address');
-            $table->string('sub_region');
-            $table->string('region');
-            $table->string('city');
-            $table->string('province');
-            $table->enum('gender',['L','P'])->default('L');
-            $table->string('nationality');
-            $table->string('telephone');
+            $table->unsignedBigInteger('user_id');
+            $table->string('nama');
+            $table->string('pendidikan');
+            $table->date('tanggal_lahir');
+            $table->string('tempat_lahir');
+            $table->string('alamat');
+            $table->string('kalurahan');
+            $table->string('kecamatan');
+            $table->string('kabupaten');
+            $table->string('provinsi');
+            $table->enum('jenis_kelamin',['L','P'])->default('L');
+            $table->string('warga_negara');
+            $table->string('telepon');
+            $table->string('kode_pos');
+            $table->string('nik');
+            $table->string('nama_sekolah');
             $table->timestamps();
         });
     }

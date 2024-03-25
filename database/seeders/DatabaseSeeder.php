@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             CourseSeeder::class,
             ArticleSeeder::class,
             PortofolioSeeder::class,
+            IndoRegionSeeder::class,
         ]);
     }
 }

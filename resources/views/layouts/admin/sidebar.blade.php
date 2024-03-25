@@ -75,7 +75,7 @@
                             <a href="{{ route('schema.index') }}">Schema</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="#">Unit Kompetensi</a>
+                            <a href="{{ route('user.index') }}">Peserta</a>
                         </li>
                     </ul>
                 </li>

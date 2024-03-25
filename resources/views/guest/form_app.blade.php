@@ -18,7 +18,7 @@
     </div>
 <section class="section">
 
-<form action="" method="POST">
+<form action="{{ route('form.app.store') }}" method="POST">
     @csrf
 <div class="row">
 <div class="col-lg-8">
@@ -35,7 +35,7 @@
                         <div class="col-md-7">
                             <div class="form-group">
                                 <label for="">Nama</label>
-                                <input type="text" id="" class="form-control" placeholder="ex : M.Sutarno">
+                                <input type="text" id="" name="nama" class="form-control" placeholder="ex : M.Sutarno">
                             </div>
                         </div>
                         <div class="col-md-5">
@@ -50,7 +50,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Nomor KTP/Paspor/NIK</label>
-                                <input type="text" id="" class="form-control" placeholder="0340217xxxxxxxx">
+                                <input type="text" name="nik" id="" class="form-control" placeholder="0340217xxxxxxxx">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -62,7 +62,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="">Tanggal Lahir</label>
-                                <input type="date" id="" class="form-control">
+                                <input type="date" name="tanggal_lahir" id="" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -70,13 +70,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Jenis Kelamin</label>
-                                {{ html()->select('tempat_lahir', ['L'=>'Laki-laki','P'=>'Perempuan'])->id('tempat_lahir')->class('form-control') }}
+                                {{ html()->select('jenis_kelamin', ['L'=>'Laki-laki','P'=>'Perempuan'])->id('jenis_kelamin')->class('form-control') }}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Warga Negara</label>
-                                {{ html()->select('tempat_lahir', ['WNI'=>'Warga Negara Indonesia','WNA'=>'Warga Negara Asing'])->id('tempat_lahir')->class('form-control') }}
+                                {{ html()->select('warga_negara', ['WNI'=>'Warga Negara Indonesia','WNA'=>'Warga Negara Asing'])->id('warga_negara')->class('form-control') }}
                             </div>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="">Jenjang Pendidikan</label>
-                            {{ html()->select('tempat_lahir', [
+                            {{ html()->select('pendidikan', [
                                 'S3'=>'Strata 3',
                                 'S2'=>'Strata 2',
                                 'S1'=>'Strata 1',
@@ -100,13 +100,13 @@
                                 'SMK'=>'Sekolah Menegah Kejuruan',
                                 'SMP'=>'Sekolah Menegah Pertama',
                                 'SD'=>'Sekolah Dasar',
-                                ])->id('tempat_lahir')->class('form-control') }}
+                                ])->id('pendidikan')->class('form-control') }}
                         </div>
                     </div>
                     <div class="col-md-8">
                         <div class="form-group">
                             <label for="">Nama Sekolah/Kampus</label>
-                            <input type="text" id="" class="form-control" placeholder="Universitas Indonesia">
+                            <input type="text" name="nama_sekolah" id="" class="form-control" placeholder="Universitas Indonesia">
                         </div>
                     </div>
                    </div>
@@ -118,40 +118,40 @@
                     <div class="col-md-8">
                         <div class="form-group">
                             <label for="">Nomor Telepon</label>
-                            <input type="text" id="" class="form-control" placeholder="082313123123">
+                            <input type="text" name="telepon" id="" class="form-control" placeholder="082313123123">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="">Kode Pos</label>
-                            <input type="text" id="" class="form-control" placeholder="082313123123">
+                            <input type="text" name="kode_pos" id="" class="form-control" placeholder="55744">
                         </div>
                     </div>
                    </div>
                     <div class="form-group">
                         <label for="">Alamat</label>
-                        <input type="text" id="" class="form-control" placeholder="Jl. Jend. Gatot Subroto no.1 RT 001/RW 001">
+                        <input type="text" name="alamat" id="" class="form-control" placeholder="Jl. Jend. Gatot Subroto no.1 RT 001/RW 001">
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="">Provinsi</label>
-                            {{ html()->select('provinces', $provinces)->id('provinces')->class('form-control choices') }}
+                            {{ html()->select('provinsi', $provinces)->id('provinces')->class('form-control choices') }}
                         </div>
                         <div class="col-md-6">
                             <label for="">Kabupaten</label>
-                            <select class="form-control" id="regencies" name="regencies">
+                            <select class="form-control" id="regencies" name="kabupaten">
                             </select>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <label for="">Kecamatan</label>
-                            <select class="form-control" id="districs" name="districs">
+                            <select class="form-control" id="districs" name="kecamatan">
                             </select>
                         </div>
                         <div class="col-md-6">
                             <label for="">Kalurahan</label>
-                            <select class="form-control" id="villages" name="villages">
+                            <select class="form-control" id="villages" name="kalurahan">
                             </select>
                         </div>
                     </div>
@@ -159,7 +159,7 @@
                 
                 <div class="col-md-12 mt-3">
                     <div class="d-flex justify-content-end">
-                        <input type="submit" name="submit" id="" class="btn btn-primary me-2" value="Simpan">
+                        <input type="submit" class="btn btn-primary me-2" value="Simpan">
                         <button type="button" class="btn btn-primary">Next</button>
                     </div>
                 </div>

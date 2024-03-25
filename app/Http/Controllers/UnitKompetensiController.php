@@ -59,7 +59,11 @@ class UnitKompetensiController extends Controller
      */
     public function edit(UnitKompetensi $unitKompetensi)
     {
-        //
+        return response()->json([
+                'success' => true,
+                'message' => 'Detail Data Unit Kompetensi',
+                'data'    => $unitKompetensi
+            ]);
     }
 
     /**

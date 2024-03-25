@@ -13,6 +13,7 @@ use App\Http\Controllers\ProgramController;
 
 use App\Http\Controllers\SchemaController;
 use App\Http\Controllers\UnitKompetensiController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,7 +52,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/from-app',[GuestController::class,'formApp'])->name('page.formApp');
+    Route::get('/from-app',[GuestController::class,'formApp'])->name('form.app');
+    Route::post('/form-app',[GuestController::class,'formAppStore'])->name('form.app.store');
     Route::post('/regence',[IndoRegionController::class,'getRegencies'])->name('get_regencies');
     Route::post('/district',[IndoRegionController::class,'getDistricts'])->name('get_districts');
     Route::post('/village',[IndoRegionController::class,'getVillages'])->name('get_villages');
@@ -71,6 +73,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     // END SCHEMA
     Route::get('/admin/unit-kompetensi/{schemaId}',[UnitKompetensiController::class,'index'])->name('unit-kompetensi.index');
     Route::resource('/admin/unit-kompetensi',UnitKompetensiController::class)->except('index');
+
+    Route::get('/admin/get-user',[UserController::class,'getUsers'])->name('getUsers');
+    Route::resource('/admin/user', UserController::class);
+
 });
 
 Route::get('/program/{slug}', [PageController::class, 'programSlug'])->name('program.slug');
