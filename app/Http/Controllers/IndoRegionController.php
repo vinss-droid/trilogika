@@ -11,19 +11,22 @@ class IndoRegionController extends Controller
 {
     public function getRegencies(Request $request){
         $provinceId = $request->id_province;
-        $regencies = Regency::where('province_id',$provinceId)->pluck('name','id');
+        $regency = Regency::where('province_id',$provinceId)->pluck('name','id');
+        $regencies = collect($regency)->prepend('Pilih Kota/Kabupaten',0);
         return response()->json($regencies);
     }
 
     public function getDistricts(Request $request){
         $regencyId = $request->id_regency;
-        $districts = District::where('regency_id',$regencyId)->pluck('name','id');
+        $district = District::where('regency_id',$regencyId)->pluck('name','id');
+        $districts = collect($district)->prepend('Pilih Kecamatan',0);
         return response()->json($districts);
     }
 
     public function getVillages(Request $request){
         $districtId = $request->id_district;
-        $villages = Village::where('district_id',$districtId)->pluck('name','id');
+        $village = Village::where('district_id',$districtId)->pluck('name','id');
+        $villages = collect($village)->prepend('Pilih Kalurahan',0);
         return response()->json($villages);
     }
 }

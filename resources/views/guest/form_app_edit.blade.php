@@ -18,7 +18,8 @@
     </div>
 <section class="section">
 
-<form action="{{ route('form.app.store') }}" method="POST">
+<form action="{{ route('form.app.update',$userData->id) }}" method="POST">
+    @method('PATCH')
     @csrf
 <div class="row">
 <div class="col-lg-8">
@@ -35,7 +36,7 @@
                         <div class="col-md-7">
                             <div class="form-group">
                                 <label for="">Nama</label>
-                                <input type="text" id="" name="nama" class="form-control" placeholder="ex : M.Sutarno">
+                                <input type="text" id="" name="nama" class="form-control" value="{{  $userData->nama }}">
                             </div>
                         </div>
                         <div class="col-md-5">
@@ -50,19 +51,19 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Nomor KTP/Paspor/NIK</label>
-                                <input type="text" name="nik" id="" class="form-control" placeholder="0340217xxxxxxxx">
+                                <input type="text" name="nik" id="" class="form-control" value="{{  $userData->nik }}">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="">Tempat Lahir</label>
-                                <input type="text" name="tempat_lahir" id="" class="form-control">
+                                <input type="text" name="tempat_lahir" id="" class="form-control" value="{{  $userData->tempat_lahir }}">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="">Tanggal Lahir</label>
-                                <input type="date" name="tanggal_lahir" id="" class="form-control">
+                                <input type="date" name="tanggal_lahir" id="" class="form-control" value="{{  $userData->tanggal_lahir }}">
                             </div>
                         </div>
                     </div>
@@ -70,13 +71,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Jenis Kelamin</label>
-                                {{ html()->select('jenis_kelamin', ['L'=>'Laki-laki','P'=>'Perempuan'])->id('jenis_kelamin')->class('form-control') }}
+                                {{ html()->select('jenis_kelamin', ['L'=>'Laki-laki','P'=>'Perempuan'])->id('jenis_kelamin')->class('form-control')->value($userData->jenis_kelamin) }}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Warga Negara</label>
-                                {{ html()->select('warga_negara', ['WNI'=>'Warga Negara Indonesia','WNA'=>'Warga Negara Asing'])->id('warga_negara')->class('form-control') }}
+                                {{ html()->select('warga_negara', ['WNI'=>'Warga Negara Indonesia','WNA'=>'Warga Negara Asing'])->id('warga_negara')->class('form-control')->value($userData->warga_negara) }}
                             </div>
                         </div>
                     </div>
@@ -100,13 +101,13 @@
                                 'SMK'=>'Sekolah Menegah Kejuruan',
                                 'SMP'=>'Sekolah Menegah Pertama',
                                 'SD'=>'Sekolah Dasar',
-                                ])->id('pendidikan')->class('form-control') }}
+                                ])->id('pendidikan')->class('form-control')->value($userData->pendidikan) }}
                         </div>
                     </div>
                     <div class="col-md-8">
                         <div class="form-group">
                             <label for="">Nama Sekolah/Kampus</label>
-                            <input type="text" name="nama_sekolah" id="" class="form-control" placeholder="Universitas Indonesia">
+                            <input type="text" name="nama_sekolah" id="" class="form-control" value="{{  $userData->nama_sekolah }}">
                         </div>
                     </div>
                    </div>
@@ -118,42 +119,39 @@
                     <div class="col-md-8">
                         <div class="form-group">
                             <label for="">Nomor Telepon</label>
-                            <input type="text" name="telepon" id="" class="form-control" placeholder="082313123123">
+                            <input type="text" name="telepon" id="" class="form-control" value="{{  $userData->telepon }}">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="">Kode Pos</label>
-                            <input type="text" name="kode_pos" id="" class="form-control" placeholder="55744">
+                            <input type="text" name="kode_pos" id="" class="form-control" value="{{  $userData->kode_pos }}">
                         </div>
                     </div>
                    </div>
                     <div class="form-group">
                         <label for="">Alamat</label>
-                        <input type="text" name="alamat" id="" class="form-control" placeholder="Jl. Jend. Gatot Subroto no.1 RT 001/RW 001">
+                        <input type="text" name="alamat" id="" class="form-control" value="{{  $userData->alamat }}">
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="">Provinsi</label>
-                            {{ html()->select('provinsi', $provinces)->id('provinces')->class('form-control choices') }}
+                            {{ html()->select('provinsi', $provinces)->id('provinces')->class('form-control choices')->value($userData->provinsi) }}
                         </div>
                         <div class="col-md-6">
                             <label for="">Kabupaten</label>
-                            <select class="form-control" id="regencies" name="kabupaten">
-                               
-                            </select>
+                                {{ html()->select('kabupaten', $regencies)->id('regencies')->class('form-control choices')->value($userData->kabupaten) }}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <label for="">Kecamatan</label>
-                            <select class="form-control" id="districs" name="kecamatan">
-                            </select>
+                                {{ html()->select('kecamatan', $districts)->id('districs')->class('form-control choices')->value($userData->kecamatan) }}
                         </div>
                         <div class="col-md-6">
                             <label for="">Kalurahan</label>
-                            <select class="form-control" id="villages" name="kalurahan">
-                            </select>
+                                {{ html()->select('kalurahan', $villages)->id('villages')->class('form-control choices')->value($userData->kalurahan) }}
+                           
                         </div>
                     </div>
                 </div>
@@ -161,7 +159,7 @@
                 <div class="col-md-12 mt-3">
                     <div class="d-flex justify-content-end">
                         <input type="submit" class="btn btn-primary me-2" value="Simpan">
-                        <button type="button" class="btn btn-primary">Next</button>
+                        <a href="{{ route('dashboard') }}" class="btn btn-primary">Kembali</a>
                     </div>
                 </div>
             </div>

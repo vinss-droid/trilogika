@@ -77,7 +77,25 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
+                        </a>
+                    </div>
+
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <a href="{{ route('berkas') }}">
+                        <div class="card"> 
+                            <div class="card-body px-4 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
+                                        <span class="btn btn-lg icon btn-success mb-2"><i class="bi bi-pc-display"></i></span>
+                                    </div>
+                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                        <h6 class="font-extrabold mb-0">Berkas</h6>
+                                        <h6 class="text-muted font-semibold">Berkas</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </a>
                     </div>
                 
                    
