@@ -16,9 +16,10 @@ class GuestController extends Controller
         $userData = UserData::where('user_id',auth()->user()->id)->first();
         $provinces = Province::pluck('name', 'id');
         // $provinces = collect($province)->prepend('Pilih Provinsi',0);
-        $regencies = Regency::pluck('name', 'id');
-        $districts = District::pluck('name', 'id');
-        $villages = Village::pluck('name', 'id');
+        $regencies = Regency::where('province_id',$userData->provinsi)->pluck('name', 'id');
+        // dd($regencies);
+        $districts = District::where('regency_id',$userData->kabupaten)->pluck('name', 'id');
+        $villages = Village::where('district_id',$userData->kecamatan)->pluck('name', 'id');
         if ($userData) {
             return view('guest.form_app_edit',compact(['userData','provinces','regencies','districts','villages']));
         }else{

@@ -166,14 +166,7 @@
         </div>
     </div>
 </div>
-<div class="col-md-4">
-    <div class="card">
-        <div class="card-body">
-            <div class="row">
-            </div>
-        </div>
-    </div>
-</div>
+
 </div>
 </form>
 </section>
@@ -210,7 +203,9 @@
             success: function(response){
                
                 $('#regencies').empty();
-                
+                $('#districs').empty();
+                $('#villages').empty();
+
                 $.each(response, function(key, value){
                     $('#regencies').append($("<option></option>").attr("value", key).text(value));
                 });
@@ -232,6 +227,8 @@
             },
             success: function(response){
                 $('#districs').empty();
+                $('#villages').empty();
+
                 $.each(response, function(key, value){
                     $('#districs').append($("<option></option>").attr("value", key).text(value));
                 });
