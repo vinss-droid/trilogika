@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BuktiPersyaratan;
 use App\Models\District;
 use App\Models\Province;
 use App\Models\Regency;
@@ -78,8 +79,28 @@ class GuestController extends Controller
     return redirect()->back()->with('success', 'Data berhasil di update');
     
     }
-    public function berkas(Request $request){
+    public function berkas(){
         return view('guest.berkas');
+    }
+
+    public function berkasStore(Request $request){
+        $validate = $request->validate([
+            'ktp'=>'required|mimes:pdf,jpg,jpeg,png|max:1024',
+            'ijazah'=>'required|mimes:pdf,jpg,jpeg,png|max:1024',
+            'cv'=>'required|mimes:pdf,jpg,jpeg,png|max:1024',
+            'sk_kerja'=>'required|mimes:pdf,jpg,jpeg,png|max:1024',
+            'pas_foto'=>'required|mimes:jpg,jpeg,png|max:1024',
+        ]);
+        
+        $validate['ktp'] = $request->file('ktp')->store('ktp');
+        $validate['ijazah'] = $request->file('ijazah')->store('ijazah');
+        $validate['cv'] = $request->file('cv')->store('cv');
+        $validate['sk_kerja'] = $request->file('sk_kerja')->store('sk_kerja');
+        $validate['pas_foto'] = $request->file('pas_foto')->store('pas_foto');
+
+        $validate['user_id'] = auth()->user()->id;
+        BuktiPersyaratan::create($validate);
+        return response()->json(['message' => 'Data berhasil ditambahkan']);
     }
 
 }

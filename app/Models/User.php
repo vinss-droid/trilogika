@@ -52,4 +52,8 @@ class User extends Authenticatable
     public function userData(){
         return $this->hasOne(UserData::class);
     }
+
+    public function buktiPersyaatan(){
+        return $this->hasOne(BuktiPersyaratan::class);
+    }
 }

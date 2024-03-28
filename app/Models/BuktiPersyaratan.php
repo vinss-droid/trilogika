@@ -18,4 +18,9 @@ class BuktiPersyaratan extends Model
         'cv',
         'status',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
