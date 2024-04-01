@@ -8,7 +8,10 @@ use App\Models\Province;
 use App\Models\Regency;
 use App\Models\UserData;
 use App\Models\Village;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
 
 
 class GuestController extends Controller
@@ -84,23 +87,54 @@ class GuestController extends Controller
     }
 
     public function berkasStore(Request $request){
-        $validate = $request->validate([
+         $validate = $request->validate([
             'ktp'=>'required|mimes:pdf,jpg,jpeg,png|max:1024',
             'ijazah'=>'required|mimes:pdf,jpg,jpeg,png|max:1024',
             'cv'=>'required|mimes:pdf,jpg,jpeg,png|max:1024',
             'sk_kerja'=>'required|mimes:pdf,jpg,jpeg,png|max:1024',
             'pas_foto'=>'required|mimes:jpg,jpeg,png|max:1024',
         ]);
-        
-        $validate['ktp'] = $request->file('ktp')->store('ktp');
-        $validate['ijazah'] = $request->file('ijazah')->store('ijazah');
-        $validate['cv'] = $request->file('cv')->store('cv');
-        $validate['sk_kerja'] = $request->file('sk_kerja')->store('sk_kerja');
-        $validate['pas_foto'] = $request->file('pas_foto')->store('pas_foto');
+        if ($request->hasFile('ktp')) {
+            $file = $request->file('ktp');
+            $fileName = Carbon::now()->format('YmdHis') . '_' . $file->getClientOriginalName();
+            $path_ktp = Storage::disk('private')->putFileAs('berkas/ktp', $file, $fileName);
+        }
+        if ($request->hasFile('ijazah')) {
+            $file = $request->file('ijazah');
+            $fileName = Carbon::now()->format('YmdHis') . '_' . $file->getClientOriginalName();
+            $path_ijazah = Storage::disk('private')->putFileAs('berkas/ijazah', $file, $fileName);
+        }
+        if ($request->hasFile('cv')) {
+            $file = $request->file('cv');
+            $fileName = Carbon::now()->format('YmdHis') . '_' . $file->getClientOriginalName();
+            $path_cv = Storage::disk('private')->putFileAs('berkas/cv', $file, $fileName);
+        }
+        if ($request->hasFile('sk_kerja')) {
+            $file = $request->file('sk_kerja');
+            $fileName = Carbon::now()->format('YmdHis') . '_' . $file->getClientOriginalName();
+            $path_skKerja = Storage::disk('private')->putFileAs('berkas/skKerja', $file, $fileName);
+        }
+        if ($request->hasFile('pas_foto')) {
+            $file = $request->file('pas_foto');
+            $fileName = Carbon::now()->format('YmdHis') . '_' . $file->getClientOriginalName();
+            $path_pasFoto = Storage::disk('private')->putFileAs('berkas/pasFoto', $file, $fileName);
+        }
 
-        $validate['user_id'] = auth()->user()->id;
-        BuktiPersyaratan::create($validate);
+        // $validate['user_id'] = auth()->user()->id;
+        BuktiPersyaratan::create([
+            'ktp' => $path_ktp,
+            'ijazah' => $path_ijazah,
+            'cv' => $path_cv,
+            'sk_kerja' => $path_skKerja,
+            'pas_foto' => $path_pasFoto,
+            'user_id' =>auth()->user()->id,
+        ]);
+        if ($request->fails()) {
+            return redirect()->back()->withInput()->withErrors($validate);
+        }
+        
         return response()->json(['message' => 'Data berhasil ditambahkan']);
     }
+
 
 }

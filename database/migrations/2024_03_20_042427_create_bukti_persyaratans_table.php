@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('bukti_persyaratans', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('ijazah');
-            $table->string('sk_kerja');
-            $table->string('ktp');
-            $table->string('pas_foto');
-            $table->string('cv');
+            $table->string('ijazah')->nullable();
+            $table->string('sk_kerja')->nullable();
+            $table->string('ktp')->nullable();
+            $table->string('pas_foto')->nullable();
+            $table->string('cv')->nullable();
             $table->enum('status',['lengkap','belum'])->default('belum');
             $table->timestamps();
 

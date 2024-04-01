@@ -57,6 +57,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/form-app/{userData}',[GuestController::class,'formAppUpdate'])->name('form.app.update');
 
     Route::get('/berkas',[GuestController::class,'berkas'])->name('berkas');
+    Route::post('/berkas',[GuestController::class,'berkasStore'])->name('berkas.store');
 
     Route::post('/regence',[IndoRegionController::class,'getRegencies'])->name('get_regencies');
     Route::post('/district',[IndoRegionController::class,'getDistricts'])->name('get_districts');

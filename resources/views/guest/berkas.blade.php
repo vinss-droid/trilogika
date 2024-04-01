@@ -18,7 +18,7 @@
     </div>
 <section class="section">
 
-<form action="{{ route('form.app.store') }}" method="POST">
+<form action="{{ route('berkas.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 <div class="row">
 <div class="col-lg-8">
@@ -30,12 +30,14 @@
                         <h6>Data Diri</h6>
                         <hr>
                     </div>
-                    
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Curiculum Vitae</label><br>
                                 <small class="text-muted">File Maksimal 1 MB format pdf</small>
+                                @error('cv')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                                 <input class="form-control" type="file" id="" name="cv">
                             </div>
                         </div>
@@ -43,6 +45,9 @@
                             <div class="form-group">
                                 <label for="">Ijazah</label><br>
                                 <small class="text-muted">File Maksimal 1 MB format pdf</small>
+                                @error('ijazah')
+                                <small class="text-danger">{{ $message }}</small>
+                                @enderror
                                 <input class="form-control" type="file" id="" name="ijazah">
                             </div>
                         </div>
