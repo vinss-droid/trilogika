@@ -11,7 +11,8 @@ use App\Models\Village;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\File;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 
 class GuestController extends Controller
@@ -82,6 +83,7 @@ class GuestController extends Controller
         $berkas = BuktiPersyaratan::where('user_id',auth()->user()->id)->first();
         // dd($berkas->exists());
         if ($berkas->exists()) {
+           
             return view('guest.berkas_edit',compact('berkas'));
         }else{
             return view('guest.berkas');
@@ -122,7 +124,6 @@ class GuestController extends Controller
             $path_pasFoto = Storage::disk('private')->putFileAs('berkas/pasFoto', $file, $fileName);
         }
 
-        // $validate['user_id'] = auth()->user()->id;
         BuktiPersyaratan::create([
             'ktp' => $path_ktp,
             'ijazah' => $path_ijazah,
@@ -138,5 +139,57 @@ class GuestController extends Controller
         return response()->json(['message' => 'Data berhasil ditambahkan']);
     }
 
+    public function berkasUpdate(Request $request , BuktiPersyaratan $buktiPersyaratan){
+        $berkas = $buktiPersyaratan;
+        $validate = Validator::make($request->all(), [
+            'ktp'=>'mimes:pdf,jpg,jpeg,png|max:1024',
+            'ijazah'=>'mimes:pdf,jpg,jpeg,png|max:1024',
+            'cv'=>'mimes:pdf,jpg,jpeg,png|max:1024',
+            'sk_kerja'=>'mimes:pdf,jpg,jpeg,png|max:1024',
+            'pas_foto'=>'mimes:jpg,jpeg,png|max:1024',
+        ]);
+        if ($request->hasFile('ktp')) {
+            $file = $request->file('ktp');
+            if (Storage::disk('private')->exists($berkas->ktp)) {
+                Storage::disk('private')->delete($berkas->ktp);
+            }
+            $fileName = Carbon::now()->format('YmdHis') . '_' . $file->getClientOriginalName();
+            $path_ktp = Storage::disk('private')->putFileAs('berkas/ktp', $file, $fileName);
+        }
+        if ($request->hasFile('ijazah')) {
+            $file = $request->file('ijazah');
+            $fileName = Carbon::now()->format('YmdHis') . '_' . $file->getClientOriginalName();
+            $path_ijazah = Storage::disk('private')->putFileAs('berkas/ijazah', $file, $fileName);
+        }
+        if ($request->hasFile('cv')) {
+            $file = $request->file('cv');
+            $fileName = Carbon::now()->format('YmdHis') . '_' . $file->getClientOriginalName();
+            $path_cv = Storage::disk('private')->putFileAs('berkas/cv', $file, $fileName);
+        }
+        if ($request->hasFile('sk_kerja')) {
+            $file = $request->file('sk_kerja');
+            $fileName = Carbon::now()->format('YmdHis') . '_' . $file->getClientOriginalName();
+            $path_skKerja = Storage::disk('private')->putFileAs('berkas/skKerja', $file, $fileName);
+        }
+        if ($request->hasFile('pas_foto')) {
+            $file = $request->file('pas_foto');
+            $fileName = Carbon::now()->format('YmdHis') . '_' . $file->getClientOriginalName();
+            $path_pasFoto = Storage::disk('private')->putFileAs('berkas/pasFoto', $file, $fileName);
+        }
+
+        $berkas->update([
+            'ktp' => $path_ktp,
+            'ijazah' => $path_ijazah,
+            'cv' => $path_cv,
+            'sk_kerja' => $path_skKerja,
+            'pas_foto' => $path_pasFoto,
+        ]);
+
+        if ($validate->fails()) {
+            return redirect()->back()->withInput()->withErrors($validate);
+        }
+        
+        return response()->json(['message' => 'Data berhasil di update']);
+    }
 
 }

@@ -18,8 +18,9 @@
     </div>
 <section class="section">
 
-<form action="{{ route('berkas.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('berkas.update',$berkas->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
+    @method('PATCH')
 <div class="row">
 <div class="col-lg-8">
     <div class="card">
@@ -35,7 +36,6 @@
                             <div class="form-group">
                                 <label for="">Curiculum Vitae</label><br>
                                 <small class="text-muted">File Maksimal 1 MB format pdf  <a href="#" class="badge bg-primary">{{ Str::substr($berkas->cv, 10)  }}</a></small>
-                                
                                 @error('cv')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
@@ -56,6 +56,9 @@
                             <div class="form-group">
                                 <label for="">KTP/Pasport</label><br>
                                 <small class="text-muted">File Maksimal 1 MB format pdf <a href="#" class="badge bg-primary">{{ Str::substr($berkas->ktp, 11)  }}</a></small>
+                                @error('ktp')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                                 <input class="form-control" type="file" id="" name="ktp">
                             </div>
                         </div>

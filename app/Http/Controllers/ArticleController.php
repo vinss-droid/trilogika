@@ -108,17 +108,6 @@ class ArticleController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // if ($request->file('image')) {
-        //     if (Storage::disk('public')->exists('images/article/' . $article->image)) {
-        //         Storage::disk('public')->delete('images/article/' . $article->image);
-        //     }
-        //     $newImage = $date . '_' . $request->file('image')->getClientOriginalName();
-        //     $request->file('image')->storeAs('public/images/article', $newImage);
-        //     $validatedData['image'] = $newImage;
-        // } else {
-        //     $validatedData['image'] = $article->image;
-        // }
-        // dd($validatedData);
 
         if ($request->hasFile('image')) {
             $image = $request->file();

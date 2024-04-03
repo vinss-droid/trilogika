@@ -58,6 +58,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/berkas',[GuestController::class,'berkas'])->name('berkas');
     Route::post('/berkas',[GuestController::class,'berkasStore'])->name('berkas.store');
+    Route::patch('/berkas/{buktiPersyaratan}',[GuestController::class,'berkasUpdate'])->name('berkas.update');
 
     Route::post('/regence',[IndoRegionController::class,'getRegencies'])->name('get_regencies');
     Route::post('/district',[IndoRegionController::class,'getDistricts'])->name('get_districts');
