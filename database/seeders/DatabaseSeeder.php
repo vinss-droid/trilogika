@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
             ProgramSeeder::class,
             CourseSeeder::class,
             ArticleSeeder::class,
+            SchemaSeeder::class,
+            UnitKompetensiSeeder::class,
             PortofolioSeeder::class,
             IndoRegionSeeder::class,
         ]);

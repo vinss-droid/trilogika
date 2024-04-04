@@ -1,0 +1,30 @@
+
+	[
+		{
+			"id": 1,
+			"schema_id": 1,
+			"kode": "DG.0001.0023",
+			"judul": "Membuat desain Brief",
+			"jenis_standar": "SKKNI",
+			"created_at": "2024-04-04 06:12:20",
+			"updated_at": "2024-04-04 06:12:20"
+		},
+		{
+			"id": 2,
+			"schema_id": 1,
+			"kode": "DG.0001.0032",
+			"judul": "Membuat Sketsa",
+			"jenis_standar": "SKKNI",
+			"created_at": "2024-04-04 06:13:01",
+			"updated_at": "2024-04-04 06:13:01"
+		},
+		{
+			"id": 3,
+			"schema_id": 1,
+			"kode": "DG.0023.0232",
+			"judul": "Implementasi Desain Dengan Software",
+			"jenis_standar": "SKKNI",
+			"created_at": "2024-04-04 06:13:49",
+			"updated_at": "2024-04-04 06:13:49"
+		}
+	]

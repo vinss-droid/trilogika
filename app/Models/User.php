@@ -56,4 +56,7 @@ class User extends Authenticatable
     public function buktiPersyaatan(){
         return $this->hasOne(BuktiPersyaratan::class);
     }
+    public function schemas(){
+        return $this->belongsToMany(Schema::class,'data_sertifikasi');
+    }
 }

@@ -21,4 +21,7 @@ class Schema extends Model
     {
         return $this->hasMany(UnitKompetensi::class);
     }
+    public function users(){
+        return $this->belongsToMany(User::class,'data_sertifikasi');
+    }
 }
