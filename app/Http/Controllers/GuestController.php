@@ -6,6 +6,7 @@ use App\Models\BuktiPersyaratan;
 use App\Models\District;
 use App\Models\Province;
 use App\Models\Regency;
+use App\Models\Schema;
 use App\Models\UserData;
 use App\Models\Village;
 use Carbon\Carbon;
@@ -219,6 +220,11 @@ class GuestController extends Controller
         // ]);
         
         return redirect('dashboard')->with('success', 'data berhasil di update');
+    }
+
+    public function daftarSertifikasi(){
+        $schemas = Schema::all();
+        return view('guest.daftar_sertifikasi',compact('schemas'));
     }
 
 }

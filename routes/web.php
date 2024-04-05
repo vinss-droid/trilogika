@@ -60,6 +60,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/berkas',[GuestController::class,'berkasStore'])->name('berkas.store');
     Route::patch('/berkas/{buktiPersyaratan}',[GuestController::class,'berkasUpdate'])->name('berkas.update');
 
+    Route::get('/daftar-sertifikasi',[GuestController::class,'daftarSertifikasi'])->name('daftar.sertifikasi');
+
     Route::post('/regence',[IndoRegionController::class,'getRegencies'])->name('get_regencies');
     Route::post('/district',[IndoRegionController::class,'getDistricts'])->name('get_districts');
     Route::post('/village',[IndoRegionController::class,'getVillages'])->name('get_villages');
