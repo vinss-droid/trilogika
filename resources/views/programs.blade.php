@@ -153,7 +153,7 @@ App::setLocale('id');
                     </div>
                 </div>
                 <div class="card border-0 mb-3">
-                    <img src="{{asset('image/course/ekonomi.jpg')}}" class="img-fluid" alt="...">
+                    <img src="{{asset('image/ekonomi.jpg')}}" class="img-fluid" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Pelatihan & Sertifikasi</h5>
                         <h6 class="card-subtitle mb-2 text-body-secondary">Basic Digital Marketing</h6>
