@@ -60,7 +60,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/berkas',[GuestController::class,'berkasStore'])->name('berkas.store');
     Route::patch('/berkas/{buktiPersyaratan}',[GuestController::class,'berkasUpdate'])->name('berkas.update');
 
-    Route::get('/daftar-sertifikasi',[GuestController::class,'daftarSertifikasi'])->name('daftar.sertifikasi');
+    Route::get('/daftar-sertifikasi',[GuestController::class,'allSertifikasi'])->name('all.sertifikasi');
 
     Route::post('/regence',[IndoRegionController::class,'getRegencies'])->name('get_regencies');
     Route::post('/district',[IndoRegionController::class,'getDistricts'])->name('get_districts');

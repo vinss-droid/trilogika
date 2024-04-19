@@ -82,7 +82,7 @@
                     </div>
                     
                     <div class="col-6 col-lg-3 col-md-6">
-                        <a href="{{ route('daftar.sertifikasi') }}">
+                        <a href="{{ route('all.sertifikasi') }}">
                         <div class="card"> 
                             <div class="card-body px-4 py-4-5">
                                 <div class="row">

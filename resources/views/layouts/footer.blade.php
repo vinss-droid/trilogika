@@ -7,7 +7,7 @@
                 <!--Grid column-->
                 <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
                     <h5 class="text-uppercase mb-4">Tentang Kami</h5>
-                    <ul class="text-white">
+                    <ul class="fa-ul text-white">
                         <li><a class="text-white" href="{{ route('page.visi-misi') }}">Visi & Misi</a></li>
                         <li><a class="text-white" href="{{ route('page.history') }}">History</a></li>
                         <li><a class="text-white" href="#">Patner</a></li>
@@ -43,7 +43,7 @@
                 <!--Grid column-->
                 <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
                     <h5 class="text-uppercase mb-4">Jam Kerja</h5>
-                    <ul>
+                    <ul class="fa-ul">
                         <li>Senin - Jumat</li>
                         <li>08:00 - 16.30</li>
                     </ul>

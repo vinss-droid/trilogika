@@ -82,12 +82,10 @@ class GuestController extends Controller
     }
     public function berkas(){
         $berkas = BuktiPersyaratan::where('user_id',auth()->user()->id)->first();
-        // dd($berkas->exists());
-        if ($berkas->exists()) {
-           
-            return view('guest.berkas_edit',compact('berkas'));
-        }else{
+        if (!$berkas) {
             return view('guest.berkas');
+        }else{
+            return view('guest.berkas_edit',compact('berkas'));
         }
     }
 
@@ -222,9 +220,13 @@ class GuestController extends Controller
         return redirect('dashboard')->with('success', 'data berhasil di update');
     }
 
-    public function daftarSertifikasi(){
+    public function allSertifikasi(){
         $schemas = Schema::all();
         return view('guest.daftar_sertifikasi',compact('schemas'));
+    }
+
+    public function showSertifikasi($id){
+        $schema = Schema::with('unitKompetensis')->get();
     }
 
 }

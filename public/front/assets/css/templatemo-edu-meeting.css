@@ -93,10 +93,10 @@ article,
 aside,
 footer,
 figcaption {
-  margin: 0;
+  /* margin: 0;
   padding: 0;
   border: 0;
-  outline: 0;
+  outline: 0; */
 }
 
 .clearfix:after {
@@ -122,9 +122,9 @@ html[xmlns] .clearfix {
 
 ul,
 li {
-  padding: 0;
-  margin: 0;
-  list-style: none;
+  /* padding: 0;
+  margin: 0; */
+
 }
 
 header,
@@ -177,7 +177,7 @@ ul {
 }
 
 p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 25px;
   color: #2a2a2a;
 }

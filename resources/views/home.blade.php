@@ -256,7 +256,7 @@
         <div class="d-flex justify-content-end">
             <div class="mb-3 col-md-6">
                 <h1 class="text-white">Portofolio Trilogika Edutama</h1>
-                <p class="text-white">Proyek yang sudah berhasil dilaksanakan oleh Trilogika Edutama dalam membangun kepercayaan di antara klien-klien kami.</p>
+                <p class="text-white">Proyek yang sudah berhasil dilaksanakan oleh Trilogika Edutama dalam membangun ekosistem sumberdaya yang unggul.</p>
             </div>
         </div>
         <div class="row g-2">

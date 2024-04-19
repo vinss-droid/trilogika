@@ -232,10 +232,58 @@
 <section class="meetings-page" id="meetings">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-12 mb-5" style="margin-top: -100px;">
+            <div class="col-lg-12 mb-5">
                 <div class="meeting-single-item">
                     <!-- contactus -->
-                    <div class="container container-dua align-items-center justify-content-center">
+                    <div class="container align-items-center justify-content-center rounded">
+                        <div class="row g-4 py-3 row-cols-1 row-cols-lg-3">
+                            <div class="feature col text-center">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                        <div class="feature-icon  mb-3">
+                                            <i class="fas fa-map-marker-alt" style="font-size: 3em"></i>
+                                        </div>
+                                        <h4>Alamat</h4>
+                                        <p> Jl. Lingkar Barat Siliwangi, Nogosaren, RT.05/RW.22 Nogotirto, Gamping, Sleman, D.I. Yogyakarta</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feature col text-center">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                        <div class="feature-icon  mb-3">
+                                            <i class="fas fa-phone-alt" style="font-size: 3em"></i>
+                                        </div>
+                                        <h4>Nomor Telepon</h4>
+                                        <p>+62-857-0124-6319</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="feature col text-center">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                        <div class="feature-icon  mb-3">
+                                            <i class="fas fa-envelope" style="font-size: 3em"></i>
+                                        </div>
+                                        <h4>Email</h4>
+                                        <p>trilogikaedutamayk@gmail.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                         <!-- maps -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="text-center mb-3">Maps</h3>
+                                       <div id="map"></div>
+                                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.143854955198!2d110.32859587450912!3d-7.7745667771267195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5926ebf3cd91%3A0x84837300a36becd1!2sTrilogika%20Edutama!5e0!3m2!1sid!2sid!4v1698207752831!5m2!1sid!2sid" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                        
+                            </div>         
+                        </div>         
+                    </div>
+
+                      {{-- 
+                        <div class="container container-dua align-items-center justify-content-center">
                         <div class="content-dua">
                             <div class="left-side">
                                 <div class="address details">
@@ -296,6 +344,7 @@
                             </div>
                         </div>
                     </div>
+                    --}}
                 </div>
             </div>
         </div>
