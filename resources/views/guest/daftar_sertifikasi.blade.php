@@ -21,7 +21,7 @@
             @foreach ($schemas as $schema)
                 
             <div class="col-xl-4 col-md-6 col-sm-12">
-                <a href="#">
+                <a href="{{ route('show.sertifikasi', $schema->id) }}">
                 <div class="card">
                     <div class="card-content">
                         <img src="https://source.unsplash.com/random/400x200" class="card-img-top img-fluid" alt="singleminded" style="height: 100px object-fit: cover">

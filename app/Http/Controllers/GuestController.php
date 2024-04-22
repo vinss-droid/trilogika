@@ -226,7 +226,9 @@ class GuestController extends Controller
     }
 
     public function showSertifikasi($id){
-        $schema = Schema::with('unitKompetensis')->get();
+        $schemas = Schema::with('unitKompetensis')->where('id', $id)->first();
+        // dd($schemas);
+        return view('guest.show_sertifikasi',compact('schemas'));
     }
 
 }

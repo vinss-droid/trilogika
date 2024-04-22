@@ -61,6 +61,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/berkas/{buktiPersyaratan}',[GuestController::class,'berkasUpdate'])->name('berkas.update');
 
     Route::get('/daftar-sertifikasi',[GuestController::class,'allSertifikasi'])->name('all.sertifikasi');
+    Route::get('/show-sertifikasi/{id}',[GuestController::class,'showSertifikasi'])->name('show.sertifikasi');
 
     Route::post('/regence',[IndoRegionController::class,'getRegencies'])->name('get_regencies');
     Route::post('/district',[IndoRegionController::class,'getDistricts'])->name('get_districts');
