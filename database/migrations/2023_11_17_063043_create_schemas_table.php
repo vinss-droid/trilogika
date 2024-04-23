@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('jenis');
             $table->string('nomor');
             $table->string('judul');
+            $table->string('deskripsi')->nullable();
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
 

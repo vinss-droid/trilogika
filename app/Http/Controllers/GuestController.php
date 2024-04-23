@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BuktiPersyaratan;
+use App\Models\DataSertifikasi;
 use App\Models\District;
 use App\Models\Province;
 use App\Models\Regency;
@@ -226,9 +227,28 @@ class GuestController extends Controller
     }
 
     public function showSertifikasi($id){
-        $schemas = Schema::with('unitKompetensis')->where('id', $id)->first();
-        // dd($schemas);
-        return view('guest.show_sertifikasi',compact('schemas'));
+        // $data = DataSertifikasi::where('id', $id)->first();
+        // if($data){
+            
+        // }else{
+            $schemas = Schema::with('unitKompetensis')->where('id', $id)->first();
+            return view('guest.show_sertifikasi',compact('schemas'));
+        // }
+    }
+
+    public function daftarSertifikasi(Request $request){
+        $sertifikasi = $request->validate([
+            'tujuan'=>'required',
+        ]);
+
+        $sertifikasi['user_id'] = auth()->user()->id;
+        $sertifikasi['schema_id'] = $request->schema_id;
+        $sertifikasi['status'] = 'daftar';
+
+        $schema = Schema::findOrFail($request->schema_id)->first();
+        // dd($sertifikasi);
+        DataSertifikasi::create($sertifikasi);
+        return redirect('dashboard')->with('success', 'berhasil mendaftar sertifikasi '.$schema->judul);
     }
 
 }

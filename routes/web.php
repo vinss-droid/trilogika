@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\DataSertifikasiController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\IndoRegionController;
 use App\Http\Controllers\PageController;
@@ -62,6 +63,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/daftar-sertifikasi',[GuestController::class,'allSertifikasi'])->name('all.sertifikasi');
     Route::get('/show-sertifikasi/{id}',[GuestController::class,'showSertifikasi'])->name('show.sertifikasi');
+    Route::post('/daftar-sertifikasi',[GuestController::class,'daftarSertifikasi'])->name('daftar.sertifikasi');
 
     Route::post('/regence',[IndoRegionController::class,'getRegencies'])->name('get_regencies');
     Route::post('/district',[IndoRegionController::class,'getDistricts'])->name('get_districts');
@@ -80,6 +82,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/schema/get-schema',[SchemaController::class,'getSchema'])->name('getSchema');
     Route::resource('/admin/schema', SchemaController::class);
     // END SCHEMA
+
+    Route::resource('/admin/data-sertifikasi', DataSertifikasiController::class);
+    Route::get('/admin/getDataSertifikasi',[DataSertifikasiController::class,'getDataSertifikasi'])->name('getdataDertifikasi');
+
     Route::get('/admin/unit-kompetensi/{schemaId}',[UnitKompetensiController::class,'index'])->name('unit-kompetensi.index');
     Route::resource('/admin/unit-kompetensi',UnitKompetensiController::class)->except('index');
 
