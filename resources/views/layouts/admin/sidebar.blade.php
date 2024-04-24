@@ -77,6 +77,9 @@
                         <li class="submenu-item ">
                             <a href="{{ route('user.index') }}">Peserta</a>
                         </li>
+                        <li class="submenu-item ">
+                            <a href="{{ route('data-sertifikasi.index') }}">Sertifikasi</a>
+                        </li>
                     </ul>
                 </li>
                 @endrole

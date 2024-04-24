@@ -14,12 +14,21 @@ class DataSertifikasiController extends Controller
      */
     public function index()
     {
-        $datas = User::select('users.*','schemas.judul as judul_schema','schemas.nomor as nomor_schema','data_sertifikasis.tujuan as tujuan')
+        $datas = User::select('users.*',
+        'schemas.judul as judul_schema',
+        'schemas.nomor as nomor_schema',
+        'data_sertifikasis.tujuan as tujuan',
+        'data_sertifikasis.status as status',
+        'user_data.nama as nama',
+        'data_sertifikasis.id as data_id',
+        )
         ->join('data_sertifikasis', 'users.id', '=', 'data_sertifikasis.user_id')
         ->join('schemas', 'data_sertifikasis.schema_id', '=', 'schemas.id')
+        ->join('user_data', 'users.id', '=', 'user_data.user_id')
+        ->orderBy('data_sertifikasis.created_at', 'desc')
         ->get();
-        dd($datas);
-        return view('dataSertifikasi.index');
+        // dd($datas);
+        return view('dataSertifikasi.index',compact('datas'));
     }
 
     /**
@@ -73,9 +82,14 @@ class DataSertifikasiController extends Controller
     public function getDataSertifikasis()
     {
         if (request()->ajax()) {
-            $schemas = DataSertifikasi::orderBy('created_at','desc');
+            $datas = User::select('users.*','schemas.judul as judul_schema','schemas.nomor as nomor_schema','data_sertifikasis.tujuan as tujuan','data_sertifikasis.status as status')
+            ->join('data_sertifikasis', 'users.id', '=', 'data_sertifikasis.user_id')
+            ->join('schemas', 'data_sertifikasis.schema_id', '=', 'schemas.id')
+            ->orderBy('data_sertifikasis.created_at', 'desc')
+            ->get();
+
             $counter = 1;
-            return datatables()->of($schemas)
+            return datatables()->of($datas)
                 ->addColumn('DT_RowIndex',  function() use (&$counter){
                     return $counter++;
                 })
@@ -93,6 +107,15 @@ class DataSertifikasiController extends Controller
                 })
                 ->make(true);
         }
-        
+    }
+
+    public function updateStatus(Request $request){
+        // $data = DataSertifikasi::find($id);
+        if(request()->ajax()){
+            $data = DataSertifikasi::find($request->id);
+            $data->status = $request->status;
+            $data->save();
+            return response()->json(['success' => true]);
+        }
     }
 }

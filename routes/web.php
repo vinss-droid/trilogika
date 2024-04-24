@@ -84,6 +84,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     // END SCHEMA
 
     Route::resource('/admin/data-sertifikasi', DataSertifikasiController::class);
+    Route::patch('/admin/update_status_sertifikasi',[DataSertifikasiController::class,'updateStatus'])->name('update_status_sertifikasi');
     Route::get('/admin/getDataSertifikasi',[DataSertifikasiController::class,'getDataSertifikasi'])->name('getdataDertifikasi');
 
     Route::get('/admin/unit-kompetensi/{schemaId}',[UnitKompetensiController::class,'index'])->name('unit-kompetensi.index');
