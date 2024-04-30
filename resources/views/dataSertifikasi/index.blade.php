@@ -28,8 +28,8 @@
                         <td class="text-bold-500">{{$data->judul_schema}}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a href="#" id="btnDiterima" data-id="{{ $data->data_id }}" data-status="diterima" class="btn btn-secondary">Diterima</a>
-                                <a href="#" id="btnTidakDiterima" data-id="{{ $data->data_id }}" data-status="tidak diterima" class="btn btn-secondary">Tidak Diterima</a>
+                                <a href="#" id="btnDiterima" data-id="{{ $data->data_id }}" data-status="diterima" class="btn {{ $data->status == 'diterima' ? 'btn-success' : 'btn-secondary' }}">Diterima</a>
+                                <a href="#" id="btnTidakDiterima" data-id="{{ $data->data_id }}" data-status="tidak diterima" class="btn {{ $data->status == 'tidak diterima' ? 'btn-success' : 'btn-secondary' }}">Tidak Diterima</a>
                             </div>
                             {{-- @if ($data->status == 'daftar')
                             <a href="#" class="btn icon btn-secondary updateStatusBtn" data-id={{ $data->id }}><i class="bi bi-square"></i> Rekomendasi</a>

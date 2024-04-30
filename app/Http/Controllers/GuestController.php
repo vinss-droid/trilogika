@@ -227,13 +227,14 @@ class GuestController extends Controller
     }
 
     public function showSertifikasi($id){
-        // $data = DataSertifikasi::where('id', $id)->first();
-        // if($data){
-            
-        // }else{
+        $data = DataSertifikasi::where('user_id', auth()->user()->id)->first();
+        // dd($data);
+        if($data->status == 'daftar'){
+         return redirect('dashboard')->with('success', 'anda sudah mendaftar sertifikasi tunggu konfirmasi dari admin'); 
+        }else{
             $schemas = Schema::with('unitKompetensis')->where('id', $id)->first();
             return view('guest.show_sertifikasi',compact('schemas'));
-        // }
+        }
     }
 
     public function daftarSertifikasi(Request $request){

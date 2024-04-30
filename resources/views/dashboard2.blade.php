@@ -47,9 +47,7 @@
                                     </div>
                                 </div>
                             </a>
-                        </div>
-
-                        
+                        </div>                    
 
                         <div class="col-6 col-lg-3 col-md-6">
                             <a href="{{ route('berkas') }}">
@@ -112,7 +110,7 @@
                         @endrole
                         @role('admin')
                         <div class="col-6 col-lg-3 col-md-6">
-                            <a href="#">
+                            <a href="{{ route('data-sertifikasi.index') }}">
                                 <div class="card">
                                     <div class="card-body px-4 py-4-5">
                                         <div class="row">
@@ -143,4 +141,19 @@
         </div>
 
     </div>
+@endsection
+@section('script')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if ("{{session('success')}}") {
+            Toastify({
+                text: "{{ session('success') }}",
+                duration: 3000, // Durasi toast dalam milidetik
+                close: true, // Menampilkan tombol tutup
+                gravity: "top", // Posisi toast (top, center, bottom)
+                position: "right", // Posisi horizontal toast (left, center, right)
+            }).showToast();
+        }
+    });
+</script>
 @endsection
