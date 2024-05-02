@@ -175,9 +175,9 @@
     <div class="container py-4">    
         <div class="p-5 mb-4 bg-body-tertiary rounded-3">
           <div class="container-fluid py-5">
-            <h1 class="display-5 fw-bold">Visi</h1>
-            <p class="col-md-8 fs-4">Lembaga yang kredibel sebagai partner dalam meningkatkan kualitas sumber Daya Manusia Indonesia berbasis kompetensi secara komprehensif</p>
-            {{-- <button class="btn btn-primary btn-lg" type="button">Example button</button> --}}
+            <h1 class="display-5 fw-bold text-white">Visi</h1>
+            <p class="col-md-8 fs-4 text-white">Lembaga yang kredibel sebagai partner dalam meningkatkan kualitas sumber Daya Manusia Indonesia berbasis kompetensi secara komprehensif</p>
+           
           </div>
         </div>
         <div class="row align-items-md-stretch">
@@ -189,11 +189,11 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="p-5 bg-body-tertiary border rounded-3">
-              <h2>Misi</h2>
-                <p><strong>a.</strong> Menyelenggarakan berbagai studi, pelatihan (bimtek), vokasi dan pemagangan dalam bidang sumber daya manusia dan produktivitas</p>
-                <p><strong>b.</strong> Merencanakan, memasarkan, menyelenggarakan, hingga mengevaluasi program pengembangan sumber daya manusia</p>
-                <p><strong>c.</strong> Memberikan layanan terbaik dengan focus pada pemecahan masalah sumber daya manusia</p>
+            <div class="p-5 bg-body-tertiary border rounded-3 text-white">
+              <h2 class="text-white">Misi</h2>
+                <p class="text-white"><strong>a.</strong> Menyelenggarakan berbagai studi, pelatihan (bimtek), vokasi dan pemagangan dalam bidang sumber daya manusia dan produktivitas</p>
+                <p class="text-white"><strong>b.</strong> Merencanakan, memasarkan, menyelenggarakan, hingga mengevaluasi program pengembangan sumber daya manusia</p>
+                <p class="text-white"><strong>c.</strong> Memberikan layanan terbaik dengan focus pada pemecahan masalah sumber daya manusia</p>
             </div>
           </div>
         </div>
