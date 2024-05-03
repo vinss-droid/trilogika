@@ -85,7 +85,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::resource('/admin/data-sertifikasi', DataSertifikasiController::class);
     Route::patch('/admin/update_status_sertifikasi',[DataSertifikasiController::class,'updateStatus'])->name('update_status_sertifikasi');
-    Route::get('/admin/getDataSertifikasi',[DataSertifikasiController::class,'getDataSertifikasi'])->name('getdataDertifikasi');
+    Route::get('/admin/getDataSertifikasi',[DataSertifikasiController::class,'getDataSertifikasi'])->name('getdataSertifikasi');
+    Route::get('/admin/downloadPdf/{id}',[DataSertifikasiController::class,'downloadPdf'])->name('sertifikasi.pdf');
 
     Route::get('/admin/unit-kompetensi/{schemaId}',[UnitKompetensiController::class,'index'])->name('unit-kompetensi.index');
     Route::resource('/admin/unit-kompetensi',UnitKompetensiController::class)->except('index');

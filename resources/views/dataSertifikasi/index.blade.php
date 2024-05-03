@@ -39,6 +39,7 @@
                             <a href="#" class="btn icon btn-danger updateStatusBtn "  data-id={{ $data->id }}><i class="bi bi-eye"></i></a>
                             @endif --}}
                             <a href="#" class="btn icon btn-primary"><i class="bi bi-eye"></i></a>
+                            <a href="{{ route('sertifikasi.pdf', $data->data_id) }}" class="btn icon btn-primary"><i class="bi bi-printer"></i></a>
                             <a href="" class="btn icon btn-danger" onclick="deletePost('{{$data->id}}')"><i class="bi bi-trash"></i></a>
                         </td>
                     </tr>

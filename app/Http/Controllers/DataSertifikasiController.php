@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\DataSertifikasi;
 use App\Models\User;
+use App\Models\UserData;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\HtmlString;
 
@@ -117,5 +119,14 @@ class DataSertifikasiController extends Controller
             $data->save();
             return response()->json(['success' => true]);
         }
+    }
+
+    public function downloadPdf($id){
+        $dataSertif = DataSertifikasi::find($id);
+        $user = UserData::where('user_id',$dataSertif->user_id)->first();
+        // dd($user);
+        $pdf = Pdf::loadView('dataSertifikasi.pdf', compact('user'));
+        return $pdf->stream();
+        // return view('dataSertifikasi.pdf', compact('data'));
     }
 }
