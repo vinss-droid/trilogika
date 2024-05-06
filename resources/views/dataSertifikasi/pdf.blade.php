@@ -229,8 +229,8 @@
         </tr>
     </table>
     <div class="footer-red">
-        <hr style="height:8px;border-width:0;background-color:rgb(228, 29, 29); ">
-        <p style="font-size: 0.7em;">Trilogika Edutama {{ Carbon::now()->isoFormat('YYYY') }}</p>
+        <hr style="height:4px;border-width:0;background-color:rgb(228, 29, 29); ">
+        <div style="font-size: 0.7em;">Trilogika Edutama {{ Carbon::now()->isoFormat('YYYY') }}</div>
     </div>
     {{-- bagian 2 --}}
     <div class="page-break"></div>
