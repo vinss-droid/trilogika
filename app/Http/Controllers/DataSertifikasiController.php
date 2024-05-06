@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataSertifikasi;
+use App\Models\Schema;
 use App\Models\User;
 use App\Models\UserData;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\HtmlString;
 
 class DataSertifikasiController extends Controller
@@ -126,23 +129,27 @@ class DataSertifikasiController extends Controller
     public function downloadPdf($id)
     {
         $dataSertif = DataSertifikasi::find($id);
+        $schema = Schema::with('unitKompetensis')->find($dataSertif->schema_id);
         // $user = UserData::where('user_id',$dataSertif->user_id)->first();
-
+        // dd($schema);
         $user = UserData::select(
             'user_data.*',
             'provinces.name as provinsi',
             'regencies.name as kabupaten',
             'districts.name as kecamatan',
             'villages.name as kalurahan',
+            'users.email as email',
+
         )
             ->join('provinces', 'user_data.provinsi', '=', 'provinces.id')
             ->join('regencies', 'user_data.kabupaten', '=', 'regencies.id')
             ->join('districts', 'user_data.kecamatan', '=', 'districts.id')
             ->join('villages', 'user_data.kalurahan', '=', 'villages.id')
+            ->join('users', 'user_data.user_id', '=', 'users.id')
             ->where('user_id', $dataSertif->user_id)
             ->first();
         // dd($user);
-        $pdf = Pdf::loadView('dataSertifikasi.pdf', compact('user'));
+        $pdf = Pdf::loadView('dataSertifikasi.pdf', compact(['schema', 'user', 'dataSertif']));
         return $pdf->stream();
         // return view('dataSertifikasi.pdf', compact('data'));
     }
