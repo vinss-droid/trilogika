@@ -195,37 +195,37 @@
             <td></td>
             <td>Nama Institusi / Perusahaan</td>
             <td>:</td>
-            <td></td>
+            <td>{{ $dataKerja->nama_institusi ?? '-' }}</td>
         </tr>
         <tr>
             <td></td>
             <td>Jabatan</td>
             <td>:</td>
-            <td></td>
+            <td>{{ $dataKerja->jabatan ?? '-'}}</td>
         </tr>
         <tr>
             <td></td>
             <td>Alamat Kantor</td>
             <td>:</td>
-            <td></td>
+            <td>{{ $dataKerja->alamat_kantor ?? '-' }}</td>
         </tr>
         <tr>
             <td></td>
             <td>No. Telepon</td>
             <td>:</td>
-            <td></td>
+            <td>{{ $dataKerja->tlp_kantor ?? '-' }}</td>
         </tr>
         <tr>
             <td></td>
             <td>E-mail</td>
             <td>:</td>
-            <td></td>
+            <td>{{ $dataKerja->email_kantor ?? '-'}}</td>
         </tr>
         <tr>
             <td></td>
             <td>Fax</td>
             <td>:</td>
-            <td></td>
+            <td>{{ $dataKerja->fax_kantor ?? '-'}}</td>
         </tr>
     </table>
     <div class="footer-red">

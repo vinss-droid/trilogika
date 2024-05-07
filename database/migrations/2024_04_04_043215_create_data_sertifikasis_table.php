@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('schema_id')->constrained('schemas')->onDelete('cascade');
             $table->string('status');
             $table->string('tujuan');
+            $table->string('catatan')->nullable();
             $table->timestamps();
         });
     }

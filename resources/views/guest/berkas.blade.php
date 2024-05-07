@@ -22,6 +22,15 @@
     @csrf
 <div class="row">
 <div class="col-lg-8">
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <div class="card">
         <div class="card-body">
             <div class="row">
@@ -61,7 +70,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Pas Foto 3x4</label><br>
-                                <small class="text-muted">File Maksimal 1 MB format pdf</small>
+                                <small class="text-muted">File Maksimal 1 MB format jpg,jpeg,png</small>
                                 <input class="form-control" type="file" id="" name="pas_foto">
                             </div>
                         </div>

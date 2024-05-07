@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BuktiPersyaratan;
+use App\Models\DataPekerjaan;
 use App\Models\DataSertifikasi;
 use App\Models\District;
 use App\Models\Province;
@@ -22,12 +23,13 @@ class GuestController extends Controller
     public function formApp()
     {
         $userData = UserData::where('user_id', auth()->user()->id)->first();
+        $dataPekerjaan = DataPekerjaan::where('user_id', auth()->user()->id)->first();
         $provinces = Province::pluck('name', 'id');
         if ($userData) {
             $regencies = Regency::where('province_id', $userData->provinsi)->pluck('name', 'id');
             $districts = District::where('regency_id', $userData->kabupaten)->pluck('name', 'id');
             $villages = Village::where('district_id', $userData->kecamatan)->pluck('name', 'id');
-            return view('guest.form_app_edit', compact(['userData', 'provinces', 'regencies', 'districts', 'villages']));
+            return view('guest.form_app_edit', compact(['userData', 'dataPekerjaan', 'provinces', 'regencies', 'districts', 'villages']));
         } else {
             return view('guest.form_app', compact('provinces'));
         }
@@ -52,15 +54,26 @@ class GuestController extends Controller
             'tanggal_lahir' => 'required',
             'warga_negara' => 'required',
         ]);
+        $validate2 = $request->validate([
+            'nama_institusi' => 'nullable|string',
+            'alamat_kantor'=>'nullable|string',
+            'tlp_kantor'=>'nullable|string',
+            'kode_pos_kantor'=>'nullable|string',
+            'fax_kantor'=>'nullable|string',
+            'email_kantor'=>'nullable|string',
+        ]);
         $validate['user_id'] = auth()->user()->id;
-
+        $validate2['user_id'] = auth()->user()->id;
+// dd($validate2);
         UserData::create($validate);
-        return response()->json(['message' => 'Data berhasil ditambahkan']);
+        DataPekerjaan::create($validate2);
+        return redirect('dashboard')->with('success', 'Data anda berhasil di simpan');
     }
 
     public function formAppupdate(UserData $userData, Request $request)
     {
         // dd($request->all());
+        $dataPekerjaan = DataPekerjaan::where('user_id', auth()->user()->id)->first();
         $validate = $request->validate([
             'nama' => 'required',
             'alamat' => 'required',
@@ -78,9 +91,19 @@ class GuestController extends Controller
             'tanggal_lahir' => 'required',
             'warga_negara' => 'required',
         ]);
+        $validate2 = $request->validate([
+            'jabatan'=>'nullable|string',
+           'nama_institusi' => 'nullable|string',
+           'alamat_kantor'=>'nullable|string',
+           'tlp_kantor'=>'nullable|string',
+           'kode_pos_kantor'=>'nullable|string',
+           'fax_kantor'=>'nullable|string',
+           'email_kantor'=>'nullable|string',
 
+        ]);
         $userData->update($validate);
-        return redirect()->back()->with('success', 'Data berhasil di update');
+        $dataPekerjaan->update($validate2);
+        return redirect('dashboard')->with('success', 'Data Anda berhasil di update');
     }
     public function berkas()
     {

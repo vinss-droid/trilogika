@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataPekerjaan;
 use App\Models\DataSertifikasi;
 use App\Models\Schema;
 use App\Models\User;
@@ -130,6 +131,7 @@ class DataSertifikasiController extends Controller
     {
         $dataSertif = DataSertifikasi::find($id);
         $schema = Schema::with('unitKompetensis')->find($dataSertif->schema_id);
+        $dataKerja = DataPekerjaan::where('user_id', $dataSertif->user_id)->first();
         // $user = UserData::where('user_id',$dataSertif->user_id)->first();
         // dd($schema);
         $user = UserData::select(
@@ -149,7 +151,7 @@ class DataSertifikasiController extends Controller
             ->where('user_id', $dataSertif->user_id)
             ->first();
         // dd($user);
-        $pdf = Pdf::loadView('dataSertifikasi.pdf', compact(['schema', 'user', 'dataSertif']));
+        $pdf = Pdf::loadView('dataSertifikasi.pdf', compact(['schema', 'user', 'dataSertif','dataKerja']));
         return $pdf->stream();
         // return view('dataSertifikasi.pdf', compact('data'));
     }

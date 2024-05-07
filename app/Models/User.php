@@ -59,4 +59,7 @@ class User extends Authenticatable
     public function schemas(){
         return $this->belongsToMany(Schema::class,'data_sertifikasi');
     }
+    public function dataPekerjaan(){
+        return $this->hasOne(DataPekerjaan::class);
+    }
 }
