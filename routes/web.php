@@ -57,9 +57,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/form-app',[GuestController::class,'formAppStore'])->name('form.app.store');
     Route::patch('/form-app/{userData}',[GuestController::class,'formAppUpdate'])->name('form.app.update');
 
-    Route::get('/berkas',[GuestController::class,'berkas'])->name('berkas');
-    Route::post('/berkas',[GuestController::class,'berkasStore'])->name('berkas.store');
-    Route::patch('/berkas/{buktiPersyaratan}',[GuestController::class,'berkasUpdate'])->name('berkas.update');
+    Route::get('/bukti-persyaratan',[GuestController::class,'buktiPersyaratan'])->name('bukti.persyaratan');
+    Route::post('/bukti-persyaratan',[GuestController::class,'buktiPersyaratanStore'])->name('bukti.persyaratan.store');
+
+    // Route::get('/berkas',[GuestController::class,'berkas'])->name('berkas');
+    // Route::post('/berkas',[GuestController::class,'berkasStore'])->name('berkas.store');
+    // Route::patch('/berkas/{buktiPersyaratan}',[GuestController::class,'berkasUpdate'])->name('berkas.update');
 
     Route::get('/daftar-sertifikasi',[GuestController::class,'allSertifikasi'])->name('all.sertifikasi');
     Route::get('/show-sertifikasi/{id}',[GuestController::class,'showSertifikasi'])->name('show.sertifikasi');
@@ -68,6 +71,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/regence',[IndoRegionController::class,'getRegencies'])->name('get_regencies');
     Route::post('/district',[IndoRegionController::class,'getDistricts'])->name('get_districts');
     Route::post('/village',[IndoRegionController::class,'getVillages'])->name('get_villages');
+
+    Route::get('/test/form',[GuestController::class,'testForm'])->name('test.form');
+    Route::post('/test/form',[GuestController::class,'testFormStore'])->name('test.form.store');
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {

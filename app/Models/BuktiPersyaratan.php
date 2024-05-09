@@ -11,11 +11,9 @@ class BuktiPersyaratan extends Model
 
     protected $fillable = [
         'user_id',
-        'ijazah',
-        'sk_kerja',
-        'ktp',
-        'pas_foto',
-        'cv',
+        'type',
+        'path',
+        'status',
         'status',
     ];
 
