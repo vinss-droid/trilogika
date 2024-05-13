@@ -18,8 +18,9 @@
     </div>
 <section class="section">
 
-<form action="{{ route('bukti.persyaratan.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('bukti.persyaratan.update') }}" method="POST" enctype="multipart/form-data">
     @csrf
+    @method('PATCH')
 <div class="row">
 <div class="col-lg-8">
     @if ($errors->any())
@@ -40,11 +41,16 @@
                         <hr>
                     </div>
                     <div class="row">
-                        @foreach ($inputs as $input)
+                        @foreach ($inputs as $key => $input)
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">{{ $input->label }}</label><br>
-                                <small class="text-muted">{{ $input->description }}</small>
+                                <small class="text-muted">{{ $input->description }}</small><br>
+                                @if ($datas[$key]->path != null)
+                                <a href="#">
+                                    <span class="badge bg-primary">{{ $input->type }}</span>
+                                </a>
+                                @endif
                                 {{-- @error($input->type)
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror --}}

@@ -17,9 +17,10 @@ return new class extends Migration
             $table->text('content');
             $table->string('image')->nullable();
             $table->string('slug')->unique()->nullable();
-            $table->string('status')->nullable();
+            $table->string('status')->nullable()->default('active');
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
+            $table->string('harga')->nullable();
             $table->timestamps();
         });
     }

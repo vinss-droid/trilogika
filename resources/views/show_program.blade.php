@@ -86,6 +86,9 @@
                         <p class="description mb-5">
                             {!!$program->content!!}
                         </p>
+                        <div class="d-flex justify-content-center">
+                            <a href="#" class="btn btn-primary"> Daftar Sekarang </a>
+                        </div>
                     </div>
                 </div>
             </div>

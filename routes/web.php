@@ -59,6 +59,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/bukti-persyaratan',[GuestController::class,'buktiPersyaratan'])->name('bukti.persyaratan');
     Route::post('/bukti-persyaratan',[GuestController::class,'buktiPersyaratanStore'])->name('bukti.persyaratan.store');
+    Route::patch('/bukti-persyaratan',[GuestController::class,'buktiPersyaratanUpdate'])->name('bukti.persyaratan.update');
 
     // Route::get('/berkas',[GuestController::class,'berkas'])->name('berkas');
     // Route::post('/berkas',[GuestController::class,'berkasStore'])->name('berkas.store');

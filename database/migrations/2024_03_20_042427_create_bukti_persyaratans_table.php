@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('type');
-            $table->string('path');
+            $table->string('path')->nullable();
             $table->string('status')->default('pending');
             $table->timestamps();
 

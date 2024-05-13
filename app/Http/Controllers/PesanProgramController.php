@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Document;
+use App\Models\PesanProgram;
 use Illuminate\Http\Request;
 
-class DocumentController extends Controller
+class PesanProgramController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class DocumentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Document $document)
+    public function show(PesanProgram $pesanProgram)
     {
         //
     }
@@ -42,7 +42,7 @@ class DocumentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Document $document)
+    public function edit(PesanProgram $pesanProgram)
     {
         //
     }
@@ -50,7 +50,7 @@ class DocumentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Document $document)
+    public function update(Request $request, PesanProgram $pesanProgram)
     {
         //
     }
@@ -58,7 +58,7 @@ class DocumentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Document $document)
+    public function destroy(PesanProgram $pesanProgram)
     {
         //
     }

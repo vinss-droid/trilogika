@@ -106,180 +106,127 @@ class GuestController extends Controller
         return redirect('dashboard')->with('success', 'Data Anda berhasil di update');
     }
 
-    public function buktiPersyaratan(){
-        $inputs = collect([
+    public function buktiPersyaratan()
+    {
+        $datas = BuktiPersyaratan::where('user_id', auth()->user()->id)->get();
+       
+        $inputs = collect(
             [
-                'type' => 'file',
-                'name' => 'ijazah',
-                'label' => 'Ijazah',
-                'description' => 'File Maksimal 1 MB format pdf',
-            ],
-            [
-                'type' => 'file',
-                'name' => 'sk_kerja',
-                'label' => 'Surat Pengalaman Kerja',
-                'description' => 'File Maksimal 1 MB format pdf',
-            ],
-            [
-                'type' => 'file',
-                'name' => 'ktp',
-                'label' => 'KTP',
-                'description' => 'File Maksimal 1 MB format pdf',
-            ],
-            [
-                'type' => 'file',
-                'name' => 'foto',
-                'label' => 'Pas Foto 3x4',
-                'description' => 'File Maksimal 1 MB format pdf',
-            ],
-            [
-                'type' => 'file',
-                'name' => 'cv',
-                'label' => 'Curiculum Vitae ',
-                'description' => 'File Maksimal 1 MB format pdf',
-            ],
-        ]
+                [
+                    'type' => 'ijazah',
+                    'name' => 'ijazah',
+                    'label' => 'Ijazah',
+                    'description' => 'File Maksimal 1 MB format pdf',
+                ],
+                [
+                    'type' => 'sk_kerja',
+                    'name' => 'sk_kerja',
+                    'label' => 'Surat Pengalaman Kerja',
+                    'description' => 'File Maksimal 1 MB format pdf',
+                ],
+                [
+                    'type' => 'ktp',
+                    'name' => 'ktp',
+                    'label' => 'KTP',
+                    'description' => 'File Maksimal 1 MB format pdf',
+                ],
+                [
+                    'type' => 'foto',
+                    'name' => 'foto',
+                    'label' => 'Pas Foto 3x4',
+                    'description' => 'File Maksimal 1 MB format pdf',
+                ],
+                [
+                    'type' => 'cv',
+                    'name' => 'cv',
+                    'label' => 'Curiculum Vitae ',
+                    'description' => 'File Maksimal 1 MB format pdf',
+                ],
+            ]
         )->map(function ($item) {
-             return (object) $item;
+            return (object) $item;
         });
-        
-        return view('guest.bukti_persyaratan', compact('inputs'));
+// dd($inputs);
+        if($datas->count() > 0){
+            return view('guest.bukti_persyaratan_edit', compact(['datas', 'inputs']));
+        }else{
+            return view('guest.bukti_persyaratan', compact('inputs'));
+        }
     }
 
-    
-    // public function berkas()
-    // {
-    //     $berkas = BuktiPersyaratan::where('user_id', auth()->user()->id)->first();
-    //     if (!$berkas) {
-    //         return view('guest.berkas');
-    //     } else {
-    //         return view('guest.berkas_edit', compact('berkas'));
-    //     }
-    // }
+    public function buktiPersyaratanStore(Request $request)
+    {
+        $request->validate([
+            'type' => 'required|array',
+            'type.*' => 'required|string',
+            'file' => 'required|array',
+            'file.*' => 'mimes:pdf,jpg,png|max:1024',
+        ]);
 
-    // public function berkasStore(Request $request)
-    // {
-    //     $validate = $request->validate([
-    //         'ktp' => 'required|mimes:pdf,jpg,jpeg,png|max:1024',
-    //         'ijazah' => 'required|mimes:pdf,jpg,jpeg,png|max:1024',
-    //         'cv' => 'required|mimes:pdf,jpg,jpeg,png|max:1024',
-    //         'sk_kerja' => 'required|mimes:pdf,jpg,jpeg,png|max:1024',
-    //         'pas_foto' => 'required|mimes:jpg,jpeg,png|max:1024',
-    //     ]);
-    //     if ($request->hasFile('ktp')) {
-    //         $file = $request->file('ktp');
-    //         $fileName = Carbon::now()->format('YmdHis') . '_' . $file->getClientOriginalName();
-    //         $path_ktp = Storage::disk('private')->putFileAs('berkas/ktp', $file, $fileName);
-    //     }
-    //     if ($request->hasFile('ijazah')) {
-    //         $file = $request->file('ijazah');
-    //         $fileName = Carbon::now()->format('YmdHis') . '_' . $file->getClientOriginalName();
-    //         $path_ijazah = Storage::disk('private')->putFileAs('berkas/ijazah', $file, $fileName);
-    //     }
-    //     if ($request->hasFile('cv')) {
-    //         $file = $request->file('cv');
-    //         $fileName = Carbon::now()->format('YmdHis') . '_' . $file->getClientOriginalName();
-    //         $path_cv = Storage::disk('private')->putFileAs('berkas/cv', $file, $fileName);
-    //     }
-    //     if ($request->hasFile('sk_kerja')) {
-    //         $file = $request->file('sk_kerja');
-    //         $fileName = Carbon::now()->format('YmdHis') . '_' . $file->getClientOriginalName();
-    //         $path_skKerja = Storage::disk('private')->putFileAs('berkas/skKerja', $file, $fileName);
-    //     }
-    //     if ($request->hasFile('pas_foto')) {
-    //         $file = $request->file('pas_foto');
-    //         $fileName = Carbon::now()->format('YmdHis') . '_' . $file->getClientOriginalName();
-    //         $path_pasFoto = Storage::disk('private')->putFileAs('berkas/pasFoto', $file, $fileName);
-    //     }
+        $files = $request->file;
+        $types = $request->type;
+        // dd($files);
+        foreach ($types as $key => $type) {
+            // $files[$key]->storeAs('private/bukti_persyaratan', $files[$key]->getClientOriginalName());
+            if (isset($files[$key])) {
+                $file = $files[$key];
+                $fileName = Carbon::now()->format('YmdHis') . '_' . $files[$key]->getClientOriginalName();
+                $path = Storage::disk('private')->putFileAs('bukti_persyaratan/' . $type, $file, $fileName);
+                BuktiPersyaratan::create([
+                    'user_id' => auth()->user()->id,
+                    'path' => $path,
+                    'type' => $type,
+                ]);
+            } else {
+                BuktiPersyaratan::create([
+                    'user_id' => auth()->user()->id,
+                    'path' => null,
+                    'type' => $type,
+                ]);
+            }
+        }
+        return redirect('dashboard')->with('success', 'Data Anda berhasil di simpan');
+    }
 
-    //     BuktiPersyaratan::create([
-    //         'ktp' => $path_ktp,
-    //         'ijazah' => $path_ijazah,
-    //         'cv' => $path_cv,
-    //         'sk_kerja' => $path_skKerja,
-    //         'pas_foto' => $path_pasFoto,
-    //         'user_id' => auth()->user()->id,
-    //     ]);
-    //     if ($request->fails()) {
-    //         return redirect()->back()->withInput()->withErrors($validate);
-    //     }
+    public function buktiPersyaratanUpdate(Request $request){
+        $buktiPersyaratan = BuktiPersyaratan::where('user_id', auth()->user()->id)->get();
+        // dd($buktiPersyaratan);
+        $request->validate([
+            'type' => 'required|array',
+            'type.*' => 'required|string',
+            'file' => 'required|array',
+            'file.*' => 'mimes:pdf,jpg,png|max:1024',
+        ]);
+        $files = $request->file;
+        $types = $request->type;
+        foreach ($types as $key => $type) {
+            if (isset($files[$key])) {
+                $file = $files[$key];
+                $fileExist = $buktiPersyaratan[$key]->path ?? 'null';
+                if (Storage::disk('private')->exists($fileExist)) {
+                    Storage::disk('private')->delete($buktiPersyaratan[$key]->path);
+                }
+                $fileName = Carbon::now()->format('YmdHis') . '_' . $files[$key]->getClientOriginalName();
+                $path = Storage::disk('private')->putFileAs('bukti_persyaratan/' . $type, $file, $fileName);
 
-    //     return response()->json(['message' => 'Data berhasil ditambahkan']);
-    // }
-
-    // public function berkasUpdate(Request $request, BuktiPersyaratan $buktiPersyaratan)
-    // {
-    //     $berkas = $buktiPersyaratan;
-    //     $validate = Validator::make($request->all(), [
-    //         'ktp' => 'mimes:pdf,jpg,jpeg,png|max:1024',
-    //         'ijazah' => 'mimes:pdf,jpg,jpeg,png|max:1024',
-    //         'cv' => 'mimes:pdf,jpg,jpeg,png|max:1024',
-    //         'sk_kerja' => 'mimes:pdf,jpg,jpeg,png|max:1024',
-    //         'pas_foto' => 'mimes:jpg,jpeg,png|max:1024',
-    //     ]);
-
-    //     if ($validate->fails()) {
-    //         return redirect()->back()->withInput()->withErrors($validate);
-    //     }
-
-    //     if ($request->hasFile('ktp')) {
-    //         $file = $request->file('ktp');
-    //         if (Storage::disk('private')->exists($berkas->ktp)) {
-    //             Storage::disk('private')->delete($berkas->ktp);
-    //         }
-    //         $fileName = Carbon::now()->format('YmdHis') . '_' . $file->getClientOriginalName();
-    //         $path_ktp = Storage::disk('private')->putFileAs('berkas/ktp', $file, $fileName);
-    //         $berkas->update([
-    //             'ktp' => $path_ktp
-    //         ]);
-    //     }
-    //     if ($request->hasFile('ijazah')) {
-    //         $file = $request->file('ijazah');
-    //         if (Storage::disk('private')->exists($berkas->ijazah)) {
-    //             Storage::disk('private')->delete($berkas->ijazah);
-    //         }
-    //         $fileName = Carbon::now()->format('YmdHis') . '_' . $file->getClientOriginalName();
-    //         $path_ijazah = Storage::disk('private')->putFileAs('berkas/ijazah', $file, $fileName);
-    //         $berkas->update([
-    //             'ijazah' => $path_ijazah
-    //         ]);
-    //     }
-    //     if ($request->hasFile('cv')) {
-    //         $file = $request->file('cv');
-    //         if (Storage::disk('private')->exists($berkas->cv)) {
-    //             Storage::disk('private')->delete($berkas->cv);
-    //         }
-    //         $fileName = Carbon::now()->format('YmdHis') . '_' . $file->getClientOriginalName();
-    //         $path_cv = Storage::disk('private')->putFileAs('berkas/cv', $file, $fileName);
-    //         $berkas->update([
-    //             'cv' => $path_cv
-    //         ]);
-    //     }
-    //     if ($request->hasFile('sk_kerja')) {
-    //         $file = $request->file('sk_kerja');
-    //         if (Storage::disk('private')->exists($berkas->sk_kerja)) {
-    //             Storage::disk('private')->delete($berkas->sk_kerja);
-    //         }
-    //         $fileName = Carbon::now()->format('YmdHis') . '_' . $file->getClientOriginalName();
-    //         $path_skKerja = Storage::disk('private')->putFileAs('berkas/skKerja', $file, $fileName);
-    //         $berkas->update([
-    //             'sk_kerja' => $path_skKerja
-    //         ]);
-    //     }
-    //     if ($request->hasFile('pas_foto')) {
-    //         $file = $request->file('pas_foto');
-    //         if (Storage::disk('private')->exists($berkas->pas_foto)) {
-    //             Storage::disk('private')->delete($berkas->pas_foto);
-    //         }
-    //         $fileName = Carbon::now()->format('YmdHis') . '_' . $file->getClientOriginalName();
-    //         $path_pasFoto = Storage::disk('private')->putFileAs('berkas/pasFoto', $file, $fileName);
-    //         $berkas->update([
-    //             'pas_foto' => $path_pasFoto
-    //         ]);
-    //     }
-
-    //     return redirect('dashboard')->with('success', 'data berhasil di update');
-    // }
+                if ($buktiPersyaratan[$key]->path == null) {
+                    $path = Storage::disk('private')->putFileAs('bukti_persyaratan/' . $type, $file, $fileName);
+                    BuktiPersyaratan::where('user_id', auth()->user()->id)
+                    ->where('type', $type)
+                    ->update([
+                        'path' => $path,
+                    ]);
+                }else{
+                    BuktiPersyaratan::where('user_id', auth()->user()->id)
+                    ->where('type', $type)
+                    ->update([
+                        'path' => $path,
+                    ]);
+                }
+            }
+        }
+        return redirect('dashboard')->with('success', 'Data Anda berhasil di update');
+    }
 
     public function allSertifikasi()
     {
@@ -318,54 +265,4 @@ class GuestController extends Controller
         return redirect('dashboard')->with('success', 'berhasil mendaftar sertifikasi ' . $schema->judul);
     }
 
-    public function testForm()
-    {
-        $inputs = collect([
-            [
-                'type' => 'file',
-                'name' => 'ijazah',
-                'label' => 'Ijazah',
-                'description' => 'format PDF, JPG, PNG',
-            ],
-            [
-                'type' => 'file',
-                'name' => 'sk_kerja',
-                'label' => 'Surat Pengalaman Kerja',
-                'description' => 'format PDF, JPG, PNG',
-            ],
-            [
-                'type' => 'file',
-                'name' => 'ktp',
-                'label' => 'KTP',
-                'description' => 'format PDF, JPG, PNG',
-            ],
-            [
-                'type' => 'file',
-                'name' => 'foto',
-                'label' => 'Pas Foto 3x4',
-                'description' => 'format PDF, JPG, PNG',
-            ],
-            [
-                'type' => 'file',
-                'name' => 'cv',
-                'label' => 'Curiculum Vitae ',
-                'description' => 'format PDF, JPG, PNG',
-            ],
-        ]
-        )->map(function ($item) {
-             return (object) $item;
-        });
-        // dd($label);
-        return view('guest.dok', compact('inputs'));
-    }
-    public function testFormStore(Request $request)
-    {
-        $types = $request->input('type');
-        $paths = $request->input('path');
-        // dd($request->all());
-        foreach ($emails as $email) {
-            // Lakukan sesuatu dengan setiap alamat email
-            echo $email;
-        }
-    }
 }
