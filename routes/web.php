@@ -11,6 +11,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\PartnerController;
 
 use App\Http\Controllers\SchemaController;
 use App\Http\Controllers\UnitKompetensiController;
@@ -35,6 +36,7 @@ Route::get('/programs', [PageController::class, 'programs'])->name('page.program
 Route::get('/articles', [PageController::class, 'articles'])->name('page.articles');
 Route::get('/visi-misi',[PageController::class,'visiMisi'])->name('page.visi-misi');
 Route::get('/history',[PageController::class,'history'])->name('page.history');
+route::get('/partner',[PageController::class, 'partner'])->name('page.partner');
 
 // Route::get('/mengapa-perlu-sertifikasi', function () {
 //     return view('show_mengapa');
@@ -84,6 +86,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('/admin/course', CourseController::class);
     Route::patch('/admin/course-status/{course}',[CourseController::class,'status'])->name('course.status');
     Route::resource('/admin/portofolio', PortofolioController::class);
+    Route::resource('/admin/partner', PartnerController::class);
+
     // SCHEMA
     Route::patch('/admin/schema-status/{schema}',[SchemaController::class,'status'])->name('schema.status');
     Route::get('/admin/schema/get-schema',[SchemaController::class,'getSchema'])->name('getSchema');
@@ -106,5 +110,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::get('/program/{slug}', [PageController::class, 'programSlug'])->name('program.slug');
 Route::get('/article/{slug}', [PageController::class, 'articleSlug'])->name('article.slug');
 Route::get('/course/{slug}', [PageController::class, 'courseSlug'])->name('course.slug');
+Route::get('/partner/{slug}', [PageController::class, 'partnerSlug'])->name('partner.slug');
 
 require __DIR__ . '/auth.php';

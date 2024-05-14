@@ -63,6 +63,10 @@
                         <li class="submenu-item ">
                             <a href="{{route('portofolio.index')}}">Portofolio</a>
                         </li>
+                        <li class="submenu-item ">
+                            <a href="{{route('partner.index')}}">Partner</a>
+                        </li>
+                        
                     </ul>
                 </li>
                 <li class="sidebar-item  has-sub">
