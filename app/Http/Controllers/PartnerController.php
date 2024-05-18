@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Partner;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\HtmlString;
+use Illuminate\Support\Str;
 
 class PartnerController extends Controller
 {
@@ -20,17 +25,26 @@ class PartnerController extends Controller
         if (request()->ajax()) {
             $partners = partner::orderBy('created_at','desc');
             return datatables()->of($partners)
-            ->addColumn('DT_RowIndex', function ($row) {
-                // Menghitung nomor urut secara manual
-                return ++$this->index;
-            })
+                ->addColumn('DT_RowIndex', function ($row) {
+                    // Menghitung nomor urut secara manual
+                    return ++$this->index;
+                })
                 ->addColumn('image', function ($row) {
-                    return '<img src="' . asset("image/partner/" . $row->image) . '" alt="Image" width="100" height="100">';
+                    return '<img src="' . $row->logo . '" alt="Image" width="100" height="100">';
+                })
+                ->addColumn('title', function ($row) {
+                    return $row->title;
+                })
+                ->addColumn('description', function ($row) {
+                    return $row->description;
+                })
+                ->addColumn('slug', function ($row) {
+                    return $row->slug;
                 })
                 ->addColumn('action', function ($row) {
                     $button = '<a href="'.route('partner.edit',$row->id).'" class="btn icon btn-success"><i class="bi bi-pencil"></i></a>
-                    <a href="" class="btn icon btn-danger" onclick="deletePost('.$row->id.')"><i class="bi bi-trash"></i></a>
-                    ';
+                <a href="" class="btn icon btn-danger" onclick="deletePost('.$row->id.')"><i class="bi bi-trash"></i></a>
+                ';
                     return new HtmlString($button);
                 })
                 ->rawColumns(['image'])
@@ -45,7 +59,7 @@ class PartnerController extends Controller
     public function create()
     {
         //
-        return view('partner.add_partner');
+//        return view('partner.add_partner');
     }
 
     /**
@@ -53,30 +67,55 @@ class PartnerController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $date = str_replace([' ', '-', ':'], '', date('Y-m-d', time()));
-// dd($request->all());
-        $validatedData = $request->validate([
-            'title' => 'required',
-            'content' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+        try {
 
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $fileName = $date . '_' . $file->getClientOriginalName();
-            $filePath = public_path() . '/image/partner/';
-            $file->move($filePath, $fileName);
+            DB::beginTransaction();
+
+            $validator = Validator::make($request->all(),[
+                'title' => 'required',
+                'description' => 'required',
+                'slug' => 'required',
+                'logo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            ]);
+
+            if($validator->fails()){
+                return response()->json([
+                    'status' => 400,
+                    'message' => 'Validation Errors!',
+                    'errors' => $validator->errors()
+                ], Response::HTTP_BAD_REQUEST);
+            }
+
+            $path = public_path('/image/partner/');
+            $logo = $request->file('logo');
+            $fileName = date('YmdHis') . '_' . $logo->getClientOriginalName();
+
+            if (!File::exists($path)) {
+                File::makeDirectory($path, $mode = 0777, true, true);
+            }
+
+            $logo->move($path, $fileName);
+
+            $partner = Partner::create([
+                'title' => $request->title,
+                'description' => $request->description,
+                'slug' => Str::slug($request->slug, '-'),
+                'logo' => asset('image/partner/' . $fileName),
+            ]);
+
+            DB::commit();
+
+            return response()->json([
+                'status' => 200,
+                'message' => 'Partner has been created!'
+            ], 200);
+        } catch (\Exception $ex) {
+            DB::rollBack();
+            return response()->json([
+                'status' => 500,
+                'message' => $ex->getMessage()
+            ], 500);
         }
-
-        partner::create([
-            'title' => $validatedData['title'],
-            'content' => $validatedData['content'],
-            'image' => $fileName,
-            'created_at'=> $request['created_at'],
-        ]);
-
-        return redirect()->route('partner.index')->with('success', 'partner berhasil ditambahkan');
     }
 
     /**
@@ -94,7 +133,7 @@ class PartnerController extends Controller
     {
         //
         // dd($partner);
-        return view('partner.edit_partner', compact('partner'));
+//        return view('partner.edit_partner', compact('partner'));
     }
 
     /**
